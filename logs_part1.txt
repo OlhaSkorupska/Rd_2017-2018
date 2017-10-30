@@ -1,0 +1,42 @@
+4d75d6b HEAD@{0}: merge develop: Fast-forward
+4752775 HEAD@{1}: checkout: moving from develop to HW1-Git
+4d75d6b HEAD@{2}: merge feature4: Fast-forward
+fee41be HEAD@{3}: checkout: moving from feature4 to develop
+4d75d6b HEAD@{4}: rebase finished: returning to refs/heads/feature4
+4d75d6b HEAD@{5}: rebase: HW1-Git: Changed index.html
+6500d53 HEAD@{6}: rebase: HW1-Git: Added some style to folder
+fee41be HEAD@{7}: rebase: checkout develop
+bd93529 HEAD@{8}: checkout: moving from develop to feature4
+fee41be HEAD@{9}: merge feature3: Fast-forward
+ba0bc81 HEAD@{10}: checkout: moving from feature3 to develop
+fee41be HEAD@{11}: checkout: moving from develop to feature3
+ba0bc81 HEAD@{12}: checkout: moving from feature4 to develop
+bd93529 HEAD@{13}: commit: HW1-Git: Changed index.html
+beb4563 HEAD@{14}: commit: HW1-Git: Added some style to folder
+ba0bc81 HEAD@{15}: checkout: moving from develop to feature4
+ba0bc81 HEAD@{16}: checkout: moving from feature3 to develop
+fee41be HEAD@{17}: commit: HW1-Git: Changed index.html
+f3c1022 HEAD@{18}: commit: HW1-Git: Added some images to folder
+ba0bc81 HEAD@{19}: checkout: moving from develop to feature3
+ba0bc81 HEAD@{20}: commit: HW1-Git: Updated index.html
+4752775 HEAD@{21}: checkout: moving from HW1-Git to develop
+4752775 HEAD@{22}: merge develop: Fast-forward
+8002dd7 HEAD@{23}: checkout: moving from feature2 to HW1-Git
+4752775 HEAD@{24}: merge develop: Fast-forward
+d6a76e2 HEAD@{25}: checkout: moving from feature1 to feature2
+4752775 HEAD@{26}: merge develop: Fast-forward
+f76f399 HEAD@{27}: checkout: moving from develop to feature1
+4752775 HEAD@{28}: commit (merge): HW1-Git: Fix conflict in index.html
+f76f399 HEAD@{29}: merge feature1: Fast-forward
+db563a9 HEAD@{30}: checkout: moving from feature2 to develop
+d6a76e2 HEAD@{31}: commit: HW1-Git: Changed index.html
+42e7358 HEAD@{32}: commit: HW1-Git: Created style's folder
+db563a9 HEAD@{33}: checkout: moving from develop to feature2
+db563a9 HEAD@{34}: checkout: moving from feature1 to develop
+f76f399 HEAD@{35}: commit: HW1-Git: Changed index.html
+26d0ac7 HEAD@{36}: commit: HW1-Git: Created images's folder
+db563a9 HEAD@{37}: checkout: moving from develop to feature1
+db563a9 HEAD@{38}: commit: HW1-Git: Created index.html
+8002dd7 HEAD@{39}: checkout: moving from HW1-Git to develop
+8002dd7 HEAD@{40}: checkout: moving from master to HW1-Git
+8002dd7 HEAD@{41}: commit (initial): init commit
