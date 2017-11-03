@@ -1,0 +1,51 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+
+.caption {
+    font-size: 24px;
+}
+
+.authorization {
+    width: 350px;
+    margin: 0 auto;
+}
+
+.registration {
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.fieldset {
+    border: 2px solid #0a7ac1;
+    padding: 10px;
+}
+
+.legend {
+    width: auto;
+    font-size: 24px;
+}
+
+.button-submit {
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.horizontal-line {
+    margin: 10px 0;
+    border-color: grey;
+}
+
+.color-component-width {
+    width: 100%;
+}

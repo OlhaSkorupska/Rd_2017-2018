@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+
+<body>
+    <h1 class="caption">Forms</h1>
+    <form class="authorization">
+        <fieldset class="fieldset">
+            <legend class="legend">Authorization</legend>
+            <table>
+                <tr class="form-group">
+                    <td>
+                        <label for="login">Login</label>
+                    </td>
+                    <td>
+                        <input id="login" type="text" name="password" required="required">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="password">Password</label>
+                    </td>
+                    <td>
+                        <input id="password" type="text" name="repeat-password" required="required">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input class="button-submit" type="submit" value="Submit"/>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </form>
+    <div class="container">
+        <div class="row">
+            <form class="registration">
+                <fieldset class="fieldset">
+                    <legend class="legend">Registration</legend>
+                    <table class="registration-table">
+                        <tr>
+                            <td colspan="2"><strong>Common:</strong></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="name">Name</label>
+                            </td>
+                            <td>
+                                <input id="name" type="text" name="name" required="required">
+                                <span>*John</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="surname">Surname</label>
+                            </td>
+                            <td>
+                                <input id="surname" type="text" name="name" required="required">
+                                <span>*Doe</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="radio" id="male" name="sex" value="male" required="required">
+                                <label for="male">Male</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Gender</td>
+                            <td>
+                                <input type="radio" id="female" name="sex" value="female" required="required">
+                                <label for="female">Female</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="radio" id="unknown" name="sex" value="unknown" required="required">
+                                <label for="unknown">Unknown</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="birth">Date of Birth</label>
+                            </td>
+                            <td>
+                                <input id="birth" type="date" name="date" required="required">
+                                <span>*01/01/1900</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <hr class="horizontal-line"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>Address:</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Country</td>
+                            <td>
+                                <select id="select-country" class="col-md-4" name="country" size="1">
+                                    <option value="USA" disabled="disabled" selected="selected">USA</option>
+                                    <option value="Ukraine">Ukraine</option>
+                                    <option value="Japan">Japan</option>
+                                    <option value="France">France</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <hr class="horizontal-line" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>Other:</strong></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="color">Favourite color</label>
+                            </td>
+                            <td>
+                                <input class="color-component-width" id="color" type="color" name="color">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <hr class="horizontal-line" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>Security:</strong></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="password-register">Password</label>
+                            </td>
+                            <td>
+                                <input id="password-register" type="text" name="password" required="required">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="r-password-register">Repeat password</label>
+                            </td>
+                            <td>
+                                <input id="r-password-register" type="text" name="repeat-password" required="required">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="email-register">Email</label>
+                            </td>
+                            <td>
+                                <input id="email-register" type="email" name="email" required="required">
+                                <span>*john_doe@example.com</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input class="button-submit" type="submit" value="Register"/>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
