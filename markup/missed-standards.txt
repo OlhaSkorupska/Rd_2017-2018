@@ -17,16 +17,13 @@
 2) add tag <section>
 
 <!-- Work Experience -->
-1) add tag <nav>
-2) add tag <section>
+1) add tag <section>
 
 <!-- Achievements -->
-1) add tag <nav>
-2) add tag <section>
+1) add tag <section>
 
 <!-- Skills -->
-1) add tag <nav>
-2) add tag <section>
+1) add tag <section>
 
 <!-- Quote -->
 1) add tag <footer>
