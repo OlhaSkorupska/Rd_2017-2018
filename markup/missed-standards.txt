@@ -1,0 +1,34 @@
+<!-- General -->
+
+1) not enough closing tag </body>
+2) class values, attributes are not specified in double quotes
+3) tabulation
+4) <!DOCTYPE html>
+5) content="IE=8" -> content="IE=edge"
+6) <style> in <body>  move to css/main.css
+7) add utf-8
+
+<!-- Navigation -->
+1) add tag <nav>
+2) add tag <header>
+
+<!-- Introduction -->
+1) An img element must have an alt attribute
+2) add tag <section>
+
+<!-- Work Experience -->
+1) add tag <nav>
+2) add tag <section>
+
+<!-- Achievements -->
+1) add tag <nav>
+2) add tag <section>
+
+<!-- Skills -->
+1) add tag <nav>
+2) add tag <section>
+
+<!-- Quote -->
+1) add tag <footer>
+2) miss <div>
+3) miss </li>
