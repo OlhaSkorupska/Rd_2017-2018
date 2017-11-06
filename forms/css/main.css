@@ -29,7 +29,6 @@ h1 {
 }
 
 .legend {
-    width: auto;
     font-size: 24px;
 }
 
@@ -48,4 +47,8 @@ h1 {
 
 .color-component-width {
     width: 100%;
+}
+
+.example {
+    font-style: italic;
 }

@@ -14,7 +14,6 @@
 
 <!-- Introduction -->
 1) An img element must have an alt attribute
-2) add tag <section>
 
 <!-- Work Experience -->
 1) add tag <section>
@@ -27,5 +26,6 @@
 
 <!-- Quote -->
 1) add tag <footer>
-2) miss <div>
-3) miss </li>
+3) add tag <section>
+4) miss <div>
+5) miss </li>
