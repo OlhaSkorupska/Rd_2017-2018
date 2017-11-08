@@ -6,20 +6,32 @@ body {
 
 /* Chess */
 .chess {
+    position: relative;
     border: 24px solid #BEBEBE;
     margin: 0 auto;
     border-spacing: 0;
+}
+
+.chess td {
     position: relative;
-}
-
- .chess td {
     padding: 25px;
-    position: relative;    
 }
 
+.chess tr td {
+    transition: background-color .5s, border-radius .5s;
+}
+
+/* specificity 22*/
 tr:nth-child(even) td:nth-child(even),
 tr:nth-child(odd) td:nth-child(odd) {
     background-color: #110A02;
+}
+
+/* specificity 22*/
+.chess tr td:hover {
+    border-radius: 25px;
+    background-color: #cecbcb;
+    transition: background-color .5s, border-radius .5s;    
 }
 
 tr:nth-child(odd) td:nth-child(even),
@@ -27,17 +39,11 @@ tr:nth-child(even) td:nth-child(odd) {
     background-color: #ECBC38;
 }
 
-.chess tr td:hover {
-    background-color: #cecbcb;
-    border-radius: 25px;
-    transition: 1s;
-}
-
 tr:nth-child(n+1)::after {
     position: absolute;
     right: -15px;
-    line-height: 50px;
     font-size: 1em;
+    line-height: 50px;
 }
 
 tr:nth-child(n+1)::before {
@@ -94,10 +100,10 @@ tr:nth-child(8)::before {
 
 tr:first-child td:nth-child(n+1)::before {
     position: absolute;
-    font-size: 1em;
-    line-height: 40px;
     top: -32px;
     left: 19px;
+    font-size: 1em;
+    line-height: 40px;
 }
 
 tr:first-child td:nth-child(1)::before,
@@ -142,19 +148,19 @@ tr:last-child td:nth-child(8)::after {
 
 tr:last-child td:nth-child(n+1)::after {
     position: absolute;
-    font-size: 1em;
-    line-height: 40px;
     bottom: -32px;
     right: 19px;
+    font-size: 1em;
+    line-height: 40px;
 }
 
 /* Accordion */
 .wrapper {
-    margin: 0 auto;
-    font-size: 14px;
     width: 300px;
-    padding: 10px;
+    padding: 10px;   
+    margin: 0 auto;
     background: #fff;
+    font-size: 14px;
 }
 
 .accordion {
@@ -163,46 +169,45 @@ tr:last-child td:nth-child(n+1)::after {
 
 .accordion,
 .accordion__item {
+    padding: 0; 
     margin: 0;
-    padding: 0;    
+  
 }
 
 .accordion__item {
     overflow: hidden;
-    margin: 0;
+    margin: 0;    
     text-align: left;    
 }
 
-.accordion__item [type=radio],
-.accordion__item [type=checkbox] {
+.accordion__input {
     display: none;
+}
+
+.accordion__input:checked ~ .accordion__content {
+    height: auto;
+    margin: 5px;    
+    box-shadow: 0 0 5px #5F5E5E;
 }
 
 .accordion__label {
     display: inline-block;
-    line-height: 16px;
+    padding: 10px;       
     border: 1px solid #1E75EE;
     color: black;
     font-weight: 900;
+    line-height: 16px;    
     cursor: pointer;
-    padding: 10px;    
 }
 
 .accordion__content {
-    padding: 0 10px;
+    height: 0px; 
     overflow: hidden;
+    padding: 0 10px;
     background-color: #413E3E;
-    height: 0px;    
 }
 
 .accordion__text {
-    font-size: 14px;
     color: #fff;
-}
-
-.accordion__item [type=radio]:checked ~ .accordion__label ~ .accordion__content,
-.accordion__item [type=checkbox]:checked ~ .accordion__label ~ .accordion__content {
-    height: auto;
-    box-shadow: 0 0 5px #5F5E5E;
-    margin: 5px;
+    font-size: 14px;
 }
