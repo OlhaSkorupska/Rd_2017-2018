@@ -9,7 +9,7 @@ body {
 }
 
 .div0 {
-    position: absolute;
+    float: left;
 }
 
 .div1 {
@@ -40,6 +40,25 @@ body {
 }
 .div22 {
     position: absolute;
+    border: solid 1px green;
+    width: 200px;
+    height: 200px;    
+}
+
+.div03 {
+    display: flex;
+    position: absolute;
+    top: 420px;
+    flex-direction: row-reverse;    
+}
+
+.div13 {
+    border: solid 1px red;
+    width: 200px;
+    height: 200px;
+    
+}
+.div23 {
     border: solid 1px green;
     width: 200px;
     height: 200px;    
