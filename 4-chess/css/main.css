@@ -15,23 +15,19 @@ body {
 .chess td {
     position: relative;
     padding: 25px;
+    transition: background-color .5s, border-radius .5s;    
 }
 
-.chess tr td {
-    transition: background-color .5s, border-radius .5s;
+/* specificity 22*/
+.chess td:hover {
+    border-radius: 25px;
+    background-color: #cecbcb !important;
 }
 
 /* specificity 22*/
 tr:nth-child(even) td:nth-child(even),
 tr:nth-child(odd) td:nth-child(odd) {
     background-color: #110A02;
-}
-
-/* specificity 22*/
-.chess tr td:hover {
-    border-radius: 25px;
-    background-color: #cecbcb;
-    transition: background-color .5s, border-radius .5s;    
 }
 
 tr:nth-child(odd) td:nth-child(even),

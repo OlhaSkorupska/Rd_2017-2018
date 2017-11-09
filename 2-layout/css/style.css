@@ -8,13 +8,6 @@
     margin: 0 auto;   
 }
 
-
-.container::after {
-    content: "";
-    display: block;    
-    clear: both;
-}
-
 .menu {
     float: left;  
     width: 240px;
@@ -58,7 +51,7 @@
 
 .content__picture {
     float: right;
-    height: 290px;  
+    height: 280px;  
     margin: 10px 0 10px 10px;    
 }
 

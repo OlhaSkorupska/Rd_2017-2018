@@ -63,3 +63,22 @@ body {
     width: 200px;
     height: 200px;    
 }
+
+.div04 {
+    position: absolute;
+    top: 630px;
+}
+
+.div14 {
+    display: inline-block;
+    border: solid 1px red;
+    width: 200px;
+    height: 200px;
+}
+
+.div24 {
+    float: left;
+    border: solid 1px green;
+    width: 200px;
+    height: 200px;    
+}
