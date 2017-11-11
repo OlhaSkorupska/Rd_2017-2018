@@ -1,0 +1,99 @@
+$contentBackground: null !default;
+
+body {
+    background-color: $bodyBackground;
+    margin: -10px;
+    color: $bodyColorText;
+}
+#content {
+    width: 960px;
+    margin: 0 auto;
+    background: $contentBackground;
+    font: $bodyFont;
+    padding-bottom: 10px;
+}
+
+h1 {
+    padding: 25px 0 0 29px;
+    color: $caption;
+}
+
+p {
+    margin: 21px 21px 18px 27px;
+}
+
+h2 {
+    margin-top: 42px;
+    margin-left: 27px;
+    font-style: $fontH2;
+    color: $caption;
+}
+
+p .img-left {
+    border: 2px solid $caption;
+    padding: 3px;
+    margin: 0 20px;
+    float: left;
+    width: 403px;
+    height: 148px;
+    margin: 0 20px 0 0;
+}
+
+.img-left {
+    border: 2px solid $caption;
+    padding: 3px;
+    margin: 0 20px;
+    float: left;
+    margin: 0 20px 10px 25px;
+}
+
+.brief {
+    float: left;
+    background: $backgroundNote;
+    padding: 10px 10px 10px 20px;
+    width: $widthBrief;
+    margin: 0 26px 20px 26px;
+}
+
+.img-right {
+    float: right;
+    margin: -4px 26px 0 10px;
+    border: 2px solid $caption;
+    padding: 3px;
+    width: 207px;
+    height: 155px;
+}
+
+a {
+    margin-left: 25px;
+    color: $colorLink;
+}
+
+table {
+    margin: 0 25px 0 25px;
+    border-collapse: collapse;
+
+    caption {
+        text-align: right;
+        font-style: italic;
+        margin-bottom: 10px;
+    }
+
+    tbody tr:first-child {
+        background: $tbodyColor;
+    }
+
+    th {
+        padding: 10px;
+        text-align: left;
+    }
+
+    tr {
+        border-bottom: 1px solid $tbodyColor;
+    }
+
+    td {
+        background: $tableTR;
+        padding: 10px;
+    }
+}

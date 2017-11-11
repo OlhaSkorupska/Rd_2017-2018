@@ -1,0 +1,79 @@
+body {
+  background-color: #ddbc9b;
+  margin: -10px;
+  color: #000; }
+
+#content {
+  width: 960px;
+  margin: 0 auto;
+  background: #fff;
+  font: normal 12px/18px Arial, Helvetica, sans-serif;
+  padding-bottom: 10px; }
+
+h1 {
+  padding: 25px 0 0 29px;
+  color: #873a02; }
+
+p {
+  margin: 21px 21px 18px 27px; }
+
+h2 {
+  margin-top: 42px;
+  margin-left: 27px;
+  font-style: italic;
+  color: #873a02; }
+
+p .img-left {
+  border: 2px solid #873a02;
+  padding: 3px;
+  margin: 0 20px;
+  float: left;
+  width: 403px;
+  height: 148px;
+  margin: 0 20px 0 0; }
+
+.img-left {
+  border: 2px solid #873a02;
+  padding: 3px;
+  margin: 0 20px;
+  float: left;
+  margin: 0 20px 10px 25px; }
+
+.brief {
+  float: left;
+  background: #fadcba;
+  padding: 10px 10px 10px 20px;
+  width: 293px;
+  margin: 0 26px 20px 26px; }
+
+.img-right {
+  float: right;
+  margin: -4px 26px 0 10px;
+  border: 2px solid #873a02;
+  padding: 3px;
+  width: 207px;
+  height: 155px; }
+
+a {
+  margin-left: 25px;
+  color: #3c5c82; }
+
+table {
+  margin: 0 25px 0 25px;
+  border-collapse: collapse; }
+  table caption {
+    text-align: right;
+    font-style: italic;
+    margin-bottom: 10px; }
+  table tbody tr:first-child {
+    background: #e0e0e0; }
+  table th {
+    padding: 10px;
+    text-align: left; }
+  table tr {
+    border-bottom: 1px solid #e0e0e0; }
+  table td {
+    background: white;
+    padding: 10px; }
+
+/*# sourceMappingURL=style1.css.map */
