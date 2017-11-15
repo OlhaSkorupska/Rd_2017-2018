@@ -7,12 +7,7 @@
 
 .caption {
     font-size: 24px;
-}
-
-.authorization {
-    position: relative;    
-    width: 350px;
-    margin: 0 auto;
+    text-align: center;        
 }
 
 .caption-legend {
@@ -21,6 +16,12 @@
     left: 12px;
     width: 120px;
     background-color: white;
+}
+
+.authorization {
+    position: relative;    
+    width: 350px;
+    margin: 0 auto;
 }
 
 .form-group {
@@ -66,10 +67,6 @@
     width: 800px;
     margin: 0 auto;
     margin-top: 40px;
-}
-
-.caption {
-    text-align: center;
 }
 
 .form {
