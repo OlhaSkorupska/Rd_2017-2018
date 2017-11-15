@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 700px;
+    height: 400px;
+    transform: translate(-50%, -50%);
+}
+
+.grass {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50%;
+    background-color: #106210;
+}
+
+.home {
+    position: absolute;
+    left: 55px;    
+    width: 640px;
+    height: 340px;
+    background: #9e4f76;
+}
+
+.roof {
+    position: absolute;
+    z-index: 2;    
+    top: -165px;
+    left: -50px;
+    border-left: 230px solid transparent;
+    border-right: 520px solid transparent;
+    border-bottom: 165px solid #0677ff;
+}
+
+.home::before {
+    position: absolute;
+    z-index: 1;    
+    top: -119px;
+    right: 100px;
+    width: 30px;
+    height: 70px;    
+    background: #9e4f76;
+    content: '';    
+}
+
+.door {
+    position: relative;
+    left: 440px;
+    top: 80px;
+    width: 200px;
+    height: 260px;
+    background: #9c3e54;
+}
+
+.knob {
+    position: absolute;
+    right: 15px;
+    top: 100px;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: #957541;
+}
+
+.window {
+    position: absolute;
+    top: 60px;
+    left: 60px;
+    width: 150px;
+    height: 150px;
+    border: 10px solid #1a1a16;
+    background: #909274;
+}
+
+.window::after, .window::before {
+    position: absolute;
+    display: block;    
+    margin: 0 auto;        
+    background: #1a1a16;    
+    content: '';   
+}
+
+.window::after {
+    top: 50%;
+    width: 100%;
+    height: 5px;
+}
+
+.window::before {
+    left: 50%;
+    height: 100%;
+    width: 5px;
+}

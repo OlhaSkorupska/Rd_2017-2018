@@ -1,0 +1,100 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    font-size: 18px;
+}
+
+.caption {
+    font-size: 24px;
+}
+
+.authorization {
+    position: relative;    
+    width: 350px;
+    margin: 0 auto;
+}
+
+.caption-legend {
+    position: absolute;
+    top: -21px;
+    left: 12px;
+    width: 120px;
+    background-color: white;
+}
+
+.form-group {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.secondform-group {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    margin-bottom: 15px;
+}
+
+.first-column {
+    -ms-flex-item-align: center;
+        align-self: center;
+    width: 20%;
+}
+
+.second-column {
+    width: 40%;
+}
+
+.radio {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 83%;
+}
+
+.registration {
+    position: relative;      
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.caption {
+    text-align: center;
+}
+
+.form {
+    border: 2px solid #0a7ac1;
+    padding-top: 15px;
+}
+
+.fieldset {
+    border: none;
+}
+
+.legend {
+    width: auto;
+    font-size: 24px;
+}
+
+.button-submit {
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.horizontal-line {
+    margin: 10px 0;
+    border-color: grey;
+}

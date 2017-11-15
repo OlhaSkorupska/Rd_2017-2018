@@ -1,0 +1,105 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Task - 5</title>
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+
+<body>
+    <h1 class="caption">Forms</h1>
+    <form class="form authorization">
+        <h1 class="caption-legend">Authorization</h1>
+        <fieldset class="fieldset">            
+            <div class="form-group">
+                <label for="login">Login</label>
+                <input id="login" type="text" name="password" required="required">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input id="password" type="text" name="repeat-password" required="required">
+            </div>
+            <input class="button-submit" type="submit" value="Submit" />
+        </fieldset>
+    </form>
+
+    <form class="form registration">
+        <h1 class="caption-legend">Registration</h1>                
+        <fieldset class="fieldset">
+            <legend><strong>Common:</strong></legend>
+            <div class="secondform-group">
+                <label class="first-column" for="name">Name</label>
+                <input class="second-column" id="name" type="text" name="name" required="required">
+                <span>*John</span>
+            </div>
+            <div class="secondform-group">
+                <label class="first-column" for="surname">Surname</label>
+                <input class="second-column" id="surname" type="text" name="name" required="required">
+                <span>*Doe</span>
+            </div>
+            <div class="secondform-group">
+                <div class="first-column">Gender</div>
+                <div class="second-column radio">
+                    <div>
+                        <input type="radio" id="male" name="sex" value="male" required="required">
+                        <label for="male">Male</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="female" name="sex" value="female" required="required">
+                        <label for="female">Female</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="unknown" name="sex" value="unknown" required="required">
+                        <label for="unknown">Unknown</label>
+                    </div>
+                </div>
+            </div>
+            <div class="secondform-group">
+                <label class="first-column" for="birth">Date of Birth</label>
+                <input class="second-column" id="birth" type="date" name="date" required="required">
+                <span>*01/01/1900</span>
+            </div>
+        </fieldset>
+        <hr class="horizontal-line"/>
+        <fieldset class="fieldset">
+            <legend><strong>Address:</strong></legend>        
+            <div class="secondform-group">
+                <div class="first-column">Country</div>
+                <select class="second-column" id="select-country" name="country" size="1">
+                    <option value="USA" disabled="disabled" selected="selected">USA</option>
+                    <option value="Ukraine">Ukraine</option>
+                    <option value="Japan">Japan</option>
+                    <option value="France">France</option>
+                </select>
+            </div>
+        </fieldset>                        
+        <hr class="horizontal-line"/>
+        <fieldset class="fieldset">
+            <legend><strong>Other:</strong></legend>
+            <div class="secondform-group">
+                <label class="first-column" for="color">Favourite color</label>
+                    <input class="second-column" id="color" type="color" name="color">
+            </div>
+        </fieldset>
+        <hr class="horizontal-line" />
+        <fieldset class="fieldset">
+            <legend><strong>Security:</strong></legend>
+            <div class="secondform-group">
+                <label class="first-column" for="password-register">Password</label>
+                <input class="second-column" id="password-register" type="text" name="password" required="required">
+            </div>
+            <div class="secondform-group">
+                <label class="first-column" for="r-password-register">Repeat password</label>
+                <input class="second-column" id="r-password-register" type="text" name="repeat-password" required="required">
+            </div>
+            <div class="secondform-group">
+                <label class="first-column" for="email-register">Email</label>
+                <input class="second-column" id="email-register" type="email" name="email" required="required">
+                <span>*john_doe@example.com</span>
+            </div>
+            <input class="button-submit" type="submit" value="Register" />
+        </fieldset>  
+    </form>
+</body>
+</html>
