@@ -1,97 +1,68 @@
 * {
-    font-family: 'Roboto', sans-serif;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-    font-size: 18px;
-}
+  font-family: 'Roboto', sans-serif;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 18px; }
 
 .caption {
-    font-size: 24px;
-    text-align: center;        
-}
+  font-size: 24px;
+  text-align: center; }
 
-.caption-legend {
+.form {
+  border: 2px solid #0a7ac1;
+  padding-top: 15px; }
+  .form__legend {
     position: absolute;
     top: -21px;
     left: 12px;
     width: 120px;
-    background-color: white;
-}
-
-.authorization {
-    position: relative;    
-    width: 350px;
-    margin: 0 auto;
-}
-
-.form-group {
+    background-color: white; }
+  .form__fieldset {
+    border: none; }
+  .form__group {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
     margin-bottom: 10px;
-}
-
-.secondform-group {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between; }
+  .form__group-registration {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    margin-bottom: 15px;
-}
-
-.first-column {
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    margin-bottom: 15px; }
+  .form__submit {
+    display: block;
+    margin: 10px auto;
+    width: 100px; }
+  .form__first-column {
     -ms-flex-item-align: center;
-        align-self: center;
-    width: 20%;
-}
-
-.second-column {
-    width: 40%;
-}
-
-.radio {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    width: 83%;
-}
-
-.registration {
-    position: relative;      
+    align-self: center;
+    width: 20%; }
+  .form__second-column {
+    width: 40%; }
+    .form__second-column--radio {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      width: 83%; }
+  .form--authorization {
+    position: relative;
+    width: 350px;
+    margin: 0 auto; }
+  .form--registration {
+    position: relative;
     width: 800px;
     margin: 0 auto;
-    margin-top: 40px;
-}
-
-.form {
-    border: 2px solid #0a7ac1;
-    padding-top: 15px;
-}
-
-.fieldset {
-    border: none;
-}
-
-.legend {
-    width: auto;
-    font-size: 24px;
-}
-
-.button-submit {
-    display: block;
-    margin: 0 auto;
-    width: 100px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
+    margin-top: 40px; }
 
 .horizontal-line {
-    margin: 10px 0;
-    border-color: grey;
-}
+  margin: 10px 0;
+  border-color: grey; }
+
+/*# sourceMappingURL=main.css.map */
