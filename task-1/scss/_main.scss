@@ -1,0 +1,49 @@
+.wrapper {
+    width: 1600px;
+    min-width: 1025px;
+    margin: 0 auto;
+}
+
+.header {
+    background-image: url('../images/homepage.gif');
+    width: 100%;
+    height: 880px;
+    background-size: cover;    
+     
+    /*&__image {
+        width: 100%;
+        height: auto;
+        background-size: cover;
+        background-position: center center;        
+    }*/
+}
+
+.moreinfo {
+    width: 940px;
+    height: 385px;
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .wrapper {
+        width: 1024px;
+        min-width: 769px;
+    }  
+    
+    .header {
+        height: 680px;
+    }    
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .wrapper {
+        width: 768px;
+        min-width: 480px;
+    }  
+}
+
+@media screen and (min-width: 0px) and (max-width: 480px) {
+    .wrapper {
+        width: 480;
+        min-width: 0px;
+    }  
+}
