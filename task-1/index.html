@@ -2,6 +2,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
     <title>Layout</title>
     <link rel="stylesheet" href="css/style.css">
     <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -9,36 +10,133 @@
 <body>
     <div class="wrapper">
         <header class="header">
-            <!--<img class="header__image" src="images/homepage.gif" alt="picture">-->
+            <div class="header__logo logo">
+                <div class="logo__caption">convert</div>
+                <div class="logo__text">ccd</div>
+            </div>
+            <h1 class="header__caption">A very clear statement of your offer.</h1>
+            <p class="header__text">A supporting statement of your value proposition. Entive your visitor to keep reading the heigh level details of your offering.</p>
+            <div class="header__form-registration">
+                <form class="form-registration">
+                    <fieldset class="form-registration__fieldset">
+                        <legend class="form-registration__legend">Apply Now for Free</legend>
+                        <div class="form-registration__group">
+                            <label for="email" class="form-registration__label">
+                                Your e-mail
+                            </label>
+                            <input id="email" class="form-registration__input" type="email" placeholder="webdesign@shegy.pl" required="required">                        
+                        </div>
+                        <div class="form-registration__group">
+                            <label for="name" class="form-registration__label">
+                                Full Name
+                            </label>
+                            <input id="name" class="form-registration__input" type="text" placeholder="MatPrzegietka" required="required">                        
+                        </div>                
+                        <div class="form-registration__group">
+                            <label for="tel" class="form-registration__label">
+                                Phone Number
+                            </label>
+                            <input id="tel" class="form-registration__input" type="tel" placeholder="123456789" required="required">                        
+                        </div>                
+                        <button class="form-registration__submit">Apply for free trial</button>
+                    </fieldset>
+                </form>
+            </div>
         </header>
-    <section class="moreinfo">
-        <div class="moreinfo__description">
-            <h2 class="moreinfo__general-caption">This is your first amazing feature and it's awesome!</h2>
-            Excepteur commodo veniam voluptate anim sunt sint do ad Lorem quis magna. 
-            Qui sint tempor ut laboris fugiat cillum non. 
 
-            Dolor laboris deserunt do deserunt magna. Anim reprehenderit velit ea anim reprehenderit cupidatat adipisicing. 
-            Officia anim ut consequat cillum. Et ipsum consequat ipsum ullamco aliqua quis minim minim duis nostrud. 
+        <section class="moreinfo">
+            <div class="moreinfo__innerwrapper">
+                <div class="moreinfo__description">
+                    <h2 class="moreinfo__general-caption">This is your first amazing feature and it's awesome!</h2>
+                    <p class="moreinfo__text">Excepteur commodo veniam voluptate anim sunt sint do ad Lorem </p>
+                    <p class="moreinfo__text">Dolor laboris deserunt do deserunt magna. Anim reprehenderit velit ea anim reprehenderit cupidatat adipisicing 
+                        cupidatat adipisicing.</p>
+                </div>
+                <div class="moreinfo__benefit">
+                    <img class="moreinfo__image" src="images/first-benefit.gif" alt="picture">            
+                    <h3 class="moreinfo__caption">First benefit</h3>
+                    <p class="moreinfo__text">Excepteur commodo veniam voluptate anim</p>            
+                </div>
+                <div class="moreinfo__benefit">
+                    <img class="moreinfo__image" src="images/second-benefit.gif" alt="picture">            
+                    <h3 class="moreinfo__caption">Second benefit</h3>
+                    <p class="moreinfo__text">Excepteur commodo veniam voluptate anim</p>
+                </div>
+            </div>        
+        </section>
+        <section class="features">
+            <div class="features__innerwrapper">
+                <h2 class="features__general-caption">Features</h2>
+                <p class="features__text">
+                    Aliquip id ut esse adipisicing ex sit fugiat eu 
+                    ullamco voluptate pariatur enim mollit aute. 
+                </p>
+                <div class="features__description">
+                    <div class="features__images">
+                    </div>
+                    <ul class="features__list">
+                        <li class="features__item">
+                            <h3 class="features__list-caption">Feature number 1</h3>
+                            <p class="features__list-text">Officia magna anim eiusmod in laboris ut est aute fugiat aliquip eiusmod amet.</p>
+                        </li>
+                        <li class="features__item">
+                            <h3 class="features__list-caption">Feature number 2</h3>
+                            <p class="features__list-text">Officia magna anim eiusmod in laboris ut est aute fugiat aliquip eiusmod amet.</p>
+                        </li>                            
+                        <li class="features__item">
+                            <h3 class="features__list-caption">Feature number 3</h3>
+                            <p class="features__list-text">Officia magna anim eiusmod in laboris ut est aute fugiat aliquip eiusmod amet.</p>
+                        </li>                            
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <div class="screenshots">
+            <ul class="screenshots__list">
+                <li class="screenshots__item screenshots__item--first">
+                </li>
+                <li class="screenshots__item screenshots__item--second">
+                </li>                            
+                <li class="screenshots__item screenshots__item--third">
+                </li>        
+                <li class="screenshots__item screenshots__item--fourth">
+                </li>                                       
+            </ul>            
         </div>
-        <div class="moreinfo__benefit">
-            <img class="moreinfo__image" src="images/first-benefit.gif" alt="picture">            
-            <h3 class="moreinfo__caption">First benefit</h3>
-            Excepteur commodo veniam voluptate anim sunt sint do ad Lorem quis magna.             
-        </div>
-        <div class="moreinfo__benefit">
-            <img class="moreinfo__image" src="images/second-benefit.gif" alt="picture">            
-            <h3 class="moreinfo__caption">Second benefit</h3>
-            Excepteur commodo veniam voluptate anim sunt sint do ad Lorem quis magna.             
-        </div>        
-    </section>
-    <section class="features">
-    </section>
-    <section class="screenshots">
-    </section>
-    <section class="faq">
-    </section>
-    <section class="copyright">
-    </section>
+        <section class="faq">
+            <div class="faq__innerwrapper">
+                <h2 class="faq__general-caption">Frequently Asked Questions</h2>
+                <p class="faq__text">
+                    Got questions? We have answers.
+                </p>
+                <div class="faq__description">
+                    <ul class="faq__list">
+                        <li class="faq__item">
+                            <h3 class="faq__list-caption">How does the free trial work?</h3>
+                            <p class="faq__list-text">Ex labore ea commodo culpa est dolore aute. Proident proident est cillum sunt sint nisi sunt velit occaecat velit Lorem. 
+                                Reprehenderit duis ex ad incididunt quis minim</p>
+                        </li>
+                        <li class="faq__item">
+                            <h3 class="faq__list-caption">Can I switch plans later?</h3>
+                            <p class="faq__list-text">Ex labore ea commodo culpa est dolore aute. Proident</p>
+                        </li>                            
+                    </ul>
+                    <ul class="faq__list">
+                        <li class="faq__item">
+                            <h3 class="faq__list-caption">Do I need to choose plan now?</h3>
+                            <p class="faq__list-text">Ex labore ea commodo culpa est dolore aute. Proident proident est cillum sunt sint nisi sunt velit occaecat velit</p>
+                        </li>
+                        <li class="faq__item">
+                            <h3 class="faq__list-caption">What payment types do you accept</h3>
+                            <p class="faq__list-text">Ex labore ea commodo culpa est dolore aute. Proident proident est cillum sunt sint nisi sunt velit occaecat velit</p>
+                        </li>                            
+                    </ul>
+                </div>
+            </div>            
+        </section>
+        <section class="copyright">
+            <h2 class="copyright__caption">2015 Convert. Made with love by Mat Przegietka</h2>            
+        </section>
     </div>
 </body>
 </html>

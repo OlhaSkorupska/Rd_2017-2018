@@ -1,0 +1,98 @@
+@mixin font-face($font-family, $font-weight, $font-style) {
+    @font-face {
+      font-family: $font-family;
+        src: url('../fonts/#{$font-family}.eot');
+        src: url('../fonts/#{$font-family}.eot?#iefix') format('embedded-opentype'),
+             url('../fonts/#{$font-family}.woff') format('woff'),
+             url('../fonts/#{$font-family}.ttf') format('truetype'),
+             url('../fonts/#{$font-family}.svg##{$font-family}') format('svg');
+      font-weight: $font-weight;
+      font-style: $font-style;
+    }
+}
+
+@mixin optional-at-root($sel) {
+    @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+      @content;
+    }
+  }
+  
+@mixin placeholder {
+
+    @include optional-at-root('::-webkit-input-placeholder') {
+      @content;
+    }
+  
+    @include optional-at-root(':-moz-placeholder') {
+      @content;
+    }
+  
+    @include optional-at-root('::-moz-placeholder') {
+      @content;
+    }
+  
+    @include optional-at-root(':-ms-input-placeholder') {
+      @content;
+    }
+}
+
+%general-caption {
+    display: flex;
+    justify-content: center;
+    align-items: center;          
+    font-size: 34px;
+    line-height: 40px;
+}
+
+%list-caption {
+    font-family: RobotoBold;        
+    font-size: 16px;
+    line-height: 39px;  
+}
+
+%text {
+    width: 400px;
+    font-size: 17px;
+    margin: 30px auto;
+    line-height: 1.5em;   
+    text-align: center; 
+}
+
+%description {
+    display: flex;
+    margin: 0 auto;
+    margin-top: 70px;
+    align-content: stretch;  
+}
+
+%item {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 34px;
+}
+
+%list {
+    flex: 1;        
+    margin-left: 20px;        
+    align-items: stretch;   
+}
+
+%list-caption {
+    font-family: RobotoBold;        
+    font-size: 16px;
+    line-height: 39px;  
+}
+
+%list-text {
+    font-size: 16px;
+    margin-top: 20px;
+    line-height: 24px;  
+}
+
+%section {
+    display: flex;
+    justify-content: center;
+    align-items: center;      
+    width: 100%;
+    background: $featuresBackground;
+}
