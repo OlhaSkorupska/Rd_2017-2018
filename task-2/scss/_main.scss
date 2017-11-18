@@ -1,0 +1,71 @@
+html,
+body {
+    height: 100%;
+    font: 16px 'Lucida Grande', Tahoma, Verdana, sans-serif;
+    text-align: justify;
+}
+
+.wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 100%;
+}
+
+.header {
+    height: 80px;
+    background-color: $schoolBusYellow;
+}
+
+.main {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 auto;
+            flex: 1 0 auto;            
+    -webkit-box-align: start;            
+        -ms-flex-align: start;            
+            align-items: flex-start;            
+}
+
+.leftAside {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+    width: 30%;
+    background-color: $deepSkyBlue;
+}
+
+.content {
+    padding: 0 20px;
+    background-color: $white;
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    line-height: 1em;
+    text-align: justify;
+}
+
+.rightAside {
+    width: 30%;
+    background-color: $sweetPink;
+    -webkit-box-ordinal-group: 4;
+        -ms-flex-order: 3;
+            order: 3;    
+}
+
+.footer {
+    height: 80px;
+    background-color: $lightGreen;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;    
+}
