@@ -53,7 +53,7 @@
 %text {
     width: 400px;
     font-size: 17px;
-    margin: 30px auto;
+    margin: 0 auto;
     line-height: 1.5em;   
     text-align: center; 
 }
@@ -73,7 +73,6 @@
 
 %list {
     flex: 1;        
-    margin-left: 20px;        
     align-items: stretch;   
 }
 

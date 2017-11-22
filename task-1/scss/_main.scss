@@ -3,7 +3,7 @@
 @include font-face(RobotoLight, normal, normal);   
 
 .wrapper {
-    width: 1600px;
+    width: 100%;
     margin: 0 auto;
     font-family: RobotoRegular;  
 }
@@ -11,15 +11,15 @@
 .header {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     width: 100%;
-    height: 880px;
+    height: 893px;
     background-size: cover; 
     align-items: center;     
     background-image: url('../images/homepage.gif');
     text-align: center;    
     
     &__caption {
+        margin-top: 92px;        
         font-family: RobotoLight;  
         font-size: 56px;
         line-height: 48px;
@@ -28,6 +28,7 @@
     
     &__text {
         width: 600px;
+        margin-top: 29px;        
         color: $logoColor;
         font-family: RobotoLight;  
         font-size: 16px;
@@ -37,6 +38,7 @@
 }
 
 .logo {
+    margin-top: 87px;   
     color: $logoColor;
     font-family: RobotoBold;    
 
@@ -53,31 +55,30 @@
         letter-spacing: 4px;
         text-align: center;
         
-        &::before {
+        &::before, &::after {
             content: '';
             position: absolute;            
             top: 3px;
-            left: 26px;
             width: 33px;
             height: 7px;
-            background-image: url('../images/leftstar.gif');
         }   
         
+        &::before {
+            left: 26px;
+            background-image: url('../images/leftstar.gif');
+        }
+
         &::after {
-            content: '';
-            position: absolute;            
-            top: 3px;
             right: 30px;
-            width: 33px;
-            height: 7px;
             background-image: url('../images/rightstar.gif');
         }         
     }    
 }
 
 .form-registration {
-    width: 380px;
+    width: 340px;
     height: 395px;
+    margin-top: 69px;    
     border-radius: 2px;    
     background-color: $backgroundForm;
 
@@ -87,16 +88,16 @@
     }
 
     &__legend {
-        margin-bottom: -20px;                        
-        padding-top: 40px;
-        color: $formColor;                
+        margin-bottom: -28px;
+        padding-top: 43px;
+        color: #202020;
         font-size: 24px;
     }
 
     &__group {
-        margin: 20px 0;
+        margin: 21px 0 24px;
         border-bottom: 1px solid $formInputBorderBottom;        
-        text-align: left;        
+        text-align: left;
     }
 
     &__label {
@@ -109,7 +110,7 @@
         padding: 9px 0;        
         border: none;
         background-color: $backgroundForm; 
-        font-size: 16px;
+        font-size: 15px;
         outline: none;       
         @include placeholder {
             color: $formColor; 
@@ -123,7 +124,7 @@
         color: $logoColor;
         background-color: $formSubmit;
         text-align: center;
-        font-size: 16px;
+        font-size: 15px;
         text-transform: uppercase;   
         outline: none;
         cursor: pointer;                     
@@ -131,15 +132,13 @@
 }
 
 .moreinfo {
-    height: 385px;
     width: 100%;
+    margin: 60px 0;    
     
     &__innerwrapper {
         display: flex;
         justify-content: center;
-        align-items: center;          
-        width: 940px;
-        height: 385px;        
+        width: 61%;
         margin: 0 auto;        
     }
     
@@ -157,7 +156,6 @@
     
     &__image {
         width: 100%;
-        height: auto;
     }
 
     &__text {
@@ -180,11 +178,10 @@
 
 .features {
     @extend %section;   
-    height: 690px;
     
     &__innerwrapper {
-        width: 940px;
-        margin: 0 auto;  
+        width: 61%;
+        margin: 74px auto;
     }
 
     &__general-caption {
@@ -199,13 +196,17 @@
         @extend %description;  
     }
 
-    &__images {
-        background-image: url(../images/feature.gif);
-        width: 430px;
-        height: 385px;
-        margin-right: 75px;
+    &__leftside {
         flex: 1;
         align-items: stretch;
+        margin-right: 10%;        
+    }
+
+    &__image {
+        background-image: url('../images/feature.gif');
+        width: 100%;
+        height: 100%;
+        background-size: cover;
     }
 
     &__list {
@@ -226,7 +227,7 @@
             left: -25px;
             width: 27px;
             height: 39px;
-            background-image: url(../images/list-icon.gif);
+            background-image: url('../images/list-icon.gif');
         }        
     }
 
@@ -240,38 +241,44 @@
 }
 
 .screenshots {
+    width: 100%;
+    margin: 0 auto;
+
     &__list {
         display: flex;
     }
 
     &__item {
-        width: 400px;
-        height: 288px;
+        width: 100%;
+        height: 343px;
+        background-size: cover;
 
         &--first {
-            background-image: url(../images/screen1.gif);
+            background-image: url('../images/screen1.gif');
         }
         
         &--second {
-            background-image: url(../images/screen2.gif);        
+            background-image: url('../images/screen2.gif');        
         }
         
         &--third {
-            background-image: url(../images/screen3.gif);
+            background-image: url('../images/screen3.gif');
         }
         
         &--fourth {
-            background-image: url(../images/screen4.gif);
+            background-image: url('../images/screen4.gif');
         }        
     }
 }
 
 .faq {
     @extend %section;        
-    height: 530px;
     
     &__innerwrapper {
-        width: 940px;
+        width: 61%;
+        margin: 0 auto;
+        margin-top: 74px;
+        margin-bottom: 26px;
     }
 
     &__general-caption {
@@ -308,94 +315,135 @@
     justify-content: center;
     align-items: center;    
     width: 100%;
-    height: 125px;
-    font-size: 24px;    
+    font-size: 14px;
+    margin: 30px auto; 
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
     .wrapper {
-        width: 1024px;
+        width: 100%;
         min-width: 769px;
     }  
     
     .header {
-        height: 895px;
+        height: 894px;
     }    
     
     .form-registration {
-        width: 340px;
+        width: 336px;
         height: 395px;
-  
     }    
 
     .moreinfo {
-        height: 450px;
+        width: 100%;
+        margin: 70px 0;        
+
+        &__innerwrapper {
+            width: 100%;
+        }
+
+        &__general-caption {
+            width: 384px;
+        }
+
+        &__description {
+            flex: 1.7;
+            margin-left: 32px;
+        }
+
+        &__benefit {
+            flex: 0.9;
+        }
+
+        &__text {
+            font-size: 14px;
+        }
     }
          
     .features {
-        height: 705px;
+        &__innerwrapper {
+            width: 100%;
+        }        
+
+        &__description {
+            margin: 70px 32px 8px;         
+        }
     }
 
     .screenshots__item {
-        width: 256px;
+        width: 100%;
         height: 184px;
-        background-size: cover;
     }    
     
     .faq {
-        height: 515px;
+        &__innerwrapper {
+            width: 100%;
+        }         
     }
-
-    .copyright {
-        height: 75px;
-        font-size: 16px;        
-    }    
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {    
     .wrapper {
-        width: 768px;
+        width: 100%;
         min-width: 481px;
     }  
     
     .header {
-        height: 870px;
-
+        height: 868px;
+        
         &__caption {
+            margin-top: 60px;            
             font-size: 50px;
             line-height: 50px;
-        
         }
     
         &__text {
-            width: 611px;
+            width: 620px;
             font-size: 15px;
         }
     }     
 
+    .logo {
+        margin-top: 77px;
+    }
+
     .form-registration {
         width: 340px;
         height: 375px;
+
+        &__fieldset {
+            padding: 18px 40px;
+        }
     }    
     
     .moreinfo {
-        height: 400px;
            
         &__innerwrapper {
-            width: 725px;
-            margin: 0 auto;        
+            width: 100%;
         }        
+
+        &__text {
+            font-size: 14px;
+        }
     }
 
     .features {
-        height: 610px;
+
+        &__innerwrapper {
+            width: 100%;
+            margin: 0 auto;
+        }  
 
         &__general-caption {
             font-size: 30px;
         }
 
         &__description {
-            margin: 30px 30px;
+            margin: 10px 10px 66px;
+        }
+
+        &__leftside {
+            margin-right: 7%;
         }
 
         &__text {
@@ -403,13 +451,13 @@
         }
 
         &__images {
-            width: 290px;
+            width: 100%;
             height: 260px;
             background-size: cover;
         }   
         
         &__item {
-            margin-bottom: 10px;
+            margin-bottom: 48px;
         }
 
         &__list-caption {
@@ -424,13 +472,17 @@
         }
     
         &__item {
-            width: 384px;
-            height: 274px;
+            width: 50%;
+            height: 276px;
         }
     }
 
     .faq {
-        height: 485px;
+
+        &__innerwrapper {
+            width: 100%;
+            margin: 53px 0 0;            
+        }         
         
         &__general-caption {
             font-size: 30px;
@@ -458,89 +510,124 @@
     }
     
     .copyright {
-        height: 68px;
-        font-size: 16px;        
+        font-size: 13px;        
     }     
 }
 
 @media screen and (min-width: 0px) and (max-width: 480px) {
     .wrapper {
-        width: 480px;
+        width: 100%;
         min-width: 0;
     }  
     
     .header {
-        height: 890px;
     
         &__text {
             width: 460px;
             font-size: 14px;
         }
+
+        &__caption {
+            margin-top: 48px;
+            font-size: 50px;
+            line-height: 52px;
+        }
     }   
 
+    .form-registration {
+        height: 374px;
+        margin-top: 64px;
+        
+        &__group {
+            margin: 21px 0 8px;
+        }
+
+        &__submit {
+            font-size: 13px;        
+        }
+    }
+
+    .logo {
+        margin-top: 68px;
+    }
+    
     .moreinfo {
-        height: 820px;
-           
+        margin: 0;
+
         &__innerwrapper {
+            width: 100%;
             display: flex;
-            width: 460px;
-            margin: 0 auto; 
-            flex-wrap: wrap;                   
+            margin-left: 10px;
+            flex-wrap: wrap; 
         } 
+
+        &__general-caption {
+            font-size: 31px;
+        }
 
         &__description {
             flex: none;
-            width: 460px;            
+            width: 100%;            
             margin-top: 40px;            
+        }
+
+        &__text {
+            font-size: 13px;
         }
 
         &__benefit {
             flex: none;
             margin: 20px 0;  
-            width: 460px;                      
+            width: 100%;                      
         }
 
         &__image {
             display: block;            
-            width: 220px;
-            height: 120px;
+            width: 50%;
             margin: 0 auto;
-            text-align: center;            
         }
     }    
 
     .features {
-        height: 990px;
 
         &__innerwrapper {
-            width: 480px;
-          
-        }
+            width: 100%;
+            margin: 76px 0 44px;
+        }  
 
         &__description {
             flex-direction: column;
             margin-top: 20px;                       
         }
 
-        &__images {
+        &__leftside {
+            margin: 0;
+        }
+
+        &__image {
             display: block;            
-            width: 425px;
-            height: 380px;
-            margin: 0 auto;
-            text-align: center;            
+            margin: 36px 17px;
+            width: 92%;
+            height: 382px;
+            background-size: cover;         
         }       
-        
+
+        &__text {
+            font-size: 15px;
+            margin-top: 0;
+        }
+
         &__list {
-            margin: 20px 45px;
+            margin: 0 36px;
         }
 
         &__item {
             padding: 0 10px;
+            margin-bottom: 11px;            
         }
     }   
     
     .screenshots {
-        height: 340px;
 
         &__list {
             display: flex;
@@ -548,17 +635,22 @@
         }
     
         &__item {
-            width: 240px;
-            height: 170px;
+            width: 50%;
+            height: 173px;
             background-size: cover;
         }
     }     
     
     .faq {
-        height: 660px;
+
+        &__innerwrapper {
+            width: 100%;
+            margin-top: 44px;  
+            margin-bottom: 36px;                      
+        }          
         
         &__general-caption {
-            font-size: 30px;
+            font-size: 31px;
         }
 
         &__description {
@@ -575,7 +667,7 @@
         }
                 
         &__item {
-            margin: 10px;            
+            margin: 7px;          
             padding-left: 0;
         }
         
@@ -586,7 +678,6 @@
     }    
 
     .copyright {
-        height: 68px;
         font-size: 14px;        
     }         
 }
