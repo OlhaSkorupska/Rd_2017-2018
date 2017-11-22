@@ -1,33 +1,7 @@
-@import 'colors';
-
-$bodyBackground: $whiteSmoke;
-$textOnButton: $snow;
-$checkboxBackground: $aliceBlue;
-$checkboxCheck: $whiteSmoke;
-
-// buttons
-$goldButton: $tangerineYellow;
-$redButton: $cinnabar;
-$blueButton: $denim;
-$blackButton: $bulticSea;
-$greenButton: $pigmentGreen;
-
-// pagination gray buttons
-$topGradientGrayButton: $aliceBlue;
-$bottomGradientGrayButton: $zumthor;
-$borderGrayButton: $mischka;
-$activePrevGrayButton: $zircon;
-$activeGrayButton: $linkWater;
-$darkColorTextOnButton: $bulticSea;
-
-//tabs colors
-$colorTextTabs: $heather;
-$backgroundTabsButton: $white;
-$borderTabsButton: $whisper;
-
-
-$colors: yellow $goldButton, red $redButton, blue $blueButton, black $blackButton;
-
-$colorsForPagination: green $greenButton, yellow $goldButton, red $redButton, blue $blueButton, black $blackButton;
-
-$colorsForTabs: green $greenButton, red $redButton;
+$background: $cloudBurst;
+$blackCircle: $black;
+$redCircle: $venetianRed;
+$greenCircle: $pigmentGreen;
+$goldCircle: $goldenPoppy;
+$blueCircle: $bondiBlue;
+$partCircle: $white;
