@@ -310,7 +310,7 @@ table {
   left: -25px;
   width: 27px;
   height: 39px;
-  background-image: url(../images/list-icon.gif); }
+  background-image: url("../images/list-icon.gif"); }
 
 .screenshots {
   width: 100%;
@@ -588,5 +588,4 @@ table {
 
   .copyright {
     font-size: 14px; } }
-
 /*# sourceMappingURL=style.css.map */
