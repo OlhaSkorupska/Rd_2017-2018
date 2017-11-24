@@ -1,0 +1,30 @@
+1. HTML
+1) add doctype to <html>
+2) class "action-item" - delete inline style and move to main.css -> delete from main.css .action-item:last-child | browser caches these files externally 
+    and reduces the page load time
+3) remove whitespaces from HTML  | HTML file size is reduced
+4) download font and connection to font-face SourceSansProLight.woff2 | easier query
+
+2. CSS
+1) delete construction .row >
+2) delete .row.uniform > *, .row.uniform
+3) .wrapper > * ->  .wrapper | long calculation selector
+4) section.special, article.special, div.special -> div.special | long calculation selector
+5) Delete section /* Box */
+6) .major-icons span.icon -> .major-icons .icon | long calculation selector
+7) delete header h2 + p, header h3 + p, header h4 + p, header h5 + p, header h6 + p | long calculation selector
+8) delete all header
+9) delete (.main.style2 ul.major-icons li .icon) and move background-color to .major-icons .icon | long calculation selector
+10) delete background: #333 from .main.style2
+11) change .footer .icons span to .label | long calculation selector
+12) change .footer .copyright to .copyright | long calculation selector
+13) reduction colors (#ffffff to #fff)
+14) create style.css for imports all css | webpage being don't slow to load
+15) minimization all css files | reduce its size and the subsequent loading time
+
+3. Images
+1) delete unuse pic05.jpg
+2) resize pic04.jpg by Online Image Optimizer | don't affects the loading time of page
+
+4) Javascript
+1) move js-files after loaded page | avoid render blocking scripts
