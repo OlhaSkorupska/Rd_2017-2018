@@ -1,8 +1,19 @@
-//@import url('../css/bootstrap-css/bootstrap.min.css');
 @include font-face('DosisMedium');
 @include font-face('OpenSansRegular');
 @include font-face('OpenSansBold');
 
+.wrapper {
+    overflow-x: hidden;
+    margin: 0 auto;
+}
+
+.container {
+    @include make-container();
+  }
+  
+.row {
+    @include make-row();
+}
 
 .wrapper {
     max-width: 2000px;
@@ -17,10 +28,9 @@
     min-height: 1062px;    
 }
 
-.container {
-    width: 1226px;
-    margin-right: auto;
-    margin-left: auto;
+
+.navbar-toggle {
+    display: none;
 }
 
 .main-nav {
@@ -28,6 +38,13 @@
     font-size: 17px;
     color: #606060;
     z-index: 10;
+
+    &__wrapper {
+        display: block;
+        height: auto;
+        padding-bottom: 0;
+        overflow: visible;
+    }
 
     &__list {
         display: flex;
@@ -76,11 +93,10 @@
     background-size: cover;    
     width: 426px;
     height: 394px;
-    margin: 157px auto;
+    margin: 157px auto;    
 }
 
-.caption {
-    position: relative;
+.title {
     background-position: 0 126px;
     font-family: 'DosisMedium';
     font-size: 51px;
@@ -90,20 +106,20 @@
     text-align: center;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-
-
-    &::before {
-        position: absolute;
-        display: block;
-        margin: 0 auto;
-        background: $captionLine;
-        content: '';
-        top: 50%;
-        width: 92%;
-        height: 1px;
-    }
 }
 
+.span {
+    position: relative;
+    &::before {
+        content: '';
+        position: absolute;
+        height: 1px;
+        left: -5px;
+        right: -5px;
+        top: 0;
+        background: $discTitle;
+    }
+}
 .description {
     margin-bottom: 146px;        
     padding-left: 50px;
@@ -114,15 +130,41 @@
     line-height: 24px;
     text-align: center;
     color: $discographyDescription;
+
+    @include make-col-ready();
+    @include media-breakpoint-up(md) {
+        @include make-col(10);
+        @include make-col-offset(1);            
+    }  
+    @include media-breakpoint-up(lg) {
+        @include make-col(10);
+        @include make-col-offset(1);            
+    }     
+    @include media-breakpoint-up(xl) {
+        @include make-col(8);
+        @include make-col-offset(2);        
+    }        
 }
 
 /* DISCOGRAPHY */
 .discography {
-    //TODO
     margin-top: -100px;
 
-    &__caption {
+    &__title {
         background-image: url('../images/discography.gif');
+    }
+
+    &__caption {
+        text-align: center;        
+        @include make-col-ready();        
+        @include media-breakpoint-up(md) {
+            @include make-col(6);
+            @include make-col-offset(3);            
+        }  
+        @include media-breakpoint-up(lg) {
+            @include make-col(6);
+            @include make-col-offset(3);        
+        }        
     }
 
     &__background {
@@ -156,17 +198,35 @@
 
     &__item {
         margin-left: 0;
+        margin-right: 0;
         margin-bottom: 113px;     
     }
 
     &__caption {
         margin-top: 26px;
-         
+        @include make-col-ready();        
+        @include media-breakpoint-up(md) {
+            @include make-col(10);
+            @include make-col-offset(1); 
+            margin-bottom: 35px;                       
+        }  
+        @include media-breakpoint-up(xl) {
+            @include make-col(5);
+            @include make-col-offset(0);        
+        }   
     }
 
     &__content {
-        margin-left: 0;
-    }    
+        @include make-col-ready();        
+        @include media-breakpoint-up(md) {
+            @include make-col(10);
+            @include make-col-offset(1);            
+        }  
+        @include media-breakpoint-up(xl) {
+            @include make-col(7);
+            @include make-col-offset(0);        
+        }
+    }
 
     &__title {
         margin-bottom: 10px; 
@@ -195,18 +255,28 @@
     outline: none;
     cursor: pointer;
     background-size: cover;
-    
+
+    @include make-col-ready();    
+    @include media-breakpoint-up(md) {
+        @include make-col(3);
+        @include make-col-offset(4); 
+    }    
+    @include media-breakpoint-up(xl) {
+        @include make-col(3);
+        @include make-col-offset(0);            
+    }
+
     &--white {
         color: $buttonWhite;
-        background: url('../images/button-white.gif');         
+        background-image: url('../images/button-white.gif');         
     }
 
     &--darkgray {
-        background: url('../images/button-dark-gray.gif');         
+        background-image: url('../images/button-dark-gray.gif');         
     }
     
     &--gray {
-        background: url('../images/button-gray.gif');         
+        background-image: url('../images/button-gray.gif');         
     }
     
     &--link {
@@ -228,21 +298,63 @@
     margin-top: 154px;
     font-family: 'OpenSansRegular';    
 
+    &__title {
+        background-image: url('../images/concerttours.gif');
+    }
+
     &__caption {
         padding-right: 90px;
         padding-left: 90px;        
-        background-image: url('../images/concerttours.gif');
-        background-position: 0 747px;      
+        background-position: 0 747px; 
+        text-align: center;     
 
-        &::before {
-            width: 71%;
-        }        
+        @include make-col-ready();    
+        @include media-breakpoint-up(md) {
+            @include make-col(8);
+            @include make-col-offset(2); 
+        }    
+        @include media-breakpoint-up(xl) {
+            @include make-col(6);
+            @include make-col-offset(3);            
+        }                
     }
 
     &__description {
         padding-right: 0;
         padding-left: 74px;        
         line-height: 27px;
+    }
+
+    &__info {
+        @include make-col-ready();        
+        @include media-breakpoint-up(md) {
+            @include make-col(7);
+            @include make-col-offset(1);            
+        }  
+        @include media-breakpoint-up(lg) {
+            @include make-col(6);
+            @include make-col-offset(1);        
+        }           
+        @include media-breakpoint-up(xl) {
+            @include make-col(4);
+            @include make-col-offset(0);        
+        }         
+    }
+
+    &__content {
+        @include make-col-ready();        
+        @include media-breakpoint-up(md) {
+            @include make-col(7);
+            @include make-col-offset(1);            
+        }  
+        @include media-breakpoint-up(lg) {
+            @include make-col(9);
+            @include make-col-offset(1);        
+        }           
+        @include media-breakpoint-up(xl) {
+            @include make-col(7);
+            @include make-col-offset(0);        
+        }          
     }
 
     &__background {
@@ -257,7 +369,7 @@
         margin-top: 353px;
     }
 
-    &__title {
+    &__disc {
         margin-top: 78px;
         font-size: 24px;
     }
@@ -270,6 +382,7 @@
 
     &__button {
         margin-top: 36px;
+        margin-left: 0;        
     }
 }
 
@@ -301,9 +414,25 @@
 
 
     &__description {
-        padding: 35px 44px;
         position: relative;
-        
+        background-color: $composition; 
+
+        @include make-col-ready();        
+        @include media-breakpoint-up(md) {
+            @include make-col(10);
+            @include make-col-offset(1);            
+            padding: 35px 44px;             
+        }  
+        @include media-breakpoint-up(lg) {
+            @include make-col(10);
+            @include make-col-offset(1);
+            font-size: 2em;        
+        }           
+        @include media-breakpoint-up(xl) {
+            @include make-col(6);
+            @include make-col-offset(0);        
+            padding: 35px 44px;             
+        }               
         &::before {
             content: '';
             position: absolute;
@@ -317,9 +446,26 @@
     }
 
     &__audio {
-        padding-left: 0px;
+        @include make-col-ready();        
+        @include media-breakpoint-up(md) {
+            @include make-col(10);
+            @include make-col-offset(1);            
+        }  
+        @include media-breakpoint-up(lg) {
+            @include make-col(10);
+            @include make-col-offset(1);
+                    
+        }           
+        @include media-breakpoint-up(xl) {
+            @include make-col(6);
+            @include make-col-offset(0);
+            padding-left: 0;
+            padding-right: 0;                    
+        } 
+
         width: 100%;
-        height: auto;        
+        height: auto;
+                      
 
         &--first {
             background: url('../images/audio-first.gif') no-repeat;
@@ -338,27 +484,56 @@
     }
 
     &__title {
-        margin-top: 40px;        
-        font-size: 24px;
+        @include make-col-ready();        
+        margin-top: 40px;
+                
+        @include media-breakpoint-up(md) {
+            font-size: 24px;                      
+        }  
+        @include media-breakpoint-up(lg) {
+            font-size: 35px;              
+        }           
+        @include media-breakpoint-up(xl) {
+            font-size: 24px;
+        }         
     }
 
     &__text {
+        @include make-col-ready();        
         margin-top: 30px;
-        font-size: 15px;
-        line-height: 24px;
+
+        @include media-breakpoint-up(md) {
+            font-size: 15px;
+            line-height: 24px;             
+        }  
+        @include media-breakpoint-up(lg) {
+            font-size: 26px;
+            line-height: 42px;            
+        }           
+        @include media-breakpoint-up(xl) {
+            font-size: 15px;
+            line-height: 24px;            
+        }  
     }
 
     &__button {
+        @include make-col-ready();        
         width: 196px;
         margin-top: 57px;
         padding: 15px 29px;
+        text-align: center;        
+
+        @include media-breakpoint-up(md) {
+            margin-left: 0;
+            font-size: 16px;                               
+        }  
     }
 
     &__buttons {
         display: flex;
         align-items: flex-end;
         justify-content: space-between;
-    }
+    }    
 }
 
 .social {
@@ -453,14 +628,28 @@
 .compositions {
     margin-top: 153px;
 
+    &__title {
+        background-image: url('../images/slider.gif');
+    }
+
     &__caption {
         padding-right: 0;
         padding-left: 0;
-        background-image: url('../images/slider.gif');
-        
-        &::before {
-            width: 100%;
-        }        
+        text-align: center;
+
+        @include make-col-ready();        
+        @include media-breakpoint-up(md) {
+            @include make-col(10);
+            @include make-col-offset(1);            
+        }  
+        @include media-breakpoint-up(lg) {
+            @include make-col(9);
+            @include make-col-offset(1);        
+        }           
+        @include media-breakpoint-up(xl) {
+            @include make-col(6);
+            @include make-col-offset(3);        
+        }          
     }   
     
     &__description {
@@ -590,6 +779,22 @@
     font-family: 'OpenSansRegular';    
     position: relative;     
 
+    &__wrapper {
+        @include make-col-ready();
+        @include media-breakpoint-up(md) {
+            @include make-col(8);
+            @include make-col-offset(2);            
+        }  
+        @include media-breakpoint-up(lg) {
+            @include make-col(6);
+            @include make-col-offset(0);             
+        }     
+        @include media-breakpoint-up(xl) {
+            @include make-col(4);
+            @include make-col-offset(0);        
+        }  
+    }
+
     &__item {
         position: relative;
         margin-bottom: 28px;
@@ -599,11 +804,15 @@
         background-repeat: no-repeat;
         background-size: cover;
         background-position: 50% 50%;
+        background-size: cover;        
 
         &::before {
             position: absolute;
             content: '';
-            top: 0; right: 0; bottom: 0; left: 0;
+            top: 0; 
+            right: 0; 
+            bottom: 0; 
+            left: 0;
             background-color: $buttonWhite;
             opacity: .7;            
         }
@@ -613,23 +822,23 @@
         }        
 
         &--second {
-            background: url('../images/poster-2.jpg');
+            background-image: url('../images/poster-2.jpg');
         }       
 
         &--third {
-            background: url('../images/poster-3.jpg');
+            background-image: url('../images/poster-3.jpg');
         }        
 
         &--fourth {
-            background: url('../images/poster-4.jpg');
+            background-image: url('../images/poster-4.jpg');
         }        
 
         &--fifth {
-            background: url('../images/poster-5.jpg');
+            background-image: url('../images/poster-5.jpg');
         }        
 
         &--sixth {
-            background: url('../images/poster-6.jpg');
+            background-image: url('../images/poster-6.jpg');
         }                         
     }
 
@@ -686,15 +895,30 @@
     padding: 212px 0 207px;
     font-family: 'OpenSansRegular';       
 
+    &__inner {
+        @include make-col-ready();
+        @include media-breakpoint-up(md) {
+            @include make-col(8);
+            @include make-col-offset(2);            
+        }  
+        @include media-breakpoint-up(lg) {
+            @include make-col(7);
+            @include make-col-offset(5);             
+        }     
+        @include media-breakpoint-up(xl) {
+            @include make-col(5);
+            @include make-col-offset(6);        
+        }         
+    }
+
+    &__title {
+        background-image: url('../images/events.gif');
+    }
+
     &__caption {
         margin-left: -24px;
-        background-image: url('../images/events.gif');
         margin-bottom: 83px;
         margin-top: 0;        
-
-        &::before {
-            width: 100%;
-        }
     }
 
     &__item {
@@ -759,20 +983,44 @@
     padding-top: 152px;
     text-align: center;
     font-family: 'DosisMedium';  
-    
-    &__caption {
-        background-image: url('../images/slider.gif');
-        margin-bottom: 42px;        
 
-        &::before {
-            width: 78%;
-            margin-left: 14px;
-        }
+    &__title {
+        background-image: url('../images/slider.gif');
+    }
+        
+    &__caption {
+        margin-bottom: 42px; 
+        @include make-col-ready();
+        @include media-breakpoint-up(md) {
+            @include make-col(4);
+            @include make-col-offset(4);            
+        }  
+        @include media-breakpoint-up(lg) {
+            @include make-col(4);
+            @include make-col-offset(4);             
+        }     
+        @include media-breakpoint-up(xl) {
+            @include make-col(2);
+            @include make-col-offset(5);        
+        }                     
     }    
 
     &__text {
-        line-height: 23px;
+        line-height: 35px;
         font-size: 20px;
+        @include make-col-ready();
+        @include media-breakpoint-up(md) {
+            @include make-col(10);
+            @include make-col-offset(1);            
+        }  
+        @include media-breakpoint-up(lg) {
+            @include make-col(12);
+            @include make-col-offset(0);             
+        }     
+        @include media-breakpoint-up(xl) {
+            @include make-col(8);
+            @include make-col-offset(2);        
+        }         
     }
 
     &__list {
@@ -786,6 +1034,9 @@
     &__list-date {
         display: flex;
         justify-content: space-around;
+        width: 1900px;
+        transform: translateX(calc(50vw - 940px)); 
+        overflow: hidden;       
     }
     &__item-date {
         position: relative;
@@ -794,22 +1045,37 @@
             color: $discTitle;
         }  
 
-        &::before, &::after {
+        &::before {
             position: absolute;
             content: '';
             border: 1px solid $disc;
-            width: 82%;
+            width: 230px;
             top: 25%;
-        }
-
-        &::before {
-            right: 120%;
-        }        
-        
-        &::after {
-            left: 120%;
-        }                
+            right: 120px;            
+        }             
     }
+
+    &__item-date:first-child {
+        &::before {
+            position: absolute;
+            content: '';
+            border: 1px solid $disc;
+            width: 100px;
+            top: 25%;
+            right: 120px;            
+        } 
+    }   
+
+    &__item-date:last-child {
+        &::after {
+            position: absolute;
+            content: '';
+            border: 1px solid $disc;
+            width: 100px;
+            top: 25%;
+            left: 120px;            
+        }
+    }    
 
     &__date {
         color: rgba(0,0,0,.28);
@@ -843,7 +1109,20 @@
     &__disc {
         padding-left: 58px;
         padding-right: 40px;
-        line-height: 20px;
+        line-height: 20px; 
+        @include make-col-ready();
+        @include media-breakpoint-up(md) {
+            @include make-col(4);
+            @include make-col-offset(4);            
+        }  
+        @include media-breakpoint-up(lg) {
+            @include make-col(4);
+            @include make-col-offset(4);             
+        }     
+        @include media-breakpoint-up(xl) {
+            @include make-col(2);
+            @include make-col-offset(5);        
+        }              
     }
 }
 
@@ -856,6 +1135,22 @@
     font-size: 14px;
     font-family: 'OpenSansRegular';
     color: $sliderText;          
+
+    &__inner {
+        @include make-col-ready();
+        @include media-breakpoint-up(md) {
+            @include make-col(9);
+            @include make-col-offset(2);            
+        }  
+        @include media-breakpoint-up(lg) {
+            @include make-col(8);
+            @include make-col-offset(4);             
+        }     
+        @include media-breakpoint-up(xl) {
+            @include make-col(6);
+            @include make-col-offset(6);        
+        }         
+    }
 
     &__content {
         margin-top: 110px;
@@ -881,15 +1176,14 @@
         width: 67%;
         margin-bottom: 25px;
     }    
-    &__caption {
+
+    &__title {
         background-image: url('../images/slider.gif');
+    }
+
+    &__caption {
         margin-bottom: 32px;
         text-align: left;               
-
-        &::before {
-            width: 57%;
-            margin-left: -25px;
-        }
     }   
     
     &__buttons {
