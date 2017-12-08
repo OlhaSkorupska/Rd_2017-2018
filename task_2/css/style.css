@@ -1,0 +1,31 @@
+.division {
+    margin: 40px auto;
+    width: 240px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 1px solid rgb(172, 172, 235);
+    padding: 25px;
+    background-color: floralwhite;
+    border-radius: 3px;
+    box-shadow: 2px 3px 15px 1px grey;
+    font-size: 24px;
+}
+
+.division__caption {
+    margin: 20px auto;
+}
+
+.division__dividend {
+    width: 200px;
+    margin: 0 20px 0;
+}
+
+.division__submit {
+    margin: 20px auto;
+}
+
+.error {
+    font-size: 12px;
+}
