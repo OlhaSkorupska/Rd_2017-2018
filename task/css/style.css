@@ -6075,9 +6075,9 @@ table {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; }
 
-.span {
+.wrapper-caption {
   position: relative; }
-  .span::before {
+  .wrapper-caption::before {
     content: '';
     position: absolute;
     height: 1px;
@@ -6139,7 +6139,15 @@ table {
 
 /* DISCOGRAPHY */
 .discography {
-  margin-top: -100px; }
+  margin-top: -100px;
+  background-size: cover;
+  background-position: bottom center;
+  min-height: 778px;
+  padding-bottom: 425px;
+  background-image: url(../images/discography-bg.gif);
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: 50% 100%; }
   .discography__title {
     background-image: url("../images/discography.gif"); }
   .discography__caption {
@@ -6177,12 +6185,6 @@ table {
                 flex: 0 0 50%;
         max-width: 50%;
         margin-left: 25%; } }
-  .discography__background {
-    background-size: cover;
-    background-position: bottom center;
-    min-height: 778px;
-    margin-top: -350px;
-    background-image: url("../images/discography-bg.gif"); }
 
 .date {
   font-family: 'OpenSansBold';
@@ -6996,17 +6998,23 @@ table {
     padding: 35px; }
   .portfolio__date {
     color: #000;
-    font-weight: bold; }
-  .portfolio__decor {
-    border: none;
-    height: 1px;
-    background-color: #000;
-    margin: 6px 0 10px; }
+    font-weight: bold;
+    position: relative; }
+    .portfolio__date::after {
+      content: '';
+      position: absolute;
+      height: 1px;
+      width: 100%;
+      left: 0;
+      top: 10px;
+      margin-top: 21px;
+      background-color: #000; }
   .portfolio__category {
     color: #fff;
     font-size: 14px;
     text-transform: uppercase;
-    margin-bottom: 42px; }
+    margin-bottom: 42px;
+    margin-top: 35px; }
   .portfolio__title {
     font-size: 23px;
     color: #000;
@@ -7102,12 +7110,12 @@ table {
       bottom: -11px;
       width: 132px;
       border: 1px solid; }
-  .events__disc {
+  .events__tour {
     position: relative;
     margin-bottom: 71px;
     line-height: 1.5;
     font-size: 15px; }
-    .events__disc::before {
+    .events__tour::before {
       content: '';
       position: absolute;
       height: 51px;
@@ -7428,34 +7436,6 @@ table {
     color: #000; }
 
 @media screen and (min-width: 1224px) and (max-width: 1919px) {
-  .header-wrapper {
-    margin-top: -157px;
-    min-height: 2020px; }
-
-  .navbar-toggle .icon-bar {
-    background-color: #acacac; }
-
-  .navbar-toggle {
-    display: block;
-    position: relative;
-    float: right;
-    background: none;
-    border: none;
-    margin-top: 70px; }
-
-  .navbar-toggle .icon-bar {
-    display: block;
-    width: 94px;
-    height: 9px;
-    border-radius: 4px;
-    margin-bottom: 20px; }
-
-  .main-nav__wrapper {
-    display: none; }
-
-  .main-nav__wrapper {
-    display: none; }
-
   .song {
     background-color: #fff; }
     .song__item--odd .song__description::before, .song__item--even .song__description::before {
@@ -7497,30 +7477,6 @@ table {
     width: 726px;
     margin-right: auto;
     margin-left: auto; }
-
-  .header-wrapper {
-    margin-top: -157px; }
-
-  .navbar-toggle .icon-bar {
-    background-color: #acacac; }
-
-  .navbar-toggle {
-    display: block;
-    position: relative;
-    float: right;
-    background: none;
-    border: none;
-    margin-top: 70px; }
-
-  .navbar-toggle .icon-bar {
-    display: block;
-    width: 94px;
-    height: 9px;
-    border-radius: 4px;
-    margin-bottom: 20px; }
-
-  .main-nav__wrapper {
-    display: none; }
 
   .concerttours__caption {
     padding-right: 0;
@@ -7565,4 +7521,26 @@ table {
   .news__list::before,
   .news__list::after {
     display: none; } }
+@media screen and (min-width: 300px) and (max-width: 1919px) {
+  .header-wrapper {
+    margin-top: -157px;
+    min-height: 2020px; }
+
+  .main-nav__button .main-nav__icon {
+    background-color: #acacac;
+    display: block;
+    width: 94px;
+    height: 9px;
+    border-radius: 4px;
+    margin-bottom: 20px; }
+  .main-nav__button {
+    display: block;
+    position: relative;
+    float: right;
+    background: none;
+    border: none;
+    margin-top: 70px; }
+  .main-nav__wrapper {
+    display: none; } }
+
 /*# sourceMappingURL=style.css.map */

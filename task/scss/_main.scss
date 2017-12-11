@@ -108,7 +108,7 @@
     -webkit-text-fill-color: transparent;
 }
 
-.span {
+.wrapper-caption {
     position: relative;
     &::before {
         content: '';
@@ -149,6 +149,14 @@
 /* DISCOGRAPHY */
 .discography {
     margin-top: -100px;
+    background-size: cover;
+    background-position: bottom center;        
+    min-height: 778px;
+    padding-bottom: 425px;    
+    background-image: url(../images/discography-bg.gif);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: 50% 100%;
 
     &__title {
         background-image: url('../images/discography.gif');
@@ -165,14 +173,6 @@
             @include make-col(6);
             @include make-col-offset(3);        
         }        
-    }
-
-    &__background {
-        background-size: cover;
-        background-position: bottom center;        
-        min-height: 778px;
-        margin-top: -350px;         
-        background-image: url('../images/discography-bg.gif');
     }
 }
 
@@ -850,13 +850,18 @@
     &__date{
         color: $captionLine;
         font-weight: bold;
-    }
+        position: relative;
 
-    &__decor {
-        border: none;
-        height: 1px;
-        background-color: $captionLine;
-        margin: 6px 0 10px;
+        &::after {
+            content: '';            
+            position: absolute;
+            height: 1px;
+            width: 100%;
+            left: 0;
+            top: 10px;
+            margin-top: 21px;
+            background-color: $captionLine;
+        }
     }
 
     &__category {
@@ -864,6 +869,7 @@
         font-size: 14px;
         text-transform: uppercase;
         margin-bottom: 42px;
+        margin-top: 35px;
     }
 
     &__title {
@@ -957,7 +963,7 @@
         }
     }
 
-    &__disc {
+    &__tour {
         position: relative;
         margin-bottom: 71px;
         line-height: 1.5;

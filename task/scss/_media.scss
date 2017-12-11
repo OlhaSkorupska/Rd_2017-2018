@@ -1,39 +1,4 @@
 @media screen and (min-width: 1224px) and (max-width: 1919px) {
-    .header-wrapper {
-        margin-top: -157px;
-        min-height: 2020px;        
-    }
-
-    .navbar-toggle .icon-bar {
-        background-color: $disc;
-    }
-
-    .navbar-toggle {
-        display: block;
-        position: relative;
-        float: right;
-        background: none;
-        border: none;
-        margin-top: 70px; 
-    }
-
-    .navbar-toggle .icon-bar {
-        display: block;
-        width: 94px;
-        height: 9px;
-        border-radius: 4px;
-        margin-bottom: 20px;     
-    }
-
-    .main-nav__wrapper {
-        display: none;
-    }
-
-
-    .main-nav__wrapper {
-        display: none;
-    }
-
     .song {
         background-color: $buttonWhite;
         &__item--odd &__description::before,
@@ -91,35 +56,6 @@
         width: 726px;
         margin-right: auto;
         margin-left: auto;
-    }  
-
-    .header-wrapper {
-        margin-top: -157px;
-    }
-
-    .navbar-toggle .icon-bar {
-        background-color: $disc;
-    }
-
-    .navbar-toggle {
-        display: block;
-        position: relative;
-        float: right;
-        background: none;
-        border: none;
-        margin-top: 70px; 
-    }
-
-    .navbar-toggle .icon-bar {
-        display: block;
-        width: 94px;
-        height: 9px;
-        border-radius: 4px;
-        margin-bottom: 20px;     
-    }
-
-    .main-nav__wrapper {
-        display: none;
     }
 
     .concerttours {
@@ -133,6 +69,7 @@
         padding-right: 0;
         }
     }   
+
     .song {
         background-color: $buttonWhite;
         &__item--odd &__description::before,
@@ -181,4 +118,35 @@
     .news__list::after {
         display: none;
     }    
+}
+
+@media screen and (min-width: 300px) and (max-width: 1919px) {
+    .header-wrapper {
+        margin-top: -157px;
+        min-height: 2020px;        
+    }
+
+    .main-nav {
+        &__button &__icon {
+            background-color: $disc;
+            display: block;
+            width: 94px;
+            height: 9px;
+            border-radius: 4px;
+            margin-bottom: 20px;              
+        }
+
+        &__button {
+            display: block;
+            position: relative;
+            float: right;
+            background: none;
+            border: none;
+            margin-top: 70px; 
+        }        
+        
+        &__wrapper {
+            display: none;
+        }        
+    }
 }
