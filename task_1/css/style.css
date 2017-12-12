@@ -26,6 +26,6 @@
     margin: 20px auto;
 }
 
-.error {
+.error, .password {
     font-size: 12px;
 }
