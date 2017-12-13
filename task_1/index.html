@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css">    
+</head>
+<body>
+    <form class="authorization">
+        <p class="authorization__caption">Write a number:</p>
+        <input id="value" class="authorization__value" name="value" onfocus="cleaning(this.form)">
+        <input class="authorization__submit" type="button" onclick="getSingleDigit(this.form)" value="Get Single Digit"></br>
+        <span id="error" class="error"></span>
+    </form>
+    <script src="js/task.js"></script>    
+</body>
+</html>
