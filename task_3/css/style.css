@@ -26,6 +26,11 @@
     margin: 20px auto;
 }
 
+.form__title {
+    font-size: 20px;
+    color: blueviolet;
+}
+
 .error, .number {
-    font-size: 12px;
+    font-size: 20px;
 }

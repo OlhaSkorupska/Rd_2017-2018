@@ -8,7 +8,8 @@
     <form class="form">
         <p class="form__caption">Input value:</p>
         <input id="number" class="form__number" name="number" onfocus="cleaning(this.form)">
-        <input class="form__submit" type="button" onclick="checkNumber(this.form)" value="Check Number"></br>
+        <input class="form__submit" type="button" onclick="checkNumber(number.value)" value="Check Number"></br>
+        <span class="form__title">[Prime, Even, Multiple 10]</span>
         <span id="error" class="error"></span>
     </form>
     <script src="js/task.js"></script>    

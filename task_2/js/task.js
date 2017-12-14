@@ -15,19 +15,16 @@ function cleaning() {
     document.getElementById('dividend').value = '';
 }
 
-function isDividedByThree(form) {
-    let dividend = form.elements.dividend.value;
+function isDividedByThree(dividend) {
     let validate = true;
     let remainder = 0;
-    let sum = 0;
+    let result = 0;
 
-    if (Number(dividend)) {
-        for (let i = 0; i < dividend.length; i ++) {
-            sum = sum + Number(dividend[i]);
-        }
-
-        remainder = sum % 3;
-
+    if (parseInt(dividend)) {
+        result = Array.from(dividend).reduce(function(sum, current) {
+            return parseInt(sum) + parseInt(current);
+        });
+        remainder = result % 3;
         if (remainder !== 0) {
             validate = false;
             showError(validate, ': the number is not divisible by 3');
