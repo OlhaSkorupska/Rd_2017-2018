@@ -6,12 +6,12 @@ function showError(validate, errorMessage) {
 
 function showValidMessage(validate, trueMessage) {
     const msgElem = document.getElementById('error');
-    msgElem.style = 'color: green'
+    msgElem.style = 'color: green';
     msgElem.innerHTML = validate + ': ' + trueMessage;
 }
 
 function cleaning() {
-    document.getElementById('error').value = "";
+    document.getElementById('error').value = '';
     document.getElementById('password').value = '';
 }
 
