@@ -1,7 +1,14 @@
 module.exports = {
-    "plugins": ["react"],
-    "parser": "babel-eslint",
-    "parserOptions": {
+  "plugins": ["react"],
+  //TODO "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },  
+  "parserOptions": {
       "ecmaVersion": 6,
       "sourceType": "module",
       "ecmaFeatures": {
@@ -15,7 +22,7 @@ module.exports = {
       "mocha": true
     },
     "extends": [
-      "eslint:recommended", "plugin:react/recommended"
+      "eslint:recommended"
     ],
     "ecmaFeatures": {
     "arrowFunctions": true,
@@ -58,7 +65,8 @@ module.exports = {
     "no-dupe-keys": 2, // disallow duplicate keys when creating object literals
     "no-duplicate-case": 2, // disallow a duplicate case label.
     "no-empty": 2, // disallow empty statements
-    "no-empty-class": 2, // disallow the use of empty character classes in regular expressions
+    //TODO "no-empty-class": 2, // disallow the use of empty character classes in regular expressions
+    "no-empty-character-class": 2,
     "no-ex-assign": 2, // disallow assigning to the exception in a catch block
     "no-extra-boolean-cast": 2, // disallow double-negation boolean casts in a boolean context
     "no-extra-parens": 0, // disallow unnecessary parentheses (off by default)
@@ -70,7 +78,8 @@ module.exports = {
     "no-negated-in-lhs": 2, // disallow negation of the left operand of an in expression
     "no-obj-calls": 2, // disallow the use of object properties of the global object (Math and JSON) as functions
     "no-regex-spaces": 2, // disallow multiple spaces in a regular expression literal
-    "no-reserved-keys": 2, // disallow reserved words being used as object literal keys (off by default)
+    //TODO "no-reserved-keys": 2, // disallow reserved words being used as object literal keys (off by default)
+    "quote-props": 2,
     "no-sparse-arrays": 2, // disallow sparse arrays
     "no-unreachable": 2, // disallow unreachable statements after a return, throw, continue, or break statement
     "use-isnan": 2, // disallow comparisons with the value NaN
@@ -95,7 +104,8 @@ module.exports = {
     "no-caller": 2, // disallow use of arguments.caller or arguments.callee
     "no-div-regex": 2, // disallow division operators explicitly at beginning of regular expression (off by default)
     "no-else-return": 2, // disallow else after a return in an if (off by default)
-    "no-empty-label": 2, // disallow use of labels for anything other then loops and switches
+    // TODO "no-empty-label": 2, // disallow use of labels for anything other then loops and switches
+    "no-labels": ["error", { "allowLoop": false, "allowSwitch": false }],
     "no-eq-null": 2, // disallow comparisons to null without a type-checking operator (off by default)
     "no-eval": 2, // disallow use of eval()
     "no-extend-native": 2, // disallow adding to native types
@@ -161,7 +171,8 @@ module.exports = {
     //
     // These rules are purely matters of style and are quite subjective.
     //
-    "indent": [1, 2], // this option sets a specific tab width for your code (off by default)
+    // TODO "indent": [1, 2], // this option sets a specific tab width for your code (off by default)
+    "indent": ["error", 4, { "SwitchCase": 1 }],      
     "brace-style": 1, // enforce one true brace style (off by default)
     "camelcase": 1, // require camel case names
     "comma-spacing": [1, {"before": false, "after": true}], // enforce spacing before and after comma
@@ -186,7 +197,8 @@ module.exports = {
     "no-ternary": 0, // disallow the use of ternary operators (off by default)
     "no-trailing-spaces": 1, // disallow trailing whitespace at the end of lines
     "no-underscore-dangle": 1, // disallow dangling underscores in identifiers
-    "no-wrap-func": 1, // disallow wrapping of non-IIFE statements in parens
+    //TODO "no-wrap-func": 1, // disallow wrapping of non-IIFE statements in parens
+    "no-extra-parens": ["error", "functions"],
     "one-var": [1, "never"], // allow just one var statement per function (off by default)
     "operator-assignment": [1, "never"], // require assignment operator shorthand where possible or prohibit it entirely (off by default)
     "padded-blocks": [1, "never"], // enforce padding within blocks (off by default)
@@ -195,15 +207,24 @@ module.exports = {
     "semi": [1, "always"], // require or disallow use of semicolons instead of ASI
     "semi-spacing": [1, {"before": false, "after": true}], // enforce spacing before and after semicolons
     "sort-vars": 0, // sort variables within the same declaration block (off by default)
-    "space-after-keywords": [1, "always"], // require a space after certain keywords (off by default)
+    //TODO "space-after-keywords": [1, "always"], // require a space after certain keywords (off by default)
+    "keyword-spacing": ["error", { "before": true, "after": true }],
     "space-before-blocks": [1, "always"], // require or disallow space before blocks (off by default)
     "space-before-function-paren": [1, {"anonymous": "always", "named": "never"}], // require or disallow space before function opening parenthesis (off by default)
-    "space-in-brackets": [1, "never"], // require or disallow spaces inside brackets (off by default)
+    //TODO "space-in-brackets": [1, "never"], // require or disallow spaces inside brackets (off by default)
+    "object-curly-spacing": 2,
+    "array-bracket-spacing": 2,
+    "computed-property-spacing": 2,
     "space-in-parens": [1, "never"], // require or disallow spaces inside parentheses (off by default)
     "space-infix-ops": [1, {"int32Hint": false}], // require spaces around operators
-    "space-return-throw-case": [1, "always"], // require a space after return, throw, and case
+    //TODO "space-return-throw-case": [1, "always"], // require a space after return, throw, and case
+
     "space-unary-ops": [1, {"words": true, "nonwords": false}], // Require or disallow spaces before/after unary operators (words on by default, nonwords off by default)
-    "spaced-line-comment": [1, "always"], // require or disallow a space immediately following the // in a line comment (off by default)
+    //TODO "spaced-line-comment": [1, "always"], // require or disallow a space immediately following the // in a line comment (off by default)
+    "spaced-comment": ["error", "always", {
+      "line": { "markers": ["*package", "!", "/", ",", "="] },
+      "block": { "balanced": true, "markers": ["*package", "!", ",", ":", "::", "flow-include"], "exceptions": ["*"] }
+    }],      
     "wrap-regex": 0, // require regex literals to be wrapped in parentheses (off by default)
   
     //
@@ -226,14 +247,15 @@ module.exports = {
     "max-params": [2, 5], // limits the number of parameters that can be used in the function declaration. (off by default)
     "max-statements": 0, // specify the maximum number of statement allowed in a function (off by default)
     "no-bitwise": 0, // disallow use of bitwise operators (off by default)
-    "no-plusplus": 2, // disallow use of unary operators, ++ and -- (off by default)
+
+    //TODO "no-plusplus": 2, // disallow use of unary operators, ++ and -- (off by default)
   
     //
     // eslint-plugin-react
     //
     // React specific linting rules for ESLint
     //
-    "react/display-name": 0, // Prevent missing displayName in a React component definition
+    /* TODO"react/display-name": 0, // Prevent missing displayName in a React component definition
     "react/jsx-quotes": [2, "double", "avoid-escape"], // Enforce quote style for JSX attributes
     "react/jsx-no-undef": 2, // Disallow undeclared variables in JSX
     "react/jsx-sort-props": 0, // Enforce props alphabetical sorting
@@ -246,7 +268,6 @@ module.exports = {
     "react/prop-types": 2, // Prevent missing props validation in a React component definition
     "react/react-in-jsx-scope": 2, // Prevent missing React when using JSX
     "react/self-closing-comp": 2, // Prevent extra closing tags for components without children
-    "react/jsx-wrap-multilines": 2, // Prevent missing parentheses around multilines JSX
-  }
-  };
-  
+    "react/jsx-wrap-multilines": 2, // Prevent missing parentheses around multilines JSX*/
+  }    
+};
