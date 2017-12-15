@@ -15,28 +15,28 @@ function cleaning() {
     document.getElementById('number').value = '';
 }
 
-function getSingleDigit(form) {
-    let value = form.elements.value.value;
-    let sum = 0;
+function getSingleDigit(value) {
+    let sum = 0
     let str = '';
+    let val = value;
 
-    if (!Number(value)) {
+    if (!Number(val)) {
         showError('The value is not a number');
     } else {
-        if (value <= 0) {
-            value = String(Math.abs(value));
-            str = value;
+        if (val <= 0) {
+            val = String(Math.abs(val));
         }
-        while (String(value).length !== 1) {
+        str = val;
+        while (String(val).length !== 1) {
             str = str + ' -> ';
-            for (let i = 0; i < value.length; i++) {
-                sum = sum + Number(value[i]);
-                str = str + Number(value[i]);
-                str = (value.length - 1 !== i) ? str + ' + ' : str + '=';
+            for (let i = 0; i < val.length; i++) {
+                sum = sum + Number(val[i]);
+                str = str + Number(val[i]);
+                str = (val.length - 1 !== i) ? str + ' + ' : str + '=';
             }
-            value = String(sum);
+            val = String(sum);
             sum = 0;
-            str = `${str} ${value}`;
+            str = `${str} ${val}`;
         }
         showCalculateMessage(str);
     }
