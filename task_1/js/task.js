@@ -1,5 +1,5 @@
 function showError(validate, errorMessage) {
-    var msgElem = document.getElementById('error');
+    let msgElem = document.getElementById('error');
     msgElem.style = 'color: red';
     msgElem.innerHTML = validate + ': ' + errorMessage;
 }

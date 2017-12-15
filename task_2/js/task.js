@@ -19,22 +19,26 @@ function isDividedByThree(dividend) {
     let validate = true;
     let remainder = 0;
     let result = 0;
+    let div = parseInt(dividend, 10);
 
-    if (parseInt(dividend)) {
-        result = Array.from(dividend).reduce(function(sum, current) {
-            return parseInt(sum) + parseInt(current);
+    if (Number.isInteger(div)) {
+        result = div < 0
+            ? dividend.slice(1)
+            : dividend;
+        result = Array.from(result).reduce(function (sum, current) {
+            return parseInt(sum, 10) + parseInt(current, 10);
         });
         remainder = result % 3;
         if (remainder !== 0) {
             validate = false;
-            showError(validate, ': the number is not divisible by 3');
+            showError(validate, 'the number is not divisible by 3');
         } else {
             validate = true;
-            showValidMessage(validate, ': the number divisible by 3');     
+            showValidMessage(validate, 'the number divisible by 3');     
         }
     } else {
         validate = false;
-        showError(validate, ': the value is not a number');
+        showError(validate, 'the value is not a number');
     }
     return validate;
 }

@@ -24,27 +24,28 @@ function isMultipleTen(number) {
 }
 
 function isPrime(number, arrayValidate) {
-    number = Math.abs(number);
-    for (let i = 2; i <= Math.sqrt(number); i++) {
-        if (number % i === 0) {
+    let num = Math.abs(number);
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) {
             arrayValidate[0] = false;
             return arrayValidate;
-        } else return arrayValidate;
+        }
     }
+    return arrayValidate;
 }
-
 
 function checkNumber(number) {
     const arrayValidate = [true, true, true];
+    let num = parseInt(number, 10);
 
-    if (parseInt(number)) {
-        if (isEven(number)) {
+    if (Number.isInteger(num)) {
+        if (isEven(num)) {
             arrayValidate[1] = false;
         }
-        if (isMultipleTen(number)) {
+        if (isMultipleTen(num)) {
             arrayValidate[2] = false;
         }
-        isPrime(number, arrayValidate);
+        isPrime(num, arrayValidate);
         showMessage(arrayValidate);
     } else {
         showError('the value is not a number');
