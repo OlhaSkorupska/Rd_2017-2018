@@ -27,6 +27,10 @@ function getMiddle(str) {
     return str.substr((Math.ceil(str.length / 2) - 1), (2 - str.length % 2));
 }
 
+function isOneDigitNumber(number) {
+    return number.length !== 1;
+}
+
 function getNextPalindrome(palindrome) {
     let nextPalindrome;
     let pal = palindrome;
@@ -41,10 +45,10 @@ function getNextPalindrome(palindrome) {
         } else if (isNines(pal)) {
             pal = parseInt(pal, 10) + 1 + '';
         }
+        middle = getMiddle(pal);
+        leftSideInverse = pal.substr(0, pal.length / 2).split('').reverse().join('');
+        leftSide = pal.substr(0, pal.length / 2);        
         if (isEven(pal.length)) {
-            middle = getMiddle(pal);
-            leftSideInverse = pal.substr(0, pal.length / 2).split('').reverse().join('');
-            leftSide = pal.substr(0, pal.length / 2);
             rightSide = pal.substr(pal.length / 2);
             if (middle[0] >= middle[1] && leftSideInverse > rightSide) {
                 nextPalindrome = leftSide + leftSideInverse;
@@ -52,25 +56,18 @@ function getNextPalindrome(palindrome) {
                 leftSide = parseInt(leftSide, 10) + 1 + '';
                 nextPalindrome = leftSide + leftSide.split('').reverse().join('');
             }
-        } else if (pal.length !== 1) {
-            middle = getMiddle(pal);
-            leftSideInverse = pal.substr(0, pal.length / 2).split('').reverse().join('');
-            leftSide = pal.substr(0, pal.length / 2);
+        } else if (isOneDigitNumber(pal)) {
             rightSide = pal.substr(pal.length / 2 + 1);
             if (middle === '9') {
                 leftSide = parseInt(leftSide, 10) + 1 + '';
                 middle = '0';
-                nextPalindrome = leftSide + middle + leftSide.split('').reverse().join('');
-            } else if (leftSide >= rightSide) {
-                nextPalindrome = leftSide + middle + leftSide.split('').reverse().join('');
             } else {
                 middle = parseInt(middle, 10) + 1 + '';
-                nextPalindrome = leftSide + middle + leftSide.split('').reverse().join('');
             }
+            nextPalindrome = leftSide + middle + leftSide.split('').reverse().join('');
         }
     } else {
         showError('The value is not a number');
     }
     showCalculateMessage(nextPalindrome);
 }
-

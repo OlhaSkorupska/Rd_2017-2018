@@ -9,12 +9,16 @@ function cleaning() {
     document.getElementById('out').value = '';
 }
 
-function countCharacters(parsString) {
+function countCharacters(form) {
+    let parsString = form.elements.parsString.value;
     let obj = {};
+
     [...parsString].forEach(function (char) {
-        obj[char] = (obj[char])
-            ? obj[char] + 1
-            : obj[char] = 1;
+        if (obj[char]) {
+            obj[char] = obj[char] + 1;
+        } else {
+            obj[char] = 1;
+        }
     });
     let leaderStr = JSON.stringify(obj);
     showCalculateMessage(leaderStr);
