@@ -29,4 +29,6 @@
 .parsing__out {
     font-size: 16px;
     color: green;
+    width: 200px;
+    word-wrap: break-word;
 }

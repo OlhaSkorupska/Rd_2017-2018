@@ -31,15 +31,16 @@ function isOneDigitNumber(number) {
     return number.length !== 1;
 }
 
-function getNextPalindrome(palindrome) {
+function getNextPalindrome(palindromeInteger) {
     let nextPalindrome;
-    let pal = palindrome;
+    let pal = parseInt(palindromeInteger, 10);
     let leftSide = '';
     let rightSide = '';
     let middle = '';
     let leftSideInverse = '';
 
-    if (Number(pal)) {
+    if (Number.isInteger(pal)) {
+        pal = String(Math.abs(pal));
         if (pal.length === 1) {
             nextPalindrome = 11;
         } else if (isNines(pal)) {

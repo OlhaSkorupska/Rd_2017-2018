@@ -20,11 +20,11 @@ function getCookingTime(eggs) {
     let times = 0;
     let countEggs = parseInt(eggs, 10);
 
-    if (Number.isInteger(countEggs) && countEggs > 0) {
+    if (Number.isInteger(countEggs) && countEggs >= 0) {
         times = (eggs % capacity === 0)
             ? eggs / capacity
             : Math.floor(eggs / capacity) + 1;
-        showCalculateMessage('For ' + eggs + ' egg preparation is required ' + times + ' times');
+        showCalculateMessage(`For ${eggs} egg preparation is required ${times} times`);
     } else {
         showError('The value is not a number');
     }

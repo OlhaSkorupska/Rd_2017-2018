@@ -7,8 +7,9 @@
 <body>
     <form class="palindrome">
         <p class="palindrome__caption">Write a integer for Palindrome:</p>
-        <input id="string" class="palindrome__integer" name="palindromeInteger" onfocus="cleaning(this.form)">
-        <input class="palindrome__submit" type="button" onclick="getNextPalindrome(this.form)" value="get Palindrome"></br>
+        <input id="palindromeInteger" class="palindrome__integer" onfocus="cleaning(this.form)">
+        <input class="palindrome__submit" type="button" 
+            onclick="getNextPalindrome(palindromeInteger.value)" value="get Palindrome"></br>
         <span id="out" class="palindrome__out"></span>
     </form>
     <script src="js/task.js"></script>    

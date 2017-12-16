@@ -5,14 +5,12 @@ function showCalculateMessage(calculateMessage) {
 }
 
 function cleaning() {
-    document.getElementById('string').value = '';
+    document.getElementById('parsString').value = '';
     document.getElementById('out').value = '';
 }
 
-function countCharacters(form) {
-    let parsString = form.elements.parsString.value;
+function countCharacters(parsString) {
     let obj = {};
-
     [...parsString].forEach(function (char) {
         if (obj[char]) {
             obj[char] = obj[char] + 1;
@@ -20,7 +18,7 @@ function countCharacters(form) {
             obj[char] = 1;
         }
     });
-    let leaderStr = JSON.stringify(obj);
-    showCalculateMessage(leaderStr);
+    let str = JSON.stringify(obj);
+    showCalculateMessage(str);
     return obj;
 }
