@@ -62,7 +62,7 @@ function getNextPalindrome(palindromeInteger) {
             if (middle === '9') {
                 leftSide = parseInt(leftSide, 10) + 1 + '';
                 middle = '0';
-            } else {
+            } else if (leftSide <= rightSide) {
                 middle = parseInt(middle, 10) + 1 + '';
             }
             nextPalindrome = leftSide + middle + leftSide.split('').reverse().join('');
