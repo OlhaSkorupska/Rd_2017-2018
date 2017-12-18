@@ -16,14 +16,14 @@ function cleaning() {
 }
 
 function getCookingTime(eggs) {
-    const capacity = 5;
+    const CAPACITY = 5;
     let times = 0;
     let countEggs = parseInt(eggs, 10);
 
     if (Number.isInteger(countEggs) && countEggs >= 0) {
-        times = (eggs % capacity === 0)
-            ? eggs / capacity
-            : Math.floor(eggs / capacity) + 1;
+        times = (eggs % CAPACITY === 0)
+            ? eggs / CAPACITY
+            : Math.floor(eggs / CAPACITY) + 1;
         showCalculateMessage(`For ${eggs} egg preparation is required ${times} times`);
     } else {
         showError('The value is not a number');

@@ -4,29 +4,25 @@ function showInteger(message) {
     msgElem.innerHTML = message;
 }
 
-function getNumber(array) {
-    let evenArray = [];
-    let oddArray = [];
-    let returnValue;
-    let message = '';
-
-    array.forEach(function (name) {
-        if (name % 2 === 0) {
-            evenArray.push(name);
-        } else {
-            oddArray.push(name);
-        }
-    });
-
-    if (evenArray.length === 1) {
-        returnValue = evenArray[0];
-        message = 'Odd array. Excess integer is ';
-    } else if (oddArray.length === 1) {
-        returnValue = oddArray[0];
-        message = 'Even array. Excess integer is ';
+let isEvenArray = function (value) {
+    if (value % 2 === 0) {
+        return true;
     }
-    showInteger(message + returnValue);
-    return returnValue;
+    return false;
+};
+
+let isOddArray = function (value) {
+    if (value % 2 === 0) {
+        return false;
+    }
+    return true;
+};
+
+function getNumber(array) {
+    let result = array.filter(isEvenArray);
+    result = (result.length !== 1) ? array.filter(isOddArray) : result;
+    showInteger(result);
+    return result;
 }
 
 function start() {

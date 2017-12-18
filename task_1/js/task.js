@@ -17,25 +17,19 @@ function cleaning() {
 
 function getSingleDigit(value) {
     let sum = 0;
-    let str = '';
-    let val = parseInt(value, 10);
+    for (let i = 0; i < value.length; i++) {
+        sum = sum + Number(value[i]);
+    }
+    return sum < 10 ? sum : getSingleDigit(String(sum));
+}
 
-    if (!Number.isInteger(val)) {
+function start(value) {
+    let number = parseInt(value, 10);
+
+    if (!Number.isInteger(number)) {
         showError('The value is not a number');
     } else {
-        val = String(Math.abs(val));
-        str = val;
-        while (String(val).length !== 1) {
-            str = `${str} -> `;
-            for (let i = 0; i < val.length; i++) {
-                sum = sum + Number(val[i]);
-                str = str + Number(val[i]);
-                str = (val.length - 1 !== i) ? str + ' + ' : str + '=';
-            }
-            val = String(sum);
-            sum = 0;
-            str = `${str} ${val}`;
-        }
-        showCalculateMessage(str);
+        number = String(Math.abs(number));
+        showCalculateMessage(getSingleDigit(number));
     }
 }
