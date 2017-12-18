@@ -15,14 +15,17 @@ function cleaning() {
     document.getElementById('dividend').value = '';
 }
 
+function isNumberOrZero(dividend) {
+    let number = parseInt(dividend, 10);
+    return Number.isInteger(number);
+}
+
 function isDividedByThree(dividend) {
     let validate = true;
     let remainder = 0;
     let result = 0;
-    let div = parseInt(dividend, 10);
-
-    if (Number.isInteger(div)) {
-        result = div < 0
+    if (isNumberOrZero(dividend)) {
+        result = parseInt(dividend, 10) < 0
             ? dividend.slice(1)
             : dividend;
         result = Array.from(result).reduce(function (sum, current) {
@@ -34,7 +37,7 @@ function isDividedByThree(dividend) {
             showError(validate, 'the number is not divisible by 3');
         } else {
             validate = true;
-            showValidMessage(validate, 'the number divisible by 3');     
+            showValidMessage(validate, 'the number divisible by 3');
         }
     } else {
         validate = false;

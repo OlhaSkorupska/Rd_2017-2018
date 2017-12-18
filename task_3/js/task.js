@@ -34,18 +34,18 @@ function isPrime(number, arrayValidate) {
     return arrayValidate;
 }
 
-function checkNumber(number) {
+function checkNumber(parameter) {
     const arrayValidate = [true, true, true];
-    let num = parseInt(number, 10);
+    let number = parseInt(parameter, 10);
 
-    if (Number.isInteger(num)) {
-        if (isEven(num)) {
+    if (Number.isInteger(number)) {
+        if (isEven(number)) {
             arrayValidate[1] = false;
         }
-        if (isMultipleTen(num)) {
+        if (isMultipleTen(number)) {
             arrayValidate[2] = false;
         }
-        isPrime(num, arrayValidate);
+        isPrime(number, arrayValidate);
         showMessage(arrayValidate);
     } else {
         showError('the value is not a number');
