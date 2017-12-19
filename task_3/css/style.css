@@ -1,0 +1,33 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.additional {
+    margin: 40px auto;
+    width: 299px;
+    height: 214px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 1px solid rgb(20, 20, 21);
+    padding: 25px;
+    background-color: rgb(207, 207, 214);
+    background-image: url('../images/maths_icon_varwhq.webp');    
+    background-size: cover;    
+    border-radius: 3px;
+    box-shadow: 2px 3px 15px 1px #191717;
+    font-size: 24px;
+}
+
+.additional__caption {
+    margin: 20px auto;
+}
+
+.additional__submit {
+    margin: 20px auto;
+}
+
+.error {
+    font-size: 20px;
+}
