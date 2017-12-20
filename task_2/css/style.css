@@ -1,4 +1,4 @@
-.baking {
+.queue {
     margin: 40px auto;
     width: 230px;
     height: 214px;
@@ -9,17 +9,16 @@
     border: 1px solid rgb(20, 20, 21);
     padding: 25px;
     background-color: rgb(207, 207, 214);
-    background-image: url('../images/christmas cookie tree.ico');    
     border-radius: 3px;
     box-shadow: 2px 3px 15px 1px #191717;
     font-size: 24px;
 }
 
-.baking__caption {
+.queue__caption {
     margin: 20px auto;
 }
 
-.baking__submit {
+.queue__submit {
     margin: 20px auto;
 }
 
