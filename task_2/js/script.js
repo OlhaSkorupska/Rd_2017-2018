@@ -5,11 +5,13 @@ let sortArray = function (array) {
             ? obj[item] + 1
             : obj[item] = 1;
     });
+    let foundNumber = 0;
     for (let element in obj) {
         if (obj[element] % 2 !== 0) {
-            return element;
+            foundNumber = element;
         }
     }
+    return foundNumber;
 };
 
 function start() {
