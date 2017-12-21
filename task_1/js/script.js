@@ -1,18 +1,17 @@
-let complexFunction = function (arg1, arg2) {
-    return arg1 + arg2;
+let complexFunction = function () {
+    return [].reduce.call(arguments, function (sum, current) {
+        return sum + current;
+    });
 };
 
 function cache(complexF) {
     let cacheObj = {};
-    return function (param1, param2) {
-        let result = '';
-        if (!(cacheObj.param1 === param1 && cacheObj.param2 === param2)) {
-            cacheObj = {param1: param1, param2: param2};
-            result = complexF.call(this, param1, param2);
-        } else {
-            result = complexF.call(this, cacheObj.param1, cacheObj.param2);
+    return function () {
+        let parseParams = JSON.stringify(arguments);
+        if (!(parseParams in cacheObj)) {
+            cacheObj[parseParams] = complexF.apply(this, arguments);
         }
-        return result;
+        return cacheObj[parseParams];
     };
 }
 
