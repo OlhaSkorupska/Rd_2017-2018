@@ -35,6 +35,7 @@ body {
     display: flex;
     height: 100%;
     align-items: stretch;
+	position: relative;    
 
     &__content {
         order: 2;
@@ -43,7 +44,24 @@ body {
         background-color: $lightGoldenrodYellow;
         line-height: 1em;
         text-align: justify; 
-    }            
+        display: flex;
+        justify-content: center;
+        align-items: center;        
+    }   
+
+    &__wrapper-slider {
+        width: 985px;
+        overflow: hidden;
+        position: relative;  
+    }
+
+    &__list {
+        display: flex;
+        position: absolute;
+        bottom: 20px;
+        left: 45%;
+        list-style-type: none;        
+    }
 }
 
 .footer {
@@ -51,27 +69,18 @@ body {
     background-color: $lightCoral;
 }
 
-/*
-essential styles:
-these make the slideshow work
-*/
 .slides {
-    position: relative;
-    height: 150px;
-    padding: 0px;
-    margin: 0px;
-    list-style-type: none;
+    width: 2988px;
+    display: flex;
+    flex-wrap: wrap;
+    transition: all 1000ms; 
+    padding-left: 0;     
 
     &__item {
-        position: absolute;
-        left: 0px;
-        top: 0px;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        z-index: 1;
-        transition: opacity 1s;
-    
+		display: flex;
+        width: 985px;
+        height: 360px;
+        background-size: cover;
 
         &:nth-of-type(1){
             background-image: url('../images/image01.jpeg');
@@ -82,11 +91,26 @@ these make the slideshow work
         &:nth-of-type(3){
             background-image: url('../images/image03.jpeg');
         }
-
-        &--showing {
-            opacity: 1;
-            z-index: 2;
-        }
     }
 }
 
+.list {
+    &__button {
+        width: 11px;
+        height: 14px;
+        margin-right: 25px;        
+        background-color: $gray;        
+        border: 1px solid $black;
+        text-indent: -9999px;
+        border-radius: 50%;
+
+        &--check {
+            background-color: transparent;  
+            background-color: $white;                
+        }
+
+        &--last {
+            margin-right: 0;                    
+        }
+    }
+}
