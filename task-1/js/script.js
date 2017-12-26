@@ -29,7 +29,7 @@ function slider() {
     setInterval(slideShow, 2000);
 }
 
-function dynamicCreationElements() {
+/* function dynamicCreationElements() {
     // added main-wrapper
     let divMainWrapper = document.createElement('div');
     divMainWrapper.className = 'main-wrapper';
@@ -117,6 +117,69 @@ function dynamicCreationElements() {
     }
 }
 
-dynamicCreationElements();
+dynamicCreationElements(); */
 slider();
 
+function reflowTime(category, value) {
+    document.getElementsByClassName(category)[0].innerHTML = value;
+}
+
+function digitalWatch() {
+    let hours = Number(document.getElementsByClassName('hours-first')[0].innerHTML +
+        document.getElementsByClassName('hours-second')[0].innerHTML);
+    let minutes = Number(document.getElementsByClassName('minutes-first')[0].innerHTML +
+        document.getElementsByClassName('minutes-second')[0].innerHTML);
+    let seconds = Number(document.getElementsByClassName('seconds-first')[0].innerHTML +
+        document.getElementsByClassName('seconds-second')[0].innerHTML);
+    if (seconds === 59) {
+        seconds = 0;
+        reflowTime('seconds-first', seconds);
+        reflowTime('seconds-second', seconds);
+        if (minutes === 59) {
+            minutes = 0;
+            reflowTime('minutes-first', minutes);
+            reflowTime('minutes-second', minutes);
+            if (hours === 23) {
+                hours = 0;
+                reflowTime('hours-first', hours);
+                reflowTime('hours-second', hours);
+            } else {
+                hours++;
+                if (hours < 10) {
+                    reflowTime('hours-second', hours);
+                } else {
+                    if (String(hours)[0] !==
+                        document.getElementsByClassName('hours-first')[0].innerHTML) {
+                        reflowTime('hours-first', String(hours)[0]);
+                    }
+                    reflowTime('hours-second', String(hours)[1]);
+                }
+            }
+        } else {
+            minutes++;
+            if (minutes < 10) {
+                reflowTime('minutes-second', minutes);
+            } else {
+                if (String(minutes)[0] !==
+                    document.getElementsByClassName('minutes-first')[0].innerHTML) {
+                    reflowTime('minutes-first', String(minutes)[0]);
+                }
+                reflowTime('minutes-second', String(minutes)[1]);
+            }
+        }
+    } else {
+        seconds++;
+        if (seconds < 10) {
+            reflowTime('seconds-second', seconds);
+        } else {
+            if (String(seconds)[0] !==
+                document.getElementsByClassName('seconds-first')[0].innerHTML) {
+                reflowTime('seconds-first', String(seconds)[0]);
+            }
+            reflowTime('seconds-second', String(seconds)[1]);
+        }
+    }
+    setTimeout(digitalWatch, 1000);
+}
+
+digitalWatch();
