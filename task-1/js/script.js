@@ -29,7 +29,7 @@ function slider() {
     setInterval(slideShow, 2000);
 }
 
-/* function dynamicCreationElements() {
+function dynamicCreationElements() {
     // added main-wrapper
     let divMainWrapper = document.createElement('div');
     divMainWrapper.className = 'main-wrapper';
@@ -115,9 +115,12 @@ function slider() {
         }
         li.appendChild(button);
     }
+
+    let digitWatch = document.getElementsByClassName('footer__watch')[0];
+    footer.insertBefore(digitWatch, footer.firstChild);
 }
 
-dynamicCreationElements(); */
+dynamicCreationElements();
 slider();
 
 function reflowTime(category, value) {
