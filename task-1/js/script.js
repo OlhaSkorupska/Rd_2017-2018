@@ -64,12 +64,12 @@ function dynamicCreationElements() {
 
         let button = document.createElement('button');
         button.className = 'list__button';
-        if (i === 0) {
+        /* if (i === 0) {
             button.classList.add('list__button--check');
         }
         if (i === 2) {
             button.classList.add('list__button--last');
-        }
+        } */
         li.appendChild(button);
     }
 
