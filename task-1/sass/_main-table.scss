@@ -9,6 +9,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;    
 }
 
 .table {
@@ -22,4 +23,8 @@ body {
         padding: 5px;
         border: 1px solid $gray;
     }
+}
+
+.wrapper {
+    margin-top: 20px;
 }

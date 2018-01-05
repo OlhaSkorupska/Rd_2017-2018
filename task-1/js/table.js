@@ -1,12 +1,4 @@
-www.addEventListener('click', handler, false);
-
-function handler() {
-    let qqq = document.getElementById("qqq");      
-    document.body.appendChild(dynamicCreationElements(2, 2, '+'));
-}
-
 function getOperation(i, j, operation) {
-
     switch (operation) {
         case '+':
             return i + j;
@@ -39,16 +31,20 @@ function dynamicCreationElements(rows = 2, colls = 2, operation = '+') {
         }
     }
 
-    fragment.appendChild(table);
-    document.body.appendChild(fragment);
+    return fragment.appendChild(table);
 }
 
-function inputData() {
+window.onload = function () {
+    function handler() {
+        let wrapper = document.getElementsByClassName('wrapper')[0];
+        let rows = document.getElementsByClassName('form__rowsInput')[0].value;
+        let colls = document.getElementsByClassName('form__collsInput')[0].value;
+        let operation = document.getElementsByClassName('form__operationInput')[0].value;
+        // validation();
+        wrapper.appendChild(dynamicCreationElements(rows, colls, operation));
+    }
 
-    let rows = prompt('Введите количество строк: ', 20);
-    let colls = prompt('Введите количество столбцов: ', 20);
-    let operation = prompt('Введите арифметическую операцию: ', '+');
-    dynamicCreationElements(rows, colls, operation);
-}
+    let buttonSend = document.getElementsByClassName('form__buttonSend')[0];
+    buttonSend.addEventListener('click', handler, false);
+};
 
-inputData();
