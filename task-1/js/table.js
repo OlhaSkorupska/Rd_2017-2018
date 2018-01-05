@@ -1,3 +1,10 @@
+www.addEventListener('click', handler, false);
+
+function handler() {
+    let qqq = document.getElementById("qqq");      
+    document.body.appendChild(dynamicCreationElements(2, 2, '+'));
+}
+
 function getOperation(i, j, operation) {
 
     switch (operation) {

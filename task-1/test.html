@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Layout</title>
+    <link rel="stylesheet" href="css/test.css">
+    <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+<form name="form">
+    <label>Quantity</label>
+    <button type="button" id="www" value="send"></button>
+</form>
+<div id="qqq"></div>
+<script type="text/javascript">
+    www.addEventListener('click', handler, false);
+
+    function handler() {
+        var qqq = document.getElementById("qqq");      
+        document.body.appendChild(dynamicCreationElements(2, 2, '+'));
+    }
+
+    function getOperation(i, j, operation) {
+
+    switch (operation) {    
+        case '+':
+            return i + j;
+        case '-':
+            return i - j;
+        case '*':
+            return i * j;
+        case '/':
+            return i / j;
+        default:
+            return i + j;
+    }
+}
+
+function dynamicCreationElements(rows = 2, colls = 2, operation = '+') {
+
+    let fragment = document.createDocumentFragment();
+    let table = document.createElement('table');
+    table.classList.add('table');
+
+    for (let i = 1; i <= rows; i++) {
+        let row = document.createElement('tr');
+        table.appendChild(row);
+
+        for (let j = 1; j <= colls; j++) {
+            let cell = document.createElement('td');
+            cell.classList.add('table__cell');
+            row.appendChild(cell);
+            cell.innerHTML = getOperation(i, j, operation);
+        }
+    }
+
+    return fragment.appendChild(table);
+}
+  </script>
+</body>
+</html>

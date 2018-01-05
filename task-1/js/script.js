@@ -41,19 +41,9 @@ function dynamicCreationElements() {
     let slides = createElement('ul', 'main__slides slides', wrapperSlider);
 
     for (let i = 0; i <= 2; i++) {
-        switch (i) {
-            case 0:
-                createElement('li', 'slides__item slides__item--first', slides);
-                break;
-            case 1:
-                createElement('li', 'slides__item slides__item--second', slides);
-                break;
-            case 2:
-                createElement('li', 'slides__item slides__item--third', slides);
-                break;
-            default:
-                createElement('li', 'slides__item slides__item--first', slides);
-                break;
+        let li = createElement('li', 'slides__item', slides);
+        if (i === 0) {
+            li.classList.add('active');
         }
     }
 
@@ -64,12 +54,12 @@ function dynamicCreationElements() {
 
         let button = document.createElement('button');
         button.className = 'list__button';
-        /* if (i === 0) {
+        if (i === 0) {
             button.classList.add('list__button--check');
         }
         if (i === 2) {
             button.classList.add('list__button--last');
-        } */
+        }
         li.appendChild(button);
     }
 

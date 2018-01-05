@@ -1,0 +1,139 @@
+body {
+  font-family: Open Sans; }
+
+@-webkit-keyframes slide-top-bottom {
+  0% {
+    top: -200px; }
+  100% {
+    top: 0px; } }
+
+@keyframes slide-top-bottom {
+  0% {
+    top: -200px; }
+  100% {
+    top: 0px; } }
+@-webkit-keyframes slide-top-bottom-down {
+  0% {
+    top: 0; }
+  100% {
+    top: 200px; } }
+@keyframes slide-top-bottom-down {
+  0% {
+    top: 0; }
+  100% {
+    top: 200px; } }
+@-webkit-keyframes slide-right-left {
+  0% {
+    left: 985px; }
+  100% {
+    left: 0px; } }
+@keyframes slide-right-left {
+  0% {
+    left: 985px; }
+  100% {
+    left: 0px; } }
+@-webkit-keyframes slide-right-left-down {
+  0% {
+    left: 0; }
+  100% {
+    left: -985px; } }
+@keyframes slide-right-left-down {
+  0% {
+    left: 0; }
+  100% {
+    left: -985px; } }
+.container {
+  width: 985px;
+  margin: 0 auto;
+  padding-top: 20px; }
+  .container .slider {
+    position: relative;
+    overflow: hidden;
+    height: 200px; }
+    .container .slider::after {
+      display: table;
+      clear: both;
+      content: ""; }
+    .container .slider .slider-controls {
+      position: absolute;
+      top: 0;
+      left: 10px;
+      right: 10px;
+      bottom: 0;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+          -ms-flex-pack: center;
+              justify-content: center; }
+      .container .slider .slider-controls::after {
+        display: table;
+        clear: both;
+        content: ""; }
+      .container .slider .slider-controls .btn-slider {
+        border: none;
+        outline: none;
+        padding: 5px 15px;
+        color: #666;
+        background: transparent;
+        cursor: pointer;
+        -webkit-transition: all .15s ease;
+                transition: all .15s ease; }
+        .container .slider .slider-controls .btn-slider:hover {
+          color: #fff;
+          background-color: #a6a6a6; }
+        .container .slider .slider-controls .btn-slider.prev {
+          float: left; }
+        .container .slider .slider-controls .btn-slider.next {
+          float: right; }
+    .container .slider .slider-wrapper {
+      height: 200px;
+      width: 985px; }
+      .container .slider .slider-wrapper .slide {
+        position: absolute;
+        left: 985px;
+        width: 985px;
+        height: 200px;
+        float: left;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        text-align: center;
+        -webkit-transition: all .5s ease;
+                transition: all .5s ease;
+        visibility: hidden;
+        opacity: 0;
+        -webkit-animation: slide-right-left-down 5s ease forwards;
+                animation: slide-right-left-down 5s ease forwards; }
+        .container .slider .slider-wrapper .slide:nth-child(1) {
+          background-image: url("../images/image01.jpeg"); }
+        .container .slider .slider-wrapper .slide:nth-child(2) {
+          background-image: url("../images/image02.jpeg"); }
+        .container .slider .slider-wrapper .slide:nth-child(3) {
+          background-image: url("../images/image03.jpeg"); }
+        .container .slider .slider-wrapper .slide.active {
+          visibility: visible;
+          opacity: 1;
+          -webkit-animation: slide-right-left 1s ease forwards;
+                  animation: slide-right-left 1s ease forwards; }
+        .container .slider .slider-wrapper .slide p {
+          text-transform: uppercase;
+          font-size: 40px;
+          color: #999; }

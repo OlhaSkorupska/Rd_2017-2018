@@ -59,13 +59,13 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column;                
+        flex-direction: column;            
     }   
 
     &__wrapper-slider {
-        width: 985px;
+        position: relative;
         overflow: hidden;
-        position: relative;  
+        height: 400px;
     }
 
     &__list {
@@ -83,27 +83,73 @@ body {
     background-color: $lightCoral;
 }
 
+@keyframes slide-right-left {
+    0% {
+        left: 985px;       
+    }
+    100% {
+        left: 0px;
+    }
+}
+
+@keyframes slide-right-left-down {
+    0% {
+        left: 0;       
+    }
+    100% {
+        left: -985px;
+    }
+}
+
+@keyframes slide-right-left {
+    0% {
+        right: -985px;
+    }
+    100% {
+        right: 0;
+    }
+} 
+
+@keyframes slide-right-left-down {
+    0% {
+        right: 0px;
+    }
+    100% {
+        right: 985px;
+    }
+} 
+
 .slides {
-    width: 2988px;
-    display: flex;
-    flex-wrap: wrap;
-    transition: all 1000ms; 
-    padding-left: 0;     
+    height: 400px;
+    width: 985px;    
 
     &__item {
-		display: flex;
+        position: absolute;
         width: 985px;
-        height: 360px;
-        background-size: cover;
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        transition: all .5s ease;
+        visibility: hidden;
+        opacity: 0;
+        animation: slide-right-left-down 5s ease forwards;
 
-        &--first{
+        &:nth-child(1){
             background-image: url('../images/image01.jpeg');
         }
-        &--second{
+        &:nth-child(2){
             background-image: url('../images/image02.jpeg');
         }
-        &--third{
+        &:nth-child(3){
             background-image: url('../images/image03.jpeg');
+        }
+                
+        &.active {
+            visibility: visible;
+            opacity: 1;                  
+            animation: slide-right-left 1s ease forwards;
         }
     }
 }
