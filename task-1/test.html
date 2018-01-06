@@ -8,55 +8,26 @@
     <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 <body>
-<form name="form">
-    <label>Quantity</label>
-    <button type="button" id="www" value="send"></button>
-</form>
-<div id="qqq"></div>
-<script type="text/javascript">
-    www.addEventListener('click', handler, false);
-
-    function handler() {
-        var qqq = document.getElementById("qqq");      
-        document.body.appendChild(dynamicCreationElements(2, 2, '+'));
-    }
-
-    function getOperation(i, j, operation) {
-
-    switch (operation) {    
-        case '+':
-            return i + j;
-        case '-':
-            return i - j;
-        case '*':
-            return i * j;
-        case '/':
-            return i / j;
-        default:
-            return i + j;
-    }
-}
-
-function dynamicCreationElements(rows = 2, colls = 2, operation = '+') {
-
-    let fragment = document.createDocumentFragment();
-    let table = document.createElement('table');
-    table.classList.add('table');
-
-    for (let i = 1; i <= rows; i++) {
-        let row = document.createElement('tr');
-        table.appendChild(row);
-
-        for (let j = 1; j <= colls; j++) {
-            let cell = document.createElement('td');
-            cell.classList.add('table__cell');
-            row.appendChild(cell);
-            cell.innerHTML = getOperation(i, j, operation);
-        }
-    }
-
-    return fragment.appendChild(table);
-}
-  </script>
+        <div class="container">
+                <div class="slider">
+                  <div class="slider-wrapper">
+                    <div class="slide active">
+                      <p>Slide 1</p>
+                    </div>
+                    <div class="slide">
+                      <p>Slide 2</p>
+                    </div>
+                    <div class="slide">
+                      <p>Slide 3</p>
+                    </div>
+                  </div>
+                  <div class="slider-controls">
+                    <div class="buttons">
+                      <button class="btn-slider prev" onclick="prev()">Prev</button>
+                      <button class="btn-slider next" onclick="next()">Next</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 </body>
 </html>

@@ -108,6 +108,15 @@ body {
     100% {
         right: 0;
     }
+}
+
+@keyframes slide-left-right {
+    0% {
+        right: 985px;
+    }
+    100% {
+        right: 0;
+    }
 } 
 
 @keyframes slide-right-left-down {
@@ -134,7 +143,7 @@ body {
         transition: all .5s ease;
         visibility: hidden;
         opacity: 0;
-        animation: slide-right-left-down 5s ease forwards;
+        // animation: slide-right-left-down 5s ease forwards;
 
         &:nth-child(1){
             background-image: url('../images/image01.jpeg');
@@ -151,6 +160,12 @@ body {
             opacity: 1;                  
             animation: slide-right-left 1s ease forwards;
         }
+
+        &.active--reverse {
+            visibility: visible;
+            opacity: 1;                  
+            animation: slide-left-right 1s ease forwards;
+        }        
     }
 }
 

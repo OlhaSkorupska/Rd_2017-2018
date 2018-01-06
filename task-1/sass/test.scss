@@ -1,133 +1,101 @@
-@mixin clearfix {
-    &::after {
-        display: table;
-        clear: both;
-        content: "";
-    }
-}
 body {
     font-family: Open Sans;
-}
-
-
-@keyframes slide-top-bottom {
+  }
+  
+  @keyframes slide-top-bottom {
     0% {
-        top: -200px;       
+      top: -200px;
     }
     100% {
-        top: 0px;
+      top: 0px;
     }
-}
-
-@keyframes slide-top-bottom-down {
+  }
+  @keyframes slide-top-bottom-down {
     0% {
-        top: 0;       
+      top: 0px;
     }
     100% {
-        top: 200px;
+      top: 200px;
     }
-}
-
-@keyframes slide-right-left {
-    0% {
-        left: 985px;       
-    }
-    100% {
-        left: 0px;
-    }
-}
-
-@keyframes slide-right-left-down {
-    0% {
-        left: 0;       
-    }
-    100% {
-        left: -985px;
-    }
-}
-
-.container {
-    width: 985px;
+  }
+  .container {
+    width: 600px;
     margin: 0 auto;
     padding-top: 20px;
-    .slider {
-        @include clearfix;
-        position: relative;
-        overflow: hidden;
-        height: 200px;
-        .slider-controls {
-            position: absolute;
-            top: 0;
-            left: 10px;
-            right: 10px;
-            bottom: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            @include clearfix;
-            .btn-slider {
-                border: none;
-                outline: none;
-                padding: 5px 15px;
-                color: #666;
-                background: transparent;
-                cursor: pointer;
-                transition: all .15s ease;
-                &:hover {
-                    color: #fff;
-                    background-color: darken(#ccc, 15%);
-                }
-
-                &.prev {
-                    float: left;
-                }
-
-                &.next {
-                    float: right;                
-                }
-            }
-        }
-        .slider-wrapper {
-            height: 200px;
-            width: 985px;
-            .slide {
-                position: absolute;
-                left: 985px;
-                width: 985px;
-                height: 200px;
-                float: left;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                text-align: center;
-                transition: all .5s ease;
-                visibility: hidden;
-                opacity: 0;
-                animation: slide-right-left-down 5s ease forwards;
-
-                &:nth-child(1){
-                    background-image: url('../images/image01.jpeg');
-                }
-                &:nth-child(2){
-                    background-image: url('../images/image02.jpeg');
-                }
-                &:nth-child(3){
-                    background-image: url('../images/image03.jpeg');
-                }
-                        
-                &.active {
-                    visibility: visible;
-                    opacity: 1;                  
-                    animation: slide-right-left 1s ease forwards;
-                }
-
-                p {
-                    text-transform: uppercase;
-                    font-size: 40px;
-                    color: #999;
-                }
-            }
-        }
-    }
-}
-    
+  }
+  
+  .slider {
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+  }
+  .slider::after {
+    display: table;
+    clear: both;
+    content: "";
+  }
+  .slider .slider-controls {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    right: 10px;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .slider .slider-controls::after {
+    display: table;
+    clear: both;
+    content: "";
+  }
+  .slider .slider-controls .btn-slider {
+    border: none;
+    outline: none;
+    padding: 5px 15px;
+    color: #666;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .slider .slider-controls .btn-slider:hover {
+    color: #fff;
+    background-color: #a6a6a6;
+  }
+  .slider .slider-controls .btn-slider.prev {
+    float: left;
+  }
+  .slider .slider-controls .btn-slider.next {
+    float: right;
+  }
+  .slider .slider-wrapper {
+    height: 200px;
+    width: 600px;
+  }
+  .slider .slider-wrapper .slide {
+    position: absolute;
+    top: -200px;
+    background-color: #ccc;
+    width: 600px;
+    height: 200px;
+    float: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    transition: all 0.5s ease;
+    visibility: hidden;
+    opacity: 0;
+    animation: slide-top-bottom-down 1s ease forwards;
+  }
+  .slider .slider-wrapper .slide.active {
+    visibility: visible;
+    opacity: 1;
+    animation: slide-top-bottom 1s ease forwards;
+  }
+  .slider .slider-wrapper .slide p {
+    text-transform: uppercase;
+    font-size: 40px;
+    color: #999;
+  }
+  
