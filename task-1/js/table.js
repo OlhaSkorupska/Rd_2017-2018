@@ -54,7 +54,8 @@ function handlerCell(e) {
 }
 
 function validation(rows, colls, operation) {
-    return (rows === '' && rows > 0) || (colls === '' && colls > 0) || operation === '';
+    return (rows !== '' && rows > 0) &&
+        (colls !== '' && colls > 0) && operation !== '';
 }
 
 function handlerButton(e) {
@@ -62,7 +63,7 @@ function handlerButton(e) {
     let rows = document.getElementsByClassName('form__rowsInput')[0].value;
     let colls = document.getElementsByClassName('form__collsInput')[0].value;
     let operation = document.getElementsByClassName('form__operationInput')[0].value;
-    if (validation(rows, colls, operation)) {
+    if (!validation(rows, colls, operation)) {
         e.preventDefault();
         wrapper.innerHTML = 'Введите корректные данные';
     } else {
