@@ -62,16 +62,14 @@ function handlerButton(e) {
     let rows = document.getElementsByClassName('form__rowsInput')[0].value;
     let colls = document.getElementsByClassName('form__collsInput')[0].value;
     let operation = document.getElementsByClassName('form__operationInput')[0].value;
-    isOperationMark(operation);
-    if (!isOperationMark(operation)) {
+    if (rows === '' || colls === '' || !isOperationMark(operation)) {
         e.preventDefault();
         wrapper.innerHTML = 'Введите корректные данные';
-    } else {            
-        // validation();
-        if (wrapper.hasChildNodes()) {
-            let child = wrapper.children[0];
-            child.remove();
+    } else {
+        if (wrapper.children[0]) {
+            wrapper.children[0].remove();
         }
+        wrapper.textContent = '';
         wrapper.appendChild(dynamicCreationElements(rows, colls, operation));
         let table = document.getElementsByClassName('table')[0];
         table.addEventListener('mouseover', handlerCell, false);
