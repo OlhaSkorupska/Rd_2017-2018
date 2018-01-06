@@ -427,6 +427,9 @@ body {
 .wrapper {
   margin-top: 20px; }
 
+.form__operationInput {
+  padding: 1.5px; }
+
 .tooltip {
   border-bottom: 1px dotted #0077AA;
   cursor: help; }

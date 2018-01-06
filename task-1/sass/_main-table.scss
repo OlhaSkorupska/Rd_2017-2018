@@ -29,6 +29,12 @@ body {
     margin-top: 20px;
 }
 
+.form {
+    &__operationInput {
+        padding: 1.5px;
+    }
+}
+
 .tooltip {
 	border-bottom: 1px dotted #0077AA;
 	cursor: help;
