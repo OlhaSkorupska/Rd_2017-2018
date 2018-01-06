@@ -35,10 +35,6 @@ function dynamicCreationElements(rows = 2, colls = 2, operation = '+') {
     return fragment.appendChild(table);
 }
 
-function isOperationMark(mark) {
-    return mark.match(/[+\-*/]{1}/g);
-}
-
 let selectedTd;
 
 function showTooltip(target) {
@@ -57,12 +53,16 @@ function handlerCell(e) {
     showTooltip(target);
 }
 
+function validation(rows, colls, operation) {
+    return (rows === '' && rows > 0) || (colls === '' && colls > 0) || operation === '';
+}
+
 function handlerButton(e) {
     let wrapper = document.getElementsByClassName('wrapper')[0];
     let rows = document.getElementsByClassName('form__rowsInput')[0].value;
     let colls = document.getElementsByClassName('form__collsInput')[0].value;
     let operation = document.getElementsByClassName('form__operationInput')[0].value;
-    if (rows === '' || colls === '' || !isOperationMark(operation)) {
+    if (validation(rows, colls, operation)) {
         e.preventDefault();
         wrapper.innerHTML = 'Введите корректные данные';
     } else {
