@@ -7,7 +7,7 @@ class Slider {
             classItemActiveReverse: options.classItemActiveReverse || 'active--reverse',
             classButtonActive: options.classButtonActive || 'list__button--check',
             slideTimeout: options.slideTimeout || 2000,
-            reverse: options.reverse || false
+            isReverse: options.isReverse || false
         };
 
         this.root = root;
@@ -22,7 +22,7 @@ class Slider {
     }
 
     activate(slide, button) {
-        if (this.state.reverse) {
+        if (this.state.isReverse) {
             slide.classList.add(this.state.classItemActiveReverse);
         } else {
             slide.classList.add(this.state.classItemActive);
@@ -40,12 +40,12 @@ class Slider {
     }
 
     next() {
-        this.change(this.state.reverse);
+        this.change(this.state.isReverse);
         this.counter = this.counter + 1;
     }
 
     prev() {
-        this.change(!this.state.reverse);
+        this.change(!this.state.isReverse);
         this.counter = this.counter - 1;
     }
 
@@ -67,7 +67,7 @@ class Slider {
 
     start() {
         this.counter = 0;
-        let className = (this.state.reverse)
+        let className = (this.state.isReverse)
             ? this.state.classItemActiveReverse
             : this.state.classItemActive;
         this.slides[0].classList.add(className);
@@ -81,15 +81,15 @@ class Slider {
     handlerUp(e) {
         this.positionX = this.positionX - e.pageX;
         if (this.positionX < 0) {
-            this.state.reverse = true;
+            this.state.isReverse = true;
         } else {
-            this.state.reverse = false;
+            this.state.isReverse = false;
         }
     }
 }
 
 window.onload = function () {
     let slider = new Slider(document.querySelector('.main__wrapper-slider'),
-        {reverse: false});
+        {isReverse: false});
     slider.start();
 };
