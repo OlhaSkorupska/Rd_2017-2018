@@ -4,7 +4,7 @@ class Slider {
             classItem: options.classItem || 'slides__item',
             classButton: options.classButton || 'list__button',
             classItemActive: options.classItemActive || 'active',
-            classItemActiveReverse: options.classItemActive || 'active--reverse',
+            classItemActiveReverse: options.classItemActiveReverse || 'active--reverse',
             classButtonActive: options.classButtonActive || 'list__button--check',
             slideTimeout: options.slideTimeout || 2000,
             reverse: options.reverse || false
@@ -15,6 +15,10 @@ class Slider {
         this.buttons = this.root.querySelectorAll(`.${this.state.classButton}`);
         this.amount = this.slides.length;
         this.counter = 0;
+        this.positionX = 0;
+        this.wrapper = document.getElementsByClassName('main__wrapper-slider')[0];
+        this.wrapper.addEventListener('mousedown', this.handlerDown, false);
+        this.wrapper.addEventListener('mouseup', this.handlerUp, false);
     }
 
     activate(slide, button) {
@@ -67,17 +71,32 @@ class Slider {
     }
 
     start() {
-        for (let index = 0; index < this.amount; index++) {
-            if (this.slides[index].classList.contains(this.state.classItemActive)) {
-                this.counter = index;
-            }
-        }
+        this.counter = 0;
+        let className = (this.state.reverse)
+            ? this.state.classItemActiveReverse
+            : this.state.classItemActive;
+        this.slides[0].classList.add(className);
         this.globalInterval = setInterval(() => this.next(), this.state.slideTimeout);
+    }
+
+    handlerDown(e) {
+        this.positionX = [e.pageX];
+    }
+
+    handlerUp(e) {
+        this.positionX = this.positionX - e.pageX;
+        if (this.positionX < 0) {
+            // TODO
+            this.state.reverse = false;
+        } else {
+            // TODO
+            this.state.reverse = true;
+        }
     }
 }
 
 window.onload = function () {
     let slider = new Slider(document.querySelector('.main__wrapper-slider'),
-        {reverse: true});
+        {reverse: false});
     slider.start();
 };

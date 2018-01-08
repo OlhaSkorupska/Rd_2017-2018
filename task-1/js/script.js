@@ -42,9 +42,9 @@ function dynamicCreationElements() {
 
     for (let i = 0; i <= 2; i++) {
         let li = createElement('li', 'slides__item', slides);
-        if (i === 0) {
+        /* if (i === 0) {
             li.classList.add('active');
-        }
+        } */
     }
 
     let list = createElement('ul', 'main__list list', wrapperSlider);
