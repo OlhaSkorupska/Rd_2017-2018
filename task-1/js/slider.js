@@ -31,7 +31,7 @@ class Slider {
     }
 
     deactivate(slide, button) {
-        if (this.state.reverse) {
+        if (slide.classList.contains(this.state.classItemActiveReverse)) {
             slide.classList.remove(this.state.classItemActiveReverse);
         } else {
             slide.classList.remove(this.state.classItemActive);
@@ -87,10 +87,10 @@ class Slider {
         this.positionX = this.positionX - e.pageX;
         if (this.positionX < 0) {
             // TODO
-            this.state.reverse = false;
+            // this.state.reverse = false;
         } else {
             // TODO
-            this.state.reverse = true;
+            // this.state.reverse = true;
         }
     }
 }
