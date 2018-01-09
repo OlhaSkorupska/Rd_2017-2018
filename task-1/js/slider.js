@@ -19,6 +19,8 @@ class Slider {
         this.wrapper = document.getElementsByClassName('main__wrapper-slider')[0];
         this.wrapper.addEventListener('mousedown', this.handlerDown.bind(this), false);
         this.wrapper.addEventListener('mouseup', this.handlerUp.bind(this), false);
+        this.wrapper.addEventListener('mouseenter', this.handlerOver.bind(this), false);
+        this.wrapper.addEventListener('mouseleave', this.handlerOut.bind(this), false);
     }
 
     activate(slide, button) {
@@ -66,7 +68,6 @@ class Slider {
     }
 
     start() {
-        this.counter = 0;
         let className = (this.state.isReverse)
             ? this.state.classItemActiveReverse
             : this.state.classItemActive;
@@ -85,6 +86,14 @@ class Slider {
         } else {
             this.state.isReverse = false;
         }
+    }
+
+    handlerOver() {
+        clearInterval(this.globalInterval);
+    }
+
+    handlerOut() {
+        this.globalInterval = setInterval(() => this.next(), this.state.slideTimeout);
     }
 }
 
