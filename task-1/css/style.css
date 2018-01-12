@@ -392,12 +392,6 @@ template {
 [hidden] {
   display: none; }
 
-:root {
-  --progress-bar-height: 4px;
-  --progress-bar-color: gainsboro;
-  --progress-bar-value-color: dodgerblue;
-  --progress-bar-value: 20%; }
-
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box; }
@@ -409,7 +403,8 @@ body {
   line-height: 1.5em;
   text-align: justify;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box; }
+          box-sizing: border-box;
+  padding: 10px 20px; }
 
 .wrapper {
   display: -webkit-box;
@@ -423,46 +418,63 @@ body {
 
 .movies {
   list-style-type: none;
-  padding-left: 0;
-  margin: 20px; }
+  padding-left: 0; }
   .movies__item {
     border: 1px solid #000;
     padding: 20px; }
+  .movies__header {
+    overflow: hidden;
+    height: 45px;
+    border-bottom: 2px solid #8B8989; }
   .movies__img {
     width: 90px;
     height: 107px;
     border: 1px solid #8B8989;
     border-radius: 5px;
     padding: 5px;
-    margin: 0 10px 5px 0; }
+    margin: 0 10px 5px 0;
+    opacity: 1; }
+  .movies__article {
+    overflow: hidden;
+    height: 200px; }
 
 .progressBar {
+  width: 100%;
   border-radius: 10px;
-  height: 26px;
+  height: 20px;
   background-color: #000;
-  margin: 20px 20px 0 20px;
-  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  color: #fff;
+  -webkit-box-shadow: 0 0 10px #8B8989;
+          box-shadow: 0 0 10px #8B8989;
+  color: #fff; }
+  .progressBar__load {
+    width: 100%;
+    -webkit-transition: width 2s;
+    transition: width 2s;
+    height: 30px;
+    background-color: #8B8989;
+    border-radius: 10px;
+    height: 20px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#000), color-stop(#8B8989), to(#000));
+    background: linear-gradient(#000, #8B8989, #000); }
+
+.transition {
+  width: 0;
+  height: 0;
   margin: 0;
-  height: 36px;
-  line-height: 36px;
-  text-align: left;
-  text-overflow: clip;
-  overflow: hidden;
-  z-index: 0; }
-  .progressBar.negative {
-    padding-left: 50px;
-    margin-right: 50px;
-    width: 100%;
-    background: #fff;
-    color: #000;
-    z-index: 1; }
-  .progressBar.positive {
-    width: 100%;
-    position: absolute;
-    background: #2ba0c5;
-    color: #000;
-    z-index: 10; }
+  padding: 0;
+  -webkit-transition: width 3s, height 3s, margin 3s, padding 3s;
+  transition: width 3s, height 3s, margin 3s, padding 3s; }
+
+.transition-item {
+  height: 0;
+  padding: 0;
+  margin: 0;
+  -webkit-transition: height 1s, padding 1s, margin 1s;
+  transition: height 1s, padding 1s, margin 1s; }
+
+.border-none {
+  border: none;
+  -webkit-transition: border 1s;
+  transition: border 1s; }
 
 /*# sourceMappingURL=style.css.map */
