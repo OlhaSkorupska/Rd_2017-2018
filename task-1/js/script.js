@@ -18,18 +18,18 @@ function animationDone(elem, resolve) {
 }
 
 let progress = function (elem) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         elem.addEventListener('transitionend',
-            (e) => animationDone(elem, resolve),
+            () => animationDone(elem, resolve),
             false);
         elem.style.width = '0';
     });
 };
 
 let animateSecond = function (elem, className) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         elem.addEventListener('transitionend',
-            (e) => animationDone(elem, resolve),
+            () => animationDone(elem, resolve),
             false);
         handler(elem, className);
     });
@@ -38,18 +38,15 @@ let animateSecond = function (elem, className) {
 let animate = function (elems, className) {
     const listeners = [];
     for (const elem of elems) {
-        const listener = new Promise((resolve, reject) => {
+        const listener = new Promise((resolve) => {
             elem.addEventListener('transitionend', () => {
-                resolve();
-            });
+                animationDone(elem, resolve);
+            }, false);
             handler(elem, className);
         });
         listeners.push(listener);
     }
-    return Promise.all(listeners)
-        .then(() => {
-            Promise.resolve();
-        });
+    return Promise.all(listeners);
 };
 
 let startFirst = function () {
