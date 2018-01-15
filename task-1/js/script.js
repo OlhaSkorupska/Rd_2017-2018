@@ -20,18 +20,16 @@ function animationDone(elem, resolve) {
 let progress = function (elem) {
     return new Promise((resolve) => {
         elem.addEventListener('transitionend',
-            () => animationDone(elem, resolve),
-            false);
+            () => animationDone(elem, resolve));
         elem.style.width = '0';
     });
 };
 
 let animateSecond = function (elem, className) {
     return new Promise((resolve) => {
-        elem.addEventListener('transitionend',
-            () => animationDone(elem, resolve),
-            false);
         handler(elem, className);
+        elem.addEventListener('transitionend',
+            () => animationDone(elem, resolve));
     });
 };
 
@@ -41,7 +39,7 @@ let animate = function (elems, className) {
         const listener = new Promise((resolve) => {
             elem.addEventListener('transitionend', () => {
                 animationDone(elem, resolve);
-            }, false);
+            });
             handler(elem, className);
         });
         listeners.push(listener);
@@ -51,23 +49,15 @@ let animate = function (elems, className) {
 
 let startFirst = function () {
     progress(bar)
-        .then(function () {
-            return animate(images, 'transition');
-        })
-        .then(function () {
-            return animate(articles);
-        })
-        .then(function () {
-            return animate(headers);
-        })
-        .then(function () {
-            return animate(items);
-        });
+        .then(() => animate(images, 'transition'))
+        .then(() => animate(articles))
+        .then(() => animate(headers))
+        .then(() => animate(items));
 };
 
 let startSecond = function () {
     let arrayElems = [];
-    for (let i = 0; i <= images.length; i++) {
+    for (let i = 0; i < images.length; i++) {
         arrayElems.push(images[i]);
         arrayElems.push(articles[i]);
         arrayElems.push(headers[i]);
@@ -75,9 +65,9 @@ let startSecond = function () {
     }
 
     progress(bar)
-        .then(function () {
-            let actionsChain = Promise.resolve('');
-            for (let i = 0; i <= arrayElems.length; i++) {
+        .then(() => {
+            let actionsChain = Promise.resolve();
+            for (let i = 0; i < arrayElems.length; i++) {
                 actionsChain = actionsChain.then(function () {
                     return animateSecond(arrayElems[i]);
                 });
