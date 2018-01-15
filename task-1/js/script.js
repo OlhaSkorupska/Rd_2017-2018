@@ -66,44 +66,25 @@ let startFirst = function () {
 };
 
 let startSecond = function () {
+    let arrayElems = [];
+    for (let i = 0; i <= images.length; i++) {
+        arrayElems.push(images[i]);
+        arrayElems.push(articles[i]);
+        arrayElems.push(headers[i]);
+        arrayElems.push(items[i]);
+    }
+
     progress(bar)
         .then(function () {
-            return animateSecond(images[0], 'transition');
-        })
-        .then(function () {
-            return animateSecond(articles[0]);
-        })
-        .then(function () {
-            return animateSecond(headers[0]);
-        })
-        .then(function () {
-            return animateSecond(items[0]);
-        })
-        .then(function () {
-            return animateSecond(images[1], 'transition');
-        })
-        .then(function () {
-            return animateSecond(articles[1]);
-        })
-        .then(function () {
-            return animateSecond(headers[1]);
-        })
-        .then(function () {
-            return animateSecond(items[1]);
-        })
-        .then(function () {
-            return animateSecond(images[2], 'transition');
-        })
-        .then(function () {
-            return animateSecond(articles[2]);
-        })
-        .then(function () {
-            return animateSecond(headers[2]);
-        })
-        .then(function () {
-            return animateSecond(items[2]);
+            let actionsChain = Promise.resolve('');
+            for (let i = 0; i <= arrayElems.length; i++) {
+                actionsChain = actionsChain.then(function () {
+                    return animateSecond(arrayElems[i]);
+                });
+            }
         });
 };
+
 buttonFirst.addEventListener('click', startFirst, false);
 buttonSecond.addEventListener('click', startSecond, false);
 
