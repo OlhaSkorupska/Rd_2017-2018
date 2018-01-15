@@ -7,41 +7,38 @@ let headers = document.getElementsByClassName('movies__header');
 let items = document.getElementsByClassName('movies__item');
 let bar = document.getElementsByClassName('progressBar__load')[0];
 
-function handler(set, className) {
-    let nameOfClass = className || 'transition-item';
-    set.classList.add(nameOfClass);
-}
-
-function animationDone(elem, resolve) {
-    elem.removeEventListener('transitionend', animationDone);
-    resolve();
-}
-
 let progress = function (elem) {
     return new Promise((resolve) => {
         elem.addEventListener('transitionend',
-            () => animationDone(elem, resolve));
-        elem.style.width = '0';
+            resolve, false);
+        elem.classList.add('decrease-width');
     });
 };
 
-let animateSecond = function (elem, className) {
+let animateSecond = function (elem, tagName, className) {
     return new Promise((resolve) => {
-        handler(elem, className);
+        elem.classList.add(className);
         elem.addEventListener('transitionend',
-            () => animationDone(elem, resolve));
+            (e) => {
+                if (e.target.tagName === tagName) {
+                    resolve();
+                }
+            }, false);
     });
 };
 
-let animate = function (elems, className) {
+let animate = function (elems, tagName, className) {
     const listeners = [];
     for (const elem of elems) {
         const listener = new Promise((resolve) => {
-            elem.addEventListener('transitionend', () => {
-                animationDone(elem, resolve);
+            elem.addEventListener('transitionend', 
+                (e) => {
+                    if (e.target.tagName === tagName) {
+                        resolve();
+                    }
+                }, false);
             });
-            handler(elem, className);
-        });
+            elem.classList.add(className);
         listeners.push(listener);
     }
     return Promise.all(listeners);
@@ -49,10 +46,10 @@ let animate = function (elems, className) {
 
 let startFirst = function () {
     progress(bar)
-        .then(() => animate(images, 'transition'))
-        .then(() => animate(articles))
-        .then(() => animate(headers))
-        .then(() => animate(items));
+        .then(() => animate(images, 'IMG', 'transition'))
+        .then(() => animate(articles, 'ARTICLE', 'transition-item'))
+        .then(() => animate(headers, 'H1', 'transition-item'))
+        .then(() => animate(items, 'LI', 'transition-item'));
 };
 
 let startSecond = function () {
@@ -64,44 +61,18 @@ let startSecond = function () {
         arrayElems.push(items[i]);
     }
 
-    /* progress(bar)
+    progress(bar)
         .then(() => {
             let actionsChain = Promise.resolve();
             for (let i = 0; i < arrayElems.length; i++) {
                 actionsChain = actionsChain.then(function () {
-                    return animateSecond(arrayElems[i]);
+                    let className = arrayElems[i].tagName === 'IMG' 
+                        ? 'transition'
+                        : 'transition-item';
+                    return animateSecond(arrayElems[i], arrayElems[i].tagName, className);
                 });
             }
-        }); */
-    // с этой цепочкой отрабатывает как надо
-    progress(bar)
-        .then(() => animateSecond(images[0], 'transition'))
-        .then(() => animateSecond(images[1], 'transition'))
-        .then(() => animateSecond(images[2], 'transition'))
-        .then(() => animateSecond(articles[0]))
-        .then(() => animateSecond(articles[1]))
-        .then(() => animateSecond(articles[2]))
-        .then(() => animateSecond(headers[0]))
-        .then(() => animateSecond(headers[1]))
-        .then(() => animateSecond(headers[2]))
-        .then(() => animateSecond(items[0]))
-        .then(() => animateSecond(items[1]))
-        .then(() => animateSecond(items[2]));
-
-    // с этой цепочкой  НЕ отрабатывает как надо
-    /* progress(bar)
-        .then(() => animateSecond(images[0], 'transition'))
-        .then(() => animateSecond(articles[0]))
-        .then(() => animateSecond(headers[0]))
-        .then(() => animateSecond(items[0]))
-        .then(() => animateSecond(images[1], 'transition'))
-        .then(() => animateSecond(articles[1]))
-        .then(() => animateSecond(headers[1]))
-        .then(() => animateSecond(items[1]))
-        .then(() => animateSecond(images[2], 'transition'))
-        .then(() => animateSecond(articles[2]))
-        .then(() => animateSecond(headers[2]))
-        .then(() => animateSecond(items[2])); */
+        });
 };
 
 buttonFirst.addEventListener('click', startFirst, false);
