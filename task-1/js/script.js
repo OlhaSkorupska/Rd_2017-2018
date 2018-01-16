@@ -31,14 +31,14 @@ let animate = function (elems, tagName, className) {
     const listeners = [];
     for (const elem of elems) {
         const listener = new Promise((resolve) => {
-            elem.addEventListener('transitionend', 
+            elem.addEventListener('transitionend',
                 (e) => {
                     if (e.target.tagName === tagName) {
                         resolve();
                     }
                 }, false);
-            });
-            elem.classList.add(className);
+        });
+        elem.classList.add(className);
         listeners.push(listener);
     }
     return Promise.all(listeners);
@@ -66,7 +66,7 @@ let startSecond = function () {
             let actionsChain = Promise.resolve();
             for (let i = 0; i < arrayElems.length; i++) {
                 actionsChain = actionsChain.then(function () {
-                    let className = arrayElems[i].tagName === 'IMG' 
+                    let className = arrayElems[i].tagName === 'IMG'
                         ? 'transition'
                         : 'transition-item';
                     return animateSecond(arrayElems[i], arrayElems[i].tagName, className);
