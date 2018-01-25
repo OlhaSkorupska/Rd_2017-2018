@@ -10,19 +10,20 @@
 <body>
     <div class="wrapper">
         <div class="autorization-wrapper">
-            <form class="autorization">
+            <form class="autorization" name="autorization">
                 <div class="autorization__title">
                     <h1>Login</h1>
                 </div>                
                 <div class="autorization__control-group">
-                    <input type="email" class="autorization__field" value="" placeholder="email" id="email">
+                    <input type="email" class="autorization__field" value="" placeholder="email" name="email" id="email">
                     <label class="autorization__label" for="email"></label>
                 </div>
                 <div class="autorization__control-group">
-                    <input type="password" class="autorization__field" value="" placeholder="password" id="pass">
+                    <input type="password" class="autorization__field" value="" placeholder="password" name="password" id="pass">
                     <label class="autorization__label" for="pass"></label>
                 </div>
-                <a class="autorization__submit" href="#">login</a>
+                <input class="autorization__submit" name"submit" id="submit" href="#" value="login"></input>
+                <a class="autorization__registernow" name"registernow" id="registernow" href="registration.html">Register Now</a>                
             </form>
         </div>
     </div>    

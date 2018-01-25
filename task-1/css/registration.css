@@ -413,46 +413,56 @@ body {
   border-radius: 5px;
   width: 400px; }
 
-.registration {
-  text-align: center; }
-  .registration__title {
-    text-align: center;
-    color: #8B8989; }
-  .registration__control-group {
-    margin-bottom: 10px; }
-  .registration__field {
-    padding-left: 20px;
-    background-color: #ecf0f1;
-    border: 2px solid transparent;
-    border-radius: 3px;
-    font-size: 16px;
-    font-weight: 200;
-    padding: 10px 20px;
-    width: 100%;
-    -webkit-transition: border .5s;
-    transition: border .5s; }
-    .registration__field:focus {
-      border: 2px solid #3498DB;
-      -webkit-box-shadow: none;
-              box-shadow: none; }
-  .registration__submit {
-    border: 2px solid transparent;
-    background: #3498DB;
-    color: #fff;
-    font-size: 16px;
-    line-height: 25px;
-    padding: 10px 0;
-    text-decoration: none;
-    text-shadow: none;
-    border-radius: 3px;
+.registration__title {
+  text-align: center;
+  color: #8B8989; }
+.registration__caption {
+  float: right; }
+.registration__field {
+  padding-left: 20px;
+  background-color: #ecf0f1;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 200;
+  padding: 10px 20px;
+  margin: 10px 0;
+  width: 100%;
+  -webkit-transition: border .5s;
+  transition: border .5s; }
+  .registration__field:focus {
+    border: 2px solid #3498DB;
     -webkit-box-shadow: none;
-            box-shadow: none;
-    -webkit-transition: 0.25s;
-    transition: 0.25s;
-    display: block;
-    width: 100%;
-    margin: 0 auto; }
-    .registration__submit:hover {
-      background-color: #2980b9; }
+            box-shadow: none; }
+.registration__submit {
+  border: 2px solid transparent;
+  background: #3498DB;
+  color: #fff;
+  font-size: 16px;
+  line-height: 25px;
+  padding: 10px 0;
+  text-decoration: none;
+  text-shadow: none;
+  border-radius: 3px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center; }
+  .registration__submit:hover {
+    background-color: #2980b9; }
+
+.error {
+  border: 2px solid #ef7e7e;
+  -webkit-box-shadow: none;
+          box-shadow: none; }
+
+.error-message {
+  color: #ef7e7e;
+  text-align: left;
+  font-size: 12px; }
 
 /*# sourceMappingURL=registration.css.map */

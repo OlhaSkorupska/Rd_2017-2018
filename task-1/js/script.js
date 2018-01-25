@@ -9,6 +9,12 @@ function createTextNode(text, parent) {
     parent.appendChild(textElement);
 }
 
+function getCookie(attr) {
+    let matches = document.cookie.match(new RegExp('(?:^|; )'
+        + attr.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)'));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+
 function dynamicCreationElements() {
     let divMainWrapper = createElement('div', 'main-wrapper', document.body,
         document.body.firstChild);
@@ -23,6 +29,15 @@ function dynamicCreationElements() {
     let textLink = document.createTextNode('Task-5');
     linkNavigation.appendChild(textLink);
     nav.appendChild(linkNavigation);
+
+    let loginLink = document.createElement('div');
+
+    loginLink.innerHTML = '<button>Log Out</button>';
+    loginLink.addEventListener('click', function () {
+        document.cookie = `user=''; path=/; expires=${new Date(0)};`;
+        window.location.href = './autorization.html';
+    });
+    nav.appendChild(loginLink);
 
     let divWrapper = createElement('div', 'wrapper', divMainWrapper);
 
@@ -41,10 +56,7 @@ function dynamicCreationElements() {
     let slides = createElement('ul', 'main__slides slides', wrapperSlider);
 
     for (let i = 0; i <= 2; i++) {
-        let li = createElement('li', 'slides__item', slides);
-        /* if (i === 0) {
-            li.classList.add('active');
-        } */
+        createElement('li', 'slides__item', slides);
     }
 
     let list = createElement('ul', 'main__list list', wrapperSlider);
@@ -105,5 +117,11 @@ function dynamicCreationElements() {
     section.appendChild(mainBirthday);
 }
 
-dynamicCreationElements();
+let currentUser = getCookie('user');
+let currentStorage = localStorage.getItem(currentUser);
 
+if (currentStorage) {
+    dynamicCreationElements();
+} else {
+    window.location.href = './autorization.html';
+}

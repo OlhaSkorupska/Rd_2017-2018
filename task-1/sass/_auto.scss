@@ -23,8 +23,7 @@
   }
   
   .autorization {
-    text-align: center;
-    
+   
     &__title {
       text-align: center;
       color: $gray;
@@ -52,6 +51,7 @@
     }    
 
     &__submit {
+      text-align: center;      
       border: 2px solid transparent;
       background: $summerSky;
       color: $white;
@@ -65,9 +65,24 @@
       transition: 0.25s;
       display: block;
       width: 250px;
-      margin: 0 auto;
       &:hover {
         background-color: $curiousBlue;
       }
-    }    
+    }  
+    &__registernow {
+      text-align: center;
+      display: block;
+      margin: 10px 0;
+    }
   }
+
+.error {
+  border: 2px solid $lightCoral;
+  box-shadow: none;
+}  
+
+.error-message {
+  color: $lightCoral;
+  text-align: left;
+  font-size: 12px;
+ } 

@@ -7,9 +7,19 @@ function getCurrentAge(date) {
         - dateEnd.getMonth() + (dateBegin.getYear() * 12)) + 1;
     let days = Math.round(Math.abs(dateEnd - dateBegin) / 86400000);
     let weeks = Math.floor(days / 7);
-    message.innerHTML = years + ' year, ' + month + ' month, ' + weeks + ' weeks, ' + days + ' days';
+    message.innerHTML = years + ' year, ' + month + ' month, '
+        + weeks + ' weeks, ' + days + ' days';
 }
 
-let dateOfBirthday = prompt('Input your birthday in format DD-MM-YYYY, please: ', '01-01-1990');
+function getCookie(attr) {
+    let matches = document.cookie.match(new RegExp('(?:^|; )'
+        + attr.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)'));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+}
 
-getCurrentAge(dateOfBirthday);
+let currentUser = getCookie('user');
+let currentStorage = localStorage.getItem(currentUser);
+let objectStorage = JSON.parse(currentStorage);
+let birthStorage = objectStorage.birth;
+
+getCurrentAge(birthStorage);

@@ -412,44 +412,56 @@ body {
   padding: 20px;
   border-radius: 5px; }
 
-.autorization {
-  text-align: center; }
-  .autorization__title {
-    text-align: center;
-    color: #8B8989; }
-  .autorization__control-group {
-    margin-bottom: 10px; }
-  .autorization__field {
-    text-align: center;
-    background-color: #ecf0f1;
-    border: 2px solid transparent;
-    border-radius: 3px;
-    font-size: 16px;
-    font-weight: 200;
-    padding: 10px 0;
-    width: 250px;
-    -webkit-transition: border .5s;
-    transition: border .5s; }
-    .autorization__field:focus {
-      border: 2px solid #3498DB;
-      -webkit-box-shadow: none;
-              box-shadow: none; }
-  .autorization__submit {
-    border: 2px solid transparent;
-    background: #3498DB;
-    color: #fff;
-    font-size: 16px;
-    line-height: 25px;
-    padding: 10px 0;
-    text-decoration: none;
-    text-shadow: none;
-    border-radius: 3px;
+.autorization__title {
+  text-align: center;
+  color: #8B8989; }
+.autorization__control-group {
+  margin-bottom: 10px; }
+.autorization__field {
+  text-align: center;
+  background-color: #ecf0f1;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 200;
+  padding: 10px 0;
+  width: 250px;
+  -webkit-transition: border .5s;
+  transition: border .5s; }
+  .autorization__field:focus {
+    border: 2px solid #3498DB;
     -webkit-box-shadow: none;
-            box-shadow: none;
-    -webkit-transition: 0.25s;
-    transition: 0.25s;
-    display: block;
-    width: 250px;
-    margin: 0 auto; }
-    .autorization__submit:hover {
-      background-color: #2980b9; }
+            box-shadow: none; }
+.autorization__submit {
+  text-align: center;
+  border: 2px solid transparent;
+  background: #3498DB;
+  color: #fff;
+  font-size: 16px;
+  line-height: 25px;
+  padding: 10px 0;
+  text-decoration: none;
+  text-shadow: none;
+  border-radius: 3px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+  display: block;
+  width: 250px; }
+  .autorization__submit:hover {
+    background-color: #2980b9; }
+.autorization__registernow {
+  text-align: center;
+  display: block;
+  margin: 10px 0; }
+
+.error {
+  border: 2px solid #ef7e7e;
+  -webkit-box-shadow: none;
+          box-shadow: none; }
+
+.error-message {
+  color: #ef7e7e;
+  text-align: left;
+  font-size: 12px; }
