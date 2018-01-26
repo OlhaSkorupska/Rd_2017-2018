@@ -6,11 +6,12 @@ let confirm = form.elements.confirm;
 let birth = form.elements.birth;
 let name = form.elements.name;
 let submit = form.elements.submit;
+let obj = {email, phone, pass, confirm, birth, name};
 
 let regexpEmail = /^[0-9a-z-.]+@[0-9a-z-]{1,}\.[a-z]{2,}$/i;
 let regexpPhone = /^\([0-9]{2}\)[0-9]{3}-[0-9]{2}-[0-9]{2}/;
 let regexpPass = /^(?=.*[0-9])(?=.*[a-zA-Z])[\da-zA-Z]{6,20}$/i;
-let regexpName = /[A-Za-z]{10,50}/;
+let regexpName = /[A-z].*$/;
 
 function insertAfter(elem, refElem) {
     let parent = refElem.parentNode;
@@ -36,7 +37,27 @@ function emailBlur() {
     if (!(email.value.match(regexpEmail))) {
         formationErrorMessage(email, 'Enter correct email');
     }
-    return true;
+    return localStorage.setItem('email', email.value);
+}
+
+function phoneMask(input) {
+    let value = input.replace(/\D/g, '');
+
+    value = value.substring(0, 9);
+    let size = value.length;
+    if (size === 0) {
+        return value;
+    } else if (size < 3) {
+        value = `(${value}`;
+    } else if (size < 6) {
+        value = `(${value.substring(0, 2)})${value.substring(2, 5)}`;
+    } else if (size < 8) {
+        value = `(${value.substring(0, 2)})${value.substring(2, 5)}-${value.substring(5, 7)}`;
+    } else {
+        value = `(${value.substring(0, 2)})${value.substring(2, 5)}-${value.substring(5, 7)}`
+        + `-${value.substring(7, 9)}`;
+    }
+    return value;
 }
 
 function phoneBlur() {
@@ -46,7 +67,11 @@ function phoneBlur() {
     if (!(phone.value.match(regexpPhone))) {
         formationErrorMessage(phone, 'Enter correct mobile phone');
     }
-    return true;
+    return localStorage.setItem('phone', phone.value);
+}
+
+function handlerMask() {
+    phone.value = phoneMask(phone.value);
 }
 
 function passBlur() {
@@ -57,7 +82,7 @@ function passBlur() {
         formationErrorMessage(pass, 'the password must contain at least one number '
             + 'and at least one letter. Password length is at least 6 characters');
     }
-    return true;
+    return localStorage.setItem('pass', pass.value);
 }
 
 function confirmBlur() {
@@ -67,7 +92,7 @@ function confirmBlur() {
     if (!(confirm.value === pass.value)) {
         formationErrorMessage(confirm, 'Passwords do not match');
     }
-    return true;
+    return localStorage.setItem('confirm', confirm.value);
 }
 
 function birthBlur() {
@@ -77,7 +102,7 @@ function birthBlur() {
     if (!(birth.value)) {
         formationErrorMessage(birth, 'Incorrect date format');
     }
-    return true;
+    return localStorage.setItem('birth', birth.value);
 }
 
 function nameBlur() {
@@ -88,7 +113,7 @@ function nameBlur() {
         formationErrorMessage(name, 'The name should contain only the '
             + 'letters of the Latin alphabet');
     }
-    return true;
+    return localStorage.setItem('name', name.value);
 }
 
 function elementFocus(element) {
@@ -192,10 +217,29 @@ function handlerSubmit() {
         let date = new Date();
         date.setFullYear(date.getFullYear() + 1);
         document.cookie = `user=${email.value}; path=/; expires=${date.toUTCString()};`;
+        for (let key in obj) {
+            if (key) {
+                localStorage.removeItem(key);
+            }
+        }
         window.location.href = 'profile.html';
     }
 }
 
 form.addEventListener('blur', handler, true);
+phone.addEventListener('keyup', handlerMask, true);
 form.addEventListener('focus', handlerFocus, true);
 submit.addEventListener('click', handlerSubmit, true);
+
+function init() {
+    email.value = localStorage.getItem('email') || '';
+    phone.value = localStorage.getItem('phone') || '';
+    pass.value = localStorage.getItem('pass') || '';
+    confirm.value = localStorage.getItem('confirm') || '';
+    birth.value = localStorage.getItem('birth') || '';
+    name.value = localStorage.getItem('name') || '';
+}
+
+window.onload = function () {
+    init();
+};
