@@ -207,13 +207,6 @@ function handlerSubmit() {
         localStorage.setItem(email.value,
             JSON.stringify({name: name.value, phone: phone.value,
                 pass: pass.value, birth: birth.value}));
-        /* name.value = 'wwwww eeeeeeeee rrrrrrrrr';
-        email.value = 'wwww@i.ua';
-        phone.value = '(98)876-67-67';
-        birth.value = '2010-12-12';
-        pass.value = '123qwe';
-        localStorage.setItem(email.value, JSON.stringify({name: name.value, phone: phone.value, birth: birth.value, pass: pass.value})); */
-
         let date = new Date();
         date.setFullYear(date.getFullYear() + 1);
         document.cookie = `user=${email.value}; path=/; expires=${date.toUTCString()};`;

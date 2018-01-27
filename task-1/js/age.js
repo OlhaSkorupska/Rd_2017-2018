@@ -3,23 +3,32 @@ function getCurrentAge(date) {
     let dateBegin = new Date();
     let dateEnd = new Date(date);
     let years = Math.abs(dateEnd.getFullYear() - dateBegin.getFullYear());
-    let month = (dateEnd.getMonth() + (dateBegin.getYear() * 12)
-        - dateEnd.getMonth() + (dateBegin.getYear() * 12)) + 1;
+    let month = (dateBegin.getMonth() - dateEnd.getMonth()) +
+        ((dateBegin.getFullYear() - dateEnd.getFullYear()) * 12) + 1;
     let days = Math.round(Math.abs(dateEnd - dateBegin) / 86400000);
     let weeks = Math.floor(days / 7);
     message.innerHTML = years + ' year, ' + month + ' month, '
         + weeks + ' weeks, ' + days + ' days';
 }
 
-function getCookie(attr) {
-    let matches = document.cookie.match(new RegExp('(?:^|; )'
-        + attr.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)'));
-    return matches ? decodeURIComponent(matches[1]) : undefined;
+function getCookie(cname) {
+    let name = cname + '=';
+    let ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) === 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return '';
 }
 
 let currentUser = getCookie('user');
 let currentStorage = localStorage.getItem(currentUser);
 let objectStorage = JSON.parse(currentStorage);
 let birthStorage = objectStorage.birth;
-
 getCurrentAge(birthStorage);
+

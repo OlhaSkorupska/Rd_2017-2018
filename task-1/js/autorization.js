@@ -28,7 +28,7 @@ function emailBlur() {
         return false;
     }
     if (!(email.value.match(regexpEmail))) {
-        formationErrorMessage(email, 'Enter correct email');
+        return formationErrorMessage(email, 'Enter correct email');
     }
     return true;
 }
@@ -82,14 +82,8 @@ function handler(event) {
     blurMethod();
 }
 
-function getCookie(attr) {
-    let matches = document.cookie.match(new RegExp('(?:^|; )'
-        + attr.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)'));
-    return matches ? decodeURIComponent(matches[1]) : undefined;
-}
-
 function handlerSubmit() {
-    let currentStorage = localStorage.getItem(email.value);
+    let currentStorage = JSON.parse(localStorage.getItem(email.value));
     if (currentStorage && pass.value === currentStorage.pass) {
         let date = new Date();
         date.setFullYear(date.getFullYear() + 1);
