@@ -74,25 +74,35 @@ function handlerMask() {
     phone.value = phoneMask(phone.value);
 }
 
+function confirmBlur() {
+    if (confirm.value === '') {
+        return false;
+    }
+    if (!(confirm.value.match(regexpPass))) {
+        return formationErrorMessage(pass, 'the password must contain at least one number '
+            + 'and at least one letter. Password length is at least 6 characters');
+    }
+    if (pass.value) {
+        if (!(confirm.value === pass.value)) {
+            return formationErrorMessage(confirm, 'Passwords do not match');
+        }
+    }
+    return localStorage.setItem('confirm', confirm.value);
+}
 function passBlur() {
     if (pass.value === '') {
         return false;
     }
     if (!(pass.value.match(regexpPass))) {
-        formationErrorMessage(pass, 'the password must contain at least one number '
+        return formationErrorMessage(pass, 'the password must contain at least one number '
             + 'and at least one letter. Password length is at least 6 characters');
     }
+    if (confirm.value) {
+        if (!(confirm.value === pass.value)) {
+            return formationErrorMessage(confirm, 'Passwords do not match');
+        }
+    }
     return localStorage.setItem('pass', pass.value);
-}
-
-function confirmBlur() {
-    if (confirm.value === '') {
-        return false;
-    }
-    if (!(confirm.value === pass.value)) {
-        formationErrorMessage(confirm, 'Passwords do not match');
-    }
-    return localStorage.setItem('confirm', confirm.value);
 }
 
 function birthBlur() {
@@ -130,8 +140,10 @@ let focusMethods = {
     },
     pass: function () {
         elementFocus(pass);
+        elementFocus(confirm);
     },
     confirm: function () {
+        elementFocus(pass);
         elementFocus(confirm);
     },
     birth: function () {

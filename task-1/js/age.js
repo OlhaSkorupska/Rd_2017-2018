@@ -4,7 +4,7 @@ function getCurrentAge(date) {
     let dateEnd = new Date(date);
     let years = Math.abs(dateEnd.getFullYear() - dateBegin.getFullYear());
     let month = (dateBegin.getMonth() - dateEnd.getMonth()) +
-        ((dateBegin.getFullYear() - dateEnd.getFullYear()) * 12) + 1;
+        ((dateBegin.getFullYear() - dateEnd.getFullYear()) * 12);
     let days = Math.round(Math.abs(dateEnd - dateBegin) / 86400000);
     let weeks = Math.floor(days / 7);
     message.innerHTML = years + ' year, ' + month + ' month, '
@@ -26,9 +26,9 @@ function getCookie(cname) {
     return '';
 }
 
-let currentUser = getCookie('user');
-let currentStorage = localStorage.getItem(currentUser);
-let objectStorage = JSON.parse(currentStorage);
+let user = getCookie('user');
+let storage = localStorage.getItem(user);
+let objectStorage = JSON.parse(storage);
 let birthStorage = objectStorage.birth;
 getCurrentAge(birthStorage);
 
