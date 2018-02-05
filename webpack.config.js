@@ -30,7 +30,8 @@ module.exports = {
                 loader: 'file-loader',
                 query: {
                     name: '[name].[ext]',
-                    outputPath: 'images/'
+                    outputPath: './images/',
+                    publicPath: './.'
                 }
             },
             {
