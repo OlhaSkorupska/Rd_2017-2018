@@ -18,6 +18,15 @@ module.exports = {
     module: {
         rules: [
             {
+                enforce: 'pre',
+                test: /\.js$/,
+                exclude: /(node_modules)/,
+                loader: 'eslint-loader',
+                query: {
+                    presets: ['env']
+                }
+            },
+            {
                 test: /\.js$/,
                 exclude: /(node_modules)/,
                 loader: 'babel-loader',
@@ -35,13 +44,28 @@ module.exports = {
                 }
             },
             {
-                test: /\.(woff(2)?|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                loader: 'url-loader',
-                query: {
-                    limit: '10000',
-                    name: '[name].[ext]',
-                    outputPath: 'fonts/'
-                }
+                test: /\.woff(2)?(\?[a-z0-9#=&.]+)?$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 10000,
+                            minetype: 'application/font-woff',
+                            name: 'fonts/[name].[ext]'
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.(ttf|otf|eot|svg)(\?[a-z0-9#=&.]+)?$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: 'fonts/[name].[ext]'
+                        }
+                    }
+                ]
             },
             {
                 test: /\.scss$/,
@@ -58,6 +82,11 @@ module.exports = {
                 test: /\.(html)$/,
                 exclude: /node_modules/,
                 loader: 'html-loader'
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'eslint-loader'
             }
         ]
     },
