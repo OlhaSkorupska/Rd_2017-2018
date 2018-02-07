@@ -1,0 +1,476 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "",
+        "version": "1.0.0",
+        "title": "Home-work"
+    },
+    "host": "",
+    "basePath": "/api/v1",
+    "tags": [
+        {
+            "name": "user",
+            "description": "All operations with useral info",
+            "externalDocs": {
+                "description": ""
+            }
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/users": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "$ref": "#/definitions/userBody"
+                        },
+                        "name": "body",
+                        "required": false,
+                        "description": "user body",
+                        "in": "body"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful response",
+                        "schema": {
+                            "$ref": "#/definitions/userScheme"
+                        }
+                    },
+                    "400": {
+                        "description": "show field validation error",
+                        "schema": {
+                            "$ref": "#/definitions/BaseException"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{id}": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "type": "string",
+                        "name": "id",
+                        "required": true,
+                        "description": "user Id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful response",
+                        "schema": {
+                            "$ref": "#/definitions/userScheme"
+                        }
+                    },
+                    "400": {
+                        "description": "show field validation error",
+                        "schema": {
+                            "$ref": "#/definitions/BaseException"
+                        }
+                    },
+                    "404": {
+                        "description": "Not found error",
+                        "schema": {
+                            "$ref": "#/definitions/BaseException"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "type": "string",
+                        "name": "id",
+                        "required": true,
+                        "description": "user Id"
+                    },
+                    {
+                        "schema": {
+                            "$ref": "#/definitions/userBody"
+                        },
+                        "name": "body",
+                        "required": false,
+                        "description": "user body",
+                        "in": "body"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful response",
+                        "schema": {
+                            "$ref": "#/definitions/userScheme"
+                        }
+                    },
+                    "400": {
+                        "description": "show field validation error",
+                        "schema": {
+                            "$ref": "#/definitions/BaseException"
+                        }
+                    },
+                    "404": {
+                        "description": "Not found error",
+                        "schema": {
+                            "$ref": "#/definitions/BaseException"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "type": "string",
+                        "name": "id",
+                        "required": true,
+                        "description": "user Id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful response",
+                        "schema": {
+                            "$ref": "#/definitions/Empty"
+                        }
+                    },
+                    "400": {
+                        "description": "show field validation error",
+                        "schema": {
+                            "$ref": "#/definitions/BaseException"
+                        }
+                    },
+                    "404": {
+                        "description": "Not found error",
+                        "schema": {
+                            "$ref": "#/definitions/BaseException"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/companies": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful response",
+                        "schema": {
+                            "$ref": "#/definitions/companiesList"
+                        }
+                    },
+                    "400": {
+                        "description": "show field validation error",
+                        "schema": {
+                            "$ref": "#/definitions/BaseException"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/search": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "",
+                "description": "Search user by table and email",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "company",
+                        "in": "query",
+                        "required": false,
+                        "description": "Name of table (company)",
+                        "default": "OZEAN"
+                    },
+                    {
+                        "type": "string",
+                        "name": "email",
+                        "in": "query",
+                        "required": true,
+                        "description": "Email for searching",
+                        "default": "gloriamendoza@ozean.com"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful response",
+                        "schema": {
+                            "$ref": "#/definitions/userList"
+                        }
+                    },
+                    "400": {
+                        "description": "show field validation error",
+                        "schema": {
+                            "$ref": "#/definitions/BaseException"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/count": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "",
+                "description": "Search user by table and email",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "company",
+                        "in": "query",
+                        "required": false,
+                        "description": "Name of table (company)",
+                        "default": "OZEAN"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful response",
+                        "schema": {
+                            "$ref": "#/definitions/CountScheme"
+                        }
+                    },
+                    "400": {
+                        "description": "show field validation error",
+                        "schema": {
+                            "$ref": "#/definitions/BaseException"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "BaseException": {
+            "properties": {
+                "errors": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "key": {
+                                "type": "integer"
+                            },
+                            "value": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "companiesList": {
+            "required": [
+                "payload"
+            ],
+            "properties": {
+                "payload": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/companiesScheme"
+                    }
+                }
+            }
+        },
+        "companiesScheme": {
+            "required": [
+                "company"
+            ],
+            "properties": {
+                "company": {
+                    "type": "string"
+                }
+            }
+        },
+        "userList": {
+            "required": [
+                "payload"
+            ],
+            "properties": {
+                "payload": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/userScheme"
+                    }
+                }
+            }
+        },
+        "userScheme": {
+            "properties": {
+                "_id": {
+                    "type": "string",
+                    "default": "5a79bdd7405a7541f4d9325c"
+                },
+
+                "balance": {
+                    "type": "string",
+                    "default": "$2,503.67"
+                },
+                "gender": {
+                    "type": "string",
+                    "default": "female"
+                },
+                "company": {
+                    "type": "string",
+                    "default": "OZEAN"
+                },
+                "email": {
+                    "type": "string",
+                    "default": "gloriamendoza@ozean.com"
+                },
+                "phone": {
+                    "type": "boolean",
+                    "default": "+1 (911) 438-3484"
+                },
+                "eyeColor": {
+                    "type": "boolean",
+                    "default": "brown"
+                },
+                "name": {
+                    "type": "string",
+                    "default": "Gloria Mendoza"
+                },
+                "age": {
+                    "type": "string",
+                    "default": "35"
+                }
+            }
+        },
+        "userBody": {
+            "properties": {
+                "_id": {
+                    "type": "string",
+                    "default": "5a79bdd7405a7541f4d9325c"
+                },
+
+                "balance": {
+                    "type": "string",
+                    "default": "$2,503.67"
+                },
+                "gender": {
+                    "type": "string",
+                    "default": "female"
+                },
+                "company": {
+                    "type": "string",
+                    "default": "OZEAN"
+                },
+                "email": {
+                    "type": "string",
+                    "default": "gloriamendoza@ozean.com"
+                },
+                "phone": {
+                    "type": "boolean",
+                    "default": "+1 (911) 438-3484"
+                },
+                "eyeColor": {
+                    "type": "boolean",
+                    "default": "brown"
+                },
+                "name": {
+                    "type": "string",
+                    "default": "Gloria Mendoza"
+                },
+                "age": {
+                    "type": "string",
+                    "default": "35"
+                }
+            }
+        },
+        "CountScheme": {
+            "required": [
+                "payload"
+            ],
+            "properties": {
+                "payload": {
+                    "type": "object",
+                    "required": [
+                        "count"
+                    ],
+                    "properties": {
+                        "count": {
+                            "type": "integer",
+                            "default": 50
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
