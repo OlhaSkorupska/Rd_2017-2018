@@ -72,5 +72,5 @@ const PersonScheme = new Schema({
 });
 
 const Persons = mongoose.model('Person', PersonScheme, 'persons');
-
+console.log('Persons');
 module.exports = Persons;

@@ -9,8 +9,8 @@
     "basePath": "/api/v1",
     "tags": [
         {
-            "name": "person",
-            "description": "All operations with personal info",
+            "name": "user",
+            "description": "All operations with useral info",
             "externalDocs": {
                 "description": ""
             }
@@ -20,10 +20,10 @@
         "http"
     ],
     "paths": {
-        "/persons/locations": {
+        "/users/companies": {
             "get": {
                 "tags": [
-                    "person"
+                    "user"
                 ],
                 "summary": "",
                 "description": "",
@@ -40,7 +40,7 @@
                     "200": {
                         "description": "successful response",
                         "schema": {
-                            "$ref": "#/definitions/LocationsList"
+                            "$ref": "#/definitions/companiesList"
                         }
                     },
                     "400": {
@@ -52,13 +52,13 @@
                 }
             }
         },
-        "/persons/search": {
+        "/users/search": {
             "get": {
                 "tags": [
-                    "person"
+                    "user"
                 ],
                 "summary": "",
-                "description": "Search person by table and email",
+                "description": "Search user by table and email",
                 "consumes": [
                     "application/json"
                 ],
@@ -68,11 +68,11 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "name": "location",
+                        "name": "company",
                         "in": "query",
                         "required": false,
-                        "description": "Name of table (location)",
-                        "default": "Zimbabwe"
+                        "description": "Name of table (company)",
+                        "default": "OZEAN"
                     },
                     {
                         "type": "string",
@@ -80,14 +80,14 @@
                         "in": "query",
                         "required": true,
                         "description": "Email for searching",
-                        "default": "nanniereeves@accupharm.com"
+                        "default": "gloriamendoza@ozean.com"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "successful response",
                         "schema": {
-                            "$ref": "#/definitions/PersonList"
+                            "$ref": "#/definitions/userList"
                         }
                     },
                     "400": {
@@ -99,13 +99,13 @@
                 }
             }
         },
-        "/persons/count": {
+        "/users/count": {
             "get": {
                 "tags": [
-                    "person"
+                    "user"
                 ],
                 "summary": "",
-                "description": "Search person by table and email",
+                "description": "Search user by table and email",
                 "consumes": [
                     "application/json"
                 ],
@@ -115,11 +115,11 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "name": "location",
+                        "name": "company",
                         "in": "query",
                         "required": false,
-                        "description": "Name of table (location)",
-                        "default": "Ashley Madison"
+                        "description": "Name of table (company)",
+                        "default": "OZEAN"
                     }
                 ],
                 "responses": {
@@ -158,7 +158,7 @@
                 }
             }
         },
-        "LocationsList": {
+        "companysList": {
             "required": [
                 "payload"
             ],
@@ -166,22 +166,22 @@
                 "payload": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/LocationScheme"
+                        "$ref": "#/definitions/companyScheme"
                     }
                 }
             }
         },
-        "LocationScheme": {
+        "companyScheme": {
             "required": [
-                "location"
+                "company"
             ],
             "properties": {
-                "location": {
+                "company": {
                     "type": "string"
                 }
             }
         },
-        "PersonList": {
+        "userList": {
             "required": [
                 "payload"
             ],
@@ -189,81 +189,49 @@
                 "payload": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/PersonScheme"
+                        "$ref": "#/definitions/userScheme"
                     }
                 }
             }
         },
-        "PersonScheme": {
+        "userScheme": {
             "properties": {
                 "_id": {
                     "type": "string",
-                    "default": "586ce0639069475256c8b1db"
+                    "default": "5a79bdd7405a7541f4d9325c"
                 },
 
+                "balance": {
+                    "type": "string",
+                    "default": "$2,503.67"
+                },
                 "gender": {
                     "type": "string",
-                    "default": "male"
+                    "default": "female"
                 },
-                "location": {
+                "company": {
                     "type": "string",
-                    "default": "Zimbabwe"
+                    "default": "OZEAN"
                 },
                 "email": {
                     "type": "string",
-                    "default": "nanniereeves@accupharm.com"
+                    "default": "gloriamendoza@ozean.com"
                 },
-                "signedupdate": {
-                    "type": "string",
-                    "default": "2017-01-04T11:45:39.157Z"
-                },
-                "signedup": {
+                "phone": {
                     "type": "boolean",
-                    "default": false
+                    "default": "+1 (911) 438-3484"
                 },
-                "mailed": {
+                "eyeColor": {
                     "type": "boolean",
-                    "default": true
+                    "default": "brown"
                 },
-                "dob": {
+                "name": {
                     "type": "string",
-                    "default": "19/4/2016"
+                    "default": "Gloria Mendoza"
                 },
-                "country": {
+                "age": {
                     "type": "string",
-                    "default": "Antarctica"
-                },
-                "zip": {
-                    "type": "string",
-                    "default": "24332"
-                },
-                "state": {
-                    "type": "string",
-                    "default": "Northern Mariana Islands"
-                },
-                "city": {
-                    "type": "string",
-                    "default": "Smock"
-                },
-                "street2": {
-                    "type": "string",
-                    "default": "Doscher Street"
-                },
-                "street1": {
-                    "type": "string",
-                    "default": "Northern Mariana "
-                },
-                "lastName": {
-                    "type": "string",
-                    "default": "Reeves"
-                },
-                "firstName": {
-                    "type": "string",
-                    "default": "Reeves"
-                },
-                "pnum": {
-                    "type": "string",
-                    "default": " +1 (933) 521-3889"
+                    "default": "35"
                 }
             }
         },
@@ -280,7 +248,7 @@
                     "properties": {
                         "count": {
                             "type": "integer",
-                            "default": 3200000
+                            "default": 20
                         }
                     }
                 }

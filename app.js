@@ -4,7 +4,7 @@ const config = require('./config');
 const logger = require('./server/utils/logger');
 const app = require('./server/api');
 const http = require('http');
-const env = process.env.NODE_ENV || 'dev';
+const env = process.env.NODE_ENV || 'local';
 
 http.createServer(app).listen(config.server.port, serverStartCallback);
 

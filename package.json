@@ -9,18 +9,18 @@
         "init-data": "node commands/initBaseData/index.js"
     },
     "dependencies": {
-        "async": "1.5.2",
-        "body-parser": "1.13.1",
+        "async": "^1.5.2",
+        "body-parser": "^1.13.1",
         "co": "~4.6.0",
-        "cors": "2.8.1",
-        "express": "4.13.0",
-        "express-error-handler": "1.0.1",
+        "cors": "^2.8.1",
+        "express": "^4.13.0",
+        "express-error-handler": "^1.0.1",
         "jsonwebtoken": "5.7.0",
-        "lodash": "4.13.1",
-        "mongoose": "4.7.5",
-        "on-headers": "~1.0.0",
-        "revalidator": "0.3.1",
-        "winston": "1.0.0"
+        "lodash": "^4.13.1",
+        "mongoose": "^4.7.5",
+        "on-headers": "^1.0.1",
+        "revalidator": "^0.3.1",
+        "winston": "^1.0.0"
     },
     "keywords": [],
     "author": "Kotenko Aleksandr <kotenko.cr@gmail.com>",

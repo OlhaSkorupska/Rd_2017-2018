@@ -1,5 +1,6 @@
 'use strict';
 const Persons = require('./persons');
+const Users = require('./users');
 const config = require('./../../../config');
 const mongoose = require('mongoose');
 const logger = require('./../../utils/logger');
@@ -32,5 +33,5 @@ connection.once('open', function () {
 });
 
 module.exports = {
-    Persons
+    Users, Persons
 };

@@ -28,6 +28,29 @@ class Format {
     }
 
     /**
+     * Format Companies into objects
+     * @param data
+     * @returns {*}
+     */
+    static companyList(data) {
+        function rewriteSingleModel(content) {
+            return {
+                company: content
+            }
+        }
+
+        if (data instanceof Array) {
+            return data.map((item) => {
+                return rewriteSingleModel(item)
+            });
+        } else if (data instanceof Object) {
+            return rewriteSingleModel(data)
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * Wrap data into payload object
      * @param data
      * @returns {{payload: *}}

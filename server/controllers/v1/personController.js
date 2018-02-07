@@ -96,7 +96,7 @@ class PersonController extends Controller{
         if(req.query.location) {
             searchParams.location = req.query.location;
         }
-
+        console.log('searchParams' + searchParams);
         db.Persons.find(searchParams)
             .count()
             .exec()
