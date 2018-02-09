@@ -32,7 +32,7 @@ function dynamicCreationElements() {
         window.location.href = './autorization.html';
     });
     nav.appendChild(loginLink);
-        
+
     let divWrapper = createElement('div', 'wrapper', divMainWrapper);
 
     let header = createElement('header', 'header wrapper__header', divWrapper);
@@ -50,7 +50,7 @@ function dynamicCreationElements() {
     let slides = createElement('ul', 'main__slides slides', wrapperSlider);
 
     for (let i = 0; i <= 2; i++) {
-        let li = createElement('li', 'slides__item', slides);
+        createElement('li', 'slides__item', slides);
     }
 
     let list = createElement('ul', 'main__list list', wrapperSlider);
@@ -124,79 +124,83 @@ function round(number, points) {
 }
 
 function currentWeather(weatherData) {
-    let skycons = new Skycons({ 'color': 'white' }); 
-    let icon = document.getElementsByClassName('icon')[0];   
+    let skycons = new Skycons({'color': 'white'});
+    let icon = document.getElementsByClassName('icon')[0];
     switch (weatherData.currently.icon) {
         case 'clear-night':
-            skycons.add(icon, Skycons.CLEAR_NIGHT);            
+            skycons.add(icon, Skycons.CLEAR_NIGHT);
             break;
         case 'clear-day':
-            skycons.add(icon, Skycons.CLEAR_DAY);                    
+            skycons.add(icon, Skycons.CLEAR_DAY);
             break;
         case 'partly-cloudy-day':
             skycons.add(icon, Skycons.PARTLY_CLOUDY_DAY);
             break;
         case 'partly-cloudy-night':
-            skycons.add(icon, Skycons.PARTLY_CLOUDY_NIGHT);            
+            skycons.add(icon, Skycons.PARTLY_CLOUDY_NIGHT);
             break;
         case 'cloudy':
-            skycons.add(icon, Skycons.CLOUDY);            
+            skycons.add(icon, Skycons.CLOUDY);
             break;
         case 'rain':
-            skycons.add(icon, Skycons.RAIN);            
+            skycons.add(icon, Skycons.RAIN);
             break;
         case 'sleet':
-            skycons.add(icon, Skycons.SLEET);            
+            skycons.add(icon, Skycons.SLEET);
             break;
         case 'snow':
-            skycons.add(icon, Skycons.SNOW);            
+            skycons.add(icon, Skycons.SNOW);
             break;
         case 'wind':
-            skycons.add(icon, Skycons.WIND);            
+            skycons.add(icon, Skycons.WIND);
             break;
         case 'fog':
-            skycons.add(icon, Skycons.FOG);            
+            skycons.add(icon, Skycons.FOG);
+            break;
+        default:
             break;
     }
     skycons.play();
 
-    document.getElementsByClassName('temp')[0].innerHTML = round(weatherData.currently.temperature, 0);
+    document.getElementsByClassName('temp')[0].innerHTML =
+        round(weatherData.currently.temperature, 0);
     document.getElementsByClassName('sum')[0].innerHTML = weatherData.currently.summary;
-    document.getElementsByClassName('unit')[0].innerHTML = '&#8451';    
+    document.getElementsByClassName('unit')[0].innerHTML = '&#8451';
 }
 
 function setBackgroud(weatherData) {
-    var tempArr = [32, 21, 0];
-    var curTemp = round(weatherData.currently.temperature, 0);
+    const tempArr = [32, 21, 0];
+    const curTemp = round(weatherData.currently.temperature, 0);
 
-    let widget = document.getElementsByClassName('widget')[0];
-    if (curTemp >= tempArr[0])
-        widget.style.backgroundImage = `url('../images/pogod_spring.jpg')`;
-    else if (curTemp < tempArr[0] && curTemp >= tempArr[1])
-        widget.style.backgroundImage = `url('../images/pogoda_summer.jpg')`;
-    else if (curTemp < tempArr[1] && curTemp >= tempArr[2])
-        widget.style.backgroundImage = `url('../images/pogoda_autumn.png')`;
-    else if (curTemp < tempArr[2])
-        widget.style.backgroundImage = `url('../images/pogoda_winter.jpeg')`;
+    const widget = document.getElementsByClassName('widget')[0];
+    if (curTemp >= tempArr[0]) {
+        widget.style.backgroundImage = 'url(\'../images/pogod_spring.jpg\')';
+    } else if (curTemp < tempArr[0] && curTemp >= tempArr[1]) {
+        widget.style.backgroundImage = 'url(\'../images/pogoda_summer.jpg\')';
+    } else if (curTemp < tempArr[1] && curTemp >= tempArr[2]) {
+        widget.style.backgroundImage = 'url(\'../images/pogoda_autumn.png\')';
+    } else if (curTemp < tempArr[2]) {
+        widget.style.backgroundImage = 'url(\'../images/pogoda_winter.jpeg\')';
+    }
 }
 
 function getWeather(latitude, longitude) {
     const xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (xhttp.readyState == 4 && xhttp.status == 200) {
+    xhttp.onreadystatechange = function () {
+        if (xhttp.readyState === 4 && xhttp.status === 200) {
             try {
                 let data = JSON.parse(xhttp.responseText);
                 currentWeather(data);
                 setBackgroud(data);
-            } catch(err) {
-                console.log(err.message + " in " + xhttp.responseText);
+            } catch (err) {
+                console.log(err.message + ' in ' + xhttp.responseText);
                 return;
             }
         }
     };
-    const url = FORECAST_URL + FORECAST_API + '/' + latitude + ',' + longitude + '?' + 'units=si';
+    const url = `${FORECAST_URL}${FORECAST_API}/${latitude},${longitude}?units=si`;
     xhttp.open('GET', url, true);
-    xhttp.send();    
+    xhttp.send();
 }
 
 function initMap() {
@@ -204,23 +208,22 @@ function initMap() {
     const autocomplete = new google.maps.places.Autocomplete(input);
     const infowindow = new google.maps.InfoWindow();
   
-    autocomplete.addListener('place_changed', function() {
+    autocomplete.addListener('place_changed', function () {
         infowindow.close();
         const place = autocomplete.getPlace();
         if (!place.geometry) {
-            window.alert("No details available for input: '" + place.name + "'");
+            window.alert(`No details available for input: ${place.name}`);
             return;
         }
 
         let address = '';
         if (place.address_components) {
             address = [
-            (place.address_components[0] && place.address_components[0].short_name || ''),
-            (place.address_components[1] && place.address_components[1].short_name || ''),
-            (place.address_components[2] && place.address_components[2].short_name || '')
+                (place.address_components[0] && place.address_components[0].short_name || ''),
+                (place.address_components[1] && place.address_components[1].short_name || ''),
+                (place.address_components[2] && place.address_components[2].short_name || '')
             ].join(' ');
         }
-  
         infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
         let latitude = place.geometry.viewport.f.b;
         let longitude = place.geometry.viewport.b.b;
@@ -232,11 +235,11 @@ function success(position) {
     let latitude = position.coords.latitude;
     let longitude = position.coords.longitude;
     getWeather(latitude, longitude);
-};
+}
 
 dynamicCreationElements();
-let position;    
-if (navigator.geolocation)
-    position = navigator.geolocation.getCurrentPosition(success);
-else
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(success);
+} else {
     alert('Geolocation not supported');
+}
