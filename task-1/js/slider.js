@@ -97,8 +97,6 @@ class Slider {
     }
 }
 
-window.onload = function () {
-    let slider = new Slider(document.querySelector('.main__wrapper-slider'),
-        {isReverse: false});
-    slider.start();
-};
+let slider = new Slider(document.querySelector('.main__wrapper-slider'),
+    {isReverse: false});
+slider.start();

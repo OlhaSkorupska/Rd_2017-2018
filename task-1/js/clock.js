@@ -55,4 +55,7 @@ class Clock {
     }
 }
 
-let clock = new Clock();
+
+window.onload = function() {
+    let clock = new Clock();
+};

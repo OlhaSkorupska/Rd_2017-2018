@@ -29,6 +29,5 @@ function getCookie(cname) {
 let user = getCookie('user');
 let storage = localStorage.getItem(user);
 let objectStorage = JSON.parse(storage);
-let birthStorage = objectStorage.birth;
+let birthStorage = objectStorage.birth;    
 getCurrentAge(birthStorage);
-

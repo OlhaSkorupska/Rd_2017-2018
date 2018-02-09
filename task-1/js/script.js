@@ -24,6 +24,15 @@ function dynamicCreationElements() {
     linkNavigation.appendChild(textLink);
     nav.appendChild(linkNavigation);
 
+    let loginLink = document.createElement('div');
+
+    loginLink.innerHTML = '<button>Log Out</button>';
+    loginLink.addEventListener('click', function () {
+        document.cookie = `user=''; path=/; expires=${new Date(0)};`;
+        window.location.href = './autorization.html';
+    });
+    nav.appendChild(loginLink);
+        
     let divWrapper = createElement('div', 'wrapper', divMainWrapper);
 
     let header = createElement('header', 'header wrapper__header', divWrapper);
@@ -107,88 +116,72 @@ function dynamicCreationElements() {
     section.appendChild(mainBirthday);
 }
 
-dynamicCreationElements();
+let FORECAST_URL = 'https://api.darksky.net/forecast/';
+let FORECAST_API = '51e1643a6cf0eeef3617129ad14d2516';
 
-var FORECAST_URL = 'https://api.darksky.net/forecast/';
-var FORECAST_API = '51e1643a6cf0eeef3617129ad14d2516';
-var skycons = new Skycons({ "color": "white" });
-var fullAddress = '';
-var imgArr = [
-    'url("http://i.imgur.com/DKqVx1Q.jpg")',
-    'url("http://i.imgur.com/5MOIkk6.jpg")',
-    'url("http://i.imgur.com/voCuONs.jpg")',
-    'url("http://i.imgur.com/VNyUztK.jpg")',
-];
-
-// round the temperature
 function round(number, points) {
     return number.toFixed(points);
 }
 
 function currentWeather(weatherData) {
-    // $('#fullAddress').text(fullAddress);
-    /* switch (weatherData.currently.icon) {
+    let skycons = new Skycons({ 'color': 'white' }); 
+    let icon = document.getElementsByClassName('icon')[0];   
+    switch (weatherData.currently.icon) {
         case 'clear-night':
-            skycons.add(document.getElementById("icon"), Skycons.CLEAR_NIGHT);            
+            skycons.add(icon, Skycons.CLEAR_NIGHT);            
             break;
         case 'clear-day':
-            skycons.add(document.getElementById("icon"), Skycons.CLEAR_DAY);                    
+            skycons.add(icon, Skycons.CLEAR_DAY);                    
             break;
         case 'partly-cloudy-day':
-            skycons.add(document.getElementById("icon"), Skycons.PARTLY_CLOUDY_DAY);
+            skycons.add(icon, Skycons.PARTLY_CLOUDY_DAY);
             break;
         case 'partly-cloudy-night':
-            skycons.setAttribute("icon", Skycons.PARTLY_CLOUDY_NIGHT);
+            skycons.add(icon, Skycons.PARTLY_CLOUDY_NIGHT);            
             break;
         case 'cloudy':
-            skycons.setAttribute("icon", Skycons.CLOUDY);
+            skycons.add(icon, Skycons.CLOUDY);            
             break;
         case 'rain':
-            skycons.setAttribute("icon", Skycons.RAIN);
+            skycons.add(icon, Skycons.RAIN);            
             break;
         case 'sleet':
-            skycons.setAttribute("icon", Skycons.SLEET);
+            skycons.add(icon, Skycons.SLEET);            
             break;
         case 'snow':
-            skycons.setAttribute("icon", Skycons.SNOW);
+            skycons.add(icon, Skycons.SNOW);            
             break;
         case 'wind':
-            skycons.setAttribute("icon", Skycons.WIND);
+            skycons.add(icon, Skycons.WIND);            
             break;
         case 'fog':
-            skycons.setAttribute("icon", Skycons.FOG);
+            skycons.add(icon, Skycons.FOG);            
             break;
     }
-    skycons.play(); */
+    skycons.play();
 
-    document.getElementById('temp').innerHTML = round(weatherData.currently.temperature, 0);
-
-    document.getElementById('sum').innerHTML = weatherData.currently.summary;
-    document.getElementById('unit').innerHTML = '&#8451';    
+    document.getElementsByClassName('temp')[0].innerHTML = round(weatherData.currently.temperature, 0);
+    document.getElementsByClassName('sum')[0].innerHTML = weatherData.currently.summary;
+    document.getElementsByClassName('unit')[0].innerHTML = '&#8451';    
 }
 
-// set background based on temperature
 function setBackgroud(weatherData) {
-    var tempArr;
+    var tempArr = [32, 21, 0];
     var curTemp = round(weatherData.currently.temperature, 0);
 
-    if (weatherData.flags.units == 'si')
-        tempArr = [32, 21, 0];
-    else
-        tempArr = [90, 70, 32];
-    let circle = document.getElementsByClassName('circle')[0];
+    let widget = document.getElementsByClassName('widget')[0];
     if (curTemp >= tempArr[0])
-        circle.style.backgroundImage = `url('../images/pogod_spring.jpg')`;
+        widget.style.backgroundImage = `url('../images/pogod_spring.jpg')`;
     else if (curTemp < tempArr[0] && curTemp >= tempArr[1])
-        circle.style.backgroundImage = `url('../images/pogoda_summer.jpg')`;
+        widget.style.backgroundImage = `url('../images/pogoda_summer.jpg')`;
     else if (curTemp < tempArr[1] && curTemp >= tempArr[2])
-        circle.style.backgroundImage = `url('../images/pogoda_autumn.png')`;
+        widget.style.backgroundImage = `url('../images/pogoda_autumn.png')`;
     else if (curTemp < tempArr[2])
-        circle.style.backgroundImage = `url('../images/pogoda_winter.jpeg')`;
+        widget.style.backgroundImage = `url('../images/pogoda_winter.jpeg')`;
 }
 
 function getWeather(latitude, longitude) {
-    var xhttp = new XMLHttpRequest();
+    const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
             try {
@@ -208,9 +201,7 @@ function getWeather(latitude, longitude) {
 
 function initMap() {
     const input = document.getElementById('pac-input');
-  
     const autocomplete = new google.maps.places.Autocomplete(input);
-  
     const infowindow = new google.maps.InfoWindow();
   
     autocomplete.addListener('place_changed', function() {
@@ -220,7 +211,7 @@ function initMap() {
             window.alert("No details available for input: '" + place.name + "'");
             return;
         }
-  
+
         let address = '';
         if (place.address_components) {
             address = [
@@ -237,3 +228,15 @@ function initMap() {
     });
 }
 
+function success(position) {
+    let latitude = position.coords.latitude;
+    let longitude = position.coords.longitude;
+    getWeather(latitude, longitude);
+};
+
+dynamicCreationElements();
+let position;    
+if (navigator.geolocation)
+    position = navigator.geolocation.getCurrentPosition(success);
+else
+    alert('Geolocation not supported');
