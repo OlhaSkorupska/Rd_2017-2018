@@ -1,0 +1,55 @@
+html, body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;    
+}
+
+.users {
+    background: $lightGoldenrodYellow;
+    border: 5px solid $lightCoral;
+    width: auto; 
+    font-size: 20px;
+    color: $black;   
+
+    &__cell {
+        padding: 5px;
+        border: 1px solid $gray;
+    }
+
+    &__edit {
+        background-image: url('../images/edit1.png');
+        width: 33px;
+        height: 33px;
+        background-size: cover;
+    }
+
+    &__editable {
+        background-image: url('../images/save1.png');
+        width: 33px;
+        height: 33px;
+        background-size: cover;
+    }    
+}
+.cell-edit {
+    background-color: $white;
+    font-style: italic;
+    width: 150px;
+}
+
+.input {
+    margin: 0;
+    padding: 0;
+    width: 100%;   
+}
+
+.wrapper {
+    margin-top: 20px;
+}

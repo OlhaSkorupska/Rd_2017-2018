@@ -8,28 +8,22 @@
     <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 <body>
-    <div class="main-wrapper">
-        <nav class="navigation main-wrapper__navigation">
-            Navigation
-        </nav>
-        <div class="wrapper">        
-            <header class="header wrapper__header">
-                Header
-            </header>
-            <main class="main">
-                <section class="main__content">
-                    <ul class="main__slides slides">
-                        <li class="slides__item slides__item--showing">Slide 1</li>
-                        <li class="slides__item">Slide 2</li>
-                        <li class="slides__item">Slide 3</li>
-                    </ul>                    
-                </section>
-            </main>
-            <footer class="footer wrapper__footer">
-                Footer
-            </footer>
-        </div>
+    <div class="search-map">
+        <input id="pac-input" class="controls" type="text" placeholder="Enter a location">
+        <div class="widget">
+            <canvas class="icon" width="64" height="64"></canvas><br>
+            <span class="temp">--</span>
+            <span class="unit">-</span><br>
+            <span class="sum">--</span>
+        </div>        
     </div>
-    <script src="js/script.js"></script>      
+    <script src="js/script.js"></script>
+    <script src="js/slider.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1NerDXeTldY1Yn8aXl6K3-x6-UxNV2Go&libraries=places&callback=initMap"
+        async defer></script>     
+    <script src="js/watch.js"></script> 
+    <script src="js/clock.js"></script>              
+    <script src="js/skycons.js"></script>       
+    <script src="js/age.js"></script>     
 </body>
 </html>
