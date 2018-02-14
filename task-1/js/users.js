@@ -44,7 +44,7 @@ function saveCell(id) {
             $(elem).empty().append(buffer);
         }
     });
-    main.removeClass().addClass('users__edit');    
+    $('.users__editable').addClass('users__edit').removeClass('users__editable');    
 }
 
 function error() {
@@ -108,7 +108,7 @@ function handlerCell(e) {
         deleteUser($('.delete-now')[0].getAttribute('id'))
             .then(clear)
             .then(getUsers)
-            .catch(error);
+            .catch(error);            
     }
 }
 
