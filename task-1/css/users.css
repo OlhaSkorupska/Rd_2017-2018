@@ -422,17 +422,20 @@ body {
   color: #000; }
   .users__cell {
     padding: 5px;
-    border: 1px solid #8B8989; }
+    border: 1px solid #8B8989;
+    width: 150px; }
   .users__edit {
     background-image: url("../images/edit1.png");
-    width: 33px;
-    height: 33px;
-    background-size: cover; }
+    width: 35px;
+    background-size: contain; }
+  .users__delete {
+    background-image: url("../images/delete1.png");
+    width: 35px;
+    background-size: contain; }
   .users__editable {
     background-image: url("../images/save1.png");
-    width: 33px;
-    height: 33px;
-    background-size: cover; }
+    width: 35px;
+    background-size: contain; }
 
 .cell-edit {
   background-color: #fff;
@@ -440,9 +443,8 @@ body {
   width: 150px; }
 
 .input {
-  margin: 0;
-  padding: 0;
-  width: 100%; }
+  width: 97%;
+  height: 19px; }
 
 .wrapper {
   margin-top: 20px; }

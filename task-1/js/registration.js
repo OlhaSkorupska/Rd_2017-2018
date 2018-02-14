@@ -125,7 +125,7 @@ function nameBlur() {
     }
     return localStorage.setItem('name', name.value);
 }
-
+ 
 function elementFocus(element) {
     element.classList.remove('error');
     element.nextSibling.remove();
@@ -151,7 +151,7 @@ let focusMethods = {
     },
     name: function () {
         elementFocus(name);
-    }
+    }    
 };
 
 function handlerFocus(event) {
@@ -178,7 +178,7 @@ let blurMethods = {
     },
     name: function () {
         nameBlur();
-    }
+    } 
 };
 
 function handler(event) {
@@ -186,6 +186,34 @@ function handler(event) {
     let blurMethod = blurMethods[currentInput];
     blurMethod();
 }
+
+function success() {
+    let date = new Date();
+    date.setFullYear(date.getFullYear() + 1);
+    document.cookie = `user=${email.value}; path=/; expires=${date.toUTCString()};`;
+    for (let key in obj) {
+        if (key) {
+            localStorage.removeItem(key);
+        }
+    }
+    window.location.href = 'profile.html';
+}
+
+function error() {
+    alert('Your request was not sent');
+}
+
+let saveUser = (data) => {
+    $.ajax({
+        type: 'POST',
+        data: data,
+        url: 'http://localhost:4010/api/v1/users/',
+        // contentType: 'multipart/form-data',        
+        success: success,
+        error: error,
+        dataType: 'json'
+    });  
+};
 
 function handlerSubmit() {
     let result = true;
@@ -215,20 +243,28 @@ function handlerSubmit() {
             + 'letters of the Latin alphabet');
         result = false;
     }
+ 
     if (result) {
-        localStorage.setItem(email.value,
+        /* localStorage.setItem(email.value,
             JSON.stringify({name: name.value, phone: phone.value,
-                pass: pass.value, birth: birth.value}));
-        let date = new Date();
-        date.setFullYear(date.getFullYear() + 1);
-        document.cookie = `user=${email.value}; path=/; expires=${date.toUTCString()};`;
-        for (let key in obj) {
-            if (key) {
-                localStorage.removeItem(key);
-            }
-        }
-        window.location.href = 'profile.html';
+                pass: pass.value, birth: birth.value, picture: picture.value, language: language.value})); */
+        let data = {email: email.value, name: name.value, phone: phone.value,
+            pass: pass.value, birth: birth.value};
+        saveUser(data);
     }
+    // var data = new FormData();
+    // data.append(email, email.value);
+    // data.append(name, name.value);
+    // data.append(phone, phone.value);
+    // data.append(pass, pass.value);
+    // data.append(language, language.value);
+	// // заполняем объект данных файлами в подходящем для отправки формате
+	// $.each(files, function( key, value ){
+	// 	data.append(key, value);
+    // });
+    // let data = {email: email.value, name: name.value, phone: phone.value,
+    //     pass: pass.value, birth: birth.value, picture: files[0], language: language.value};    
+    // saveUser(data);        
 }
 
 form.addEventListener('blur', handler, true);

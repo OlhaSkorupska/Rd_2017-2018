@@ -27,11 +27,12 @@ class UserValidator extends Base {
     }
 
     static userEdit(req, res, next) {
+        console.log(req.body);
         return validator({
             properties: {
                 email: {
                     type: "string",
-                    required: true,
+                    required: false,
                     allowEmpty: false,
                     format: "email",
                     minLength: 5,

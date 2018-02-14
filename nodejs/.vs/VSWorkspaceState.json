@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\seeds",
+    "\\server",
+    "\\server\\routes",
+    "\\server\\utils",
+    "\\server\\validators",
+    "\\server\\validators\\v1"
+  ],
+  "PreviewInSolutionExplorer": false
+}

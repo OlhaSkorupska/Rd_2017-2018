@@ -10,7 +10,7 @@
 <body>
     <div class="wrapper">
         <div class="registration-wrapper">
-            <form class="registration" name="registration">
+            <form id="registration" class="registration" name="registration">
                 <div class="registration__title">
                     <h1>Registration</h1>
                 </div>                
@@ -37,11 +37,13 @@
                 <div class="registration__control-group">
                     <input type="text" class="registration__field" value="" placeholder="name" name="name" id="name">
                     <label class="registration__label" for="name"></label>
-                </div>                                             
+                </div>                                                            
                 <input class="registration__submit" value="Register" name="submit" href="#"></input>
             </form>
+            <img id="avatar">
         </div>
     </div>    
+    <script src="js/jquery-3.3.1.min.js"></script>    
     <script src="js/registration.js"></script>   
 </body>
 </html>

@@ -190,7 +190,7 @@ class UserController extends Controller{
     _editUser(req, res, next) {
         const newUser = Object.assign(res.locals.user, req.body);
         newUser.save((err, user) => {
-            if(err) {
+            if (err) {
                 return next(err);
             }
 
@@ -211,8 +211,7 @@ class UserController extends Controller{
             if(err) {
                 return next(err);
             }
-
-            res.status(200).send()
+            res.status(200).send();
         });
     }
 }

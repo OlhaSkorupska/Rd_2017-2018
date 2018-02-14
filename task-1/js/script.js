@@ -193,7 +193,7 @@ function setBackgroud(weatherData) {
 }
 
 function getWeather(latitude, longitude) {
-    const xhttp = new XMLHttpRequest();
+    let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (xhttp.readyState === 4 && xhttp.status === 200) {
             try {
@@ -208,6 +208,7 @@ function getWeather(latitude, longitude) {
     };
     const url = `${FORECAST_URL}${FORECAST_API}/${latitude},${longitude}?units=si`;
     xhttp.open('GET', url, true);
+    xhttp.setRequestHeader('Access-Control-Allow-Origin', '*');    
     xhttp.send();
 }
 

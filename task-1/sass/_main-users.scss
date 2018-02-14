@@ -22,20 +22,25 @@ body {
     &__cell {
         padding: 5px;
         border: 1px solid $gray;
+        width: 150px;        
     }
 
     &__edit {
         background-image: url('../images/edit1.png');
-        width: 33px;
-        height: 33px;
-        background-size: cover;
+        width: 35px;
+        background-size: contain;
     }
+
+    &__delete {
+        background-image: url('../images/delete1.png');
+        width: 35px;
+        background-size: contain;
+    }    
 
     &__editable {
         background-image: url('../images/save1.png');
-        width: 33px;
-        height: 33px;
-        background-size: cover;
+        width: 35px;
+        background-size: contain;
     }    
 }
 .cell-edit {
@@ -45,9 +50,8 @@ body {
 }
 
 .input {
-    margin: 0;
-    padding: 0;
-    width: 100%;   
+    width: 97%;
+    height: 19px;
 }
 
 .wrapper {
