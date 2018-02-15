@@ -258,7 +258,11 @@ function getTime() {
 }
 
 let time = 0;
-let timer;
+let interval;
+
+function error() {
+    window.location.href = 'autorization.html';
+}
 
 function showModelWindow() {
     time = time + 1;
@@ -266,12 +270,29 @@ function showModelWindow() {
         $('.main-wrapper').modalWindow();
         // $('.main-wrapper').modalWindow({height: '380', width: '500',
         //    title: 'ajhsgdjhag', top: '50%', left: '10%'});
+        clearInterval(interval);
     }
 }
+function error() {
+    window.location.href = 'autorization.html';
+}
+
+let getUser = (email) => {
+    $.ajax({
+        type: 'GET',
+        url: 'http://localhost:4010/api/v1/users/search?email=' + email,
+        error: error,
+        dataType: 'json'
+    });
+};
 
 function ready() {
+    let currentUser = getCookie('user');
+    localStorage.getItem(currentUser);
+    getUser(currentUser);
+
     dynamicCreationElements();
-    setInterval(showModelWindow, 5000);
+    interval = setInterval(showModelWindow, 5000);
     // 30000
 
     $(this).mousemove(function (e) {

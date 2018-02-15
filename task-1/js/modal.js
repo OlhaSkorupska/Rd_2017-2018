@@ -40,7 +40,11 @@
 			let block_page = $('<div class="modal__block"></div>');	
 			$(block_page).appendTo('body');
 		}
-		 		
+		
+		function error() {
+			window.location.href = 'autorization.html';
+		}
+		 
 		function addModalWindow(){
             let window = $('<div class="modal__window"><a href="#" class="modal__close"></a><div class="modal__inner"><h2>' 
                 + options.title + '</h2></div></div>');
@@ -49,9 +53,8 @@
 			$('.modal__close').click(function(){
 			    $(this).parent().fadeOut().remove();
                 $('.modal__block').fadeOut().remove();
-                localStorage.setItem('timeSession', new Date().getTime()); 
-                document.cookie = `user=''; path=/; expires=${new Date(0)};`;
-                window.location.href = './autorization.html';                   			 
+				document.cookie = `user=''; path=/; expires=${new Date(0)};`;
+				error();
 			});
 		}
 		return init();
