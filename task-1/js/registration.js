@@ -5,13 +5,16 @@ let pass = form.elements.pass;
 let confirm = form.elements.confirm;
 let birth = form.elements.birth;
 let name = form.elements.name;
+let picture = form.elements.picture;
+let language = form.elements.language;
 let submit = form.elements.submit;
-let obj = {email, phone, pass, confirm, birth, name};
+let obj = {email, phone, pass, confirm, birth, name, picture, language};
 
 let regexpEmail = /^[0-9a-z-.]+@[0-9a-z-]{1,}\.[a-z]{2,}$/i;
 let regexpPhone = /^\([0-9]{2}\)[0-9]{3}-[0-9]{2}-[0-9]{2}/;
 let regexpPass = /^(?=.*[0-9])(?=.*[a-zA-Z])[\da-zA-Z]{6,20}$/i;
 let regexpName = /[A-z].*$/;
+let regexpHttp = /^(http|https):\/\/.*$/;
 
 function insertAfter(elem, refElem) {
     let parent = refElem.parentNode;
@@ -126,6 +129,27 @@ function nameBlur() {
     return localStorage.setItem('name', name.value);
 }
  
+function pictureBlur() {
+    if (picture.value === '') {
+        return false;
+    }
+    if (!(picture.value.match(regexpHttp))) {
+        formationErrorMessage(picture, 'The picture should begin with http:// or https:// ');
+    }
+    return localStorage.setItem('picture', picture.value);
+}
+
+function languageBlur() {
+    if (language.value === '') {
+        return false;
+    }
+    if (!(language.value.match(regexpName))) {
+        formationErrorMessage(name, 'The name should contain only the '
+            + 'letters of the Latin alphabet');
+    }
+    return localStorage.setItem('language', language.value);
+}
+
 function elementFocus(element) {
     element.classList.remove('error');
     element.nextSibling.remove();
@@ -151,6 +175,12 @@ let focusMethods = {
     },
     name: function () {
         elementFocus(name);
+    },
+    picture: function () {
+        elementFocus(picture);
+    },
+    language: function () {
+        elementFocus(language);
     }    
 };
 
@@ -178,7 +208,13 @@ let blurMethods = {
     },
     name: function () {
         nameBlur();
-    } 
+    },
+    picture: function () {
+        pictureBlur();
+    },
+    language: function () {
+        languageBlur();
+    }  
 };
 
 function handler(event) {
@@ -208,11 +244,10 @@ let saveUser = (data) => {
         type: 'POST',
         data: data,
         url: 'http://localhost:4010/api/v1/users/',
-        // contentType: 'multipart/form-data',        
         success: success,
         error: error,
         dataType: 'json'
-    });  
+    });
 };
 
 function handlerSubmit() {
@@ -243,28 +278,21 @@ function handlerSubmit() {
             + 'letters of the Latin alphabet');
         result = false;
     }
- 
+    if (!(picture.value.match(regexpHttp))) {
+        formationErrorMessage(picture, 'The picture should begin with http:// or https:// ');
+        result = false;
+    }
+    if (!(language.value.match(regexpName))) {
+        formationErrorMessage(language, 'The language should contain only the '
+            + 'letters of the Latin alphabet');
+        result = false;
+    }
+
     if (result) {
-        /* localStorage.setItem(email.value,
-            JSON.stringify({name: name.value, phone: phone.value,
-                pass: pass.value, birth: birth.value, picture: picture.value, language: language.value})); */
         let data = {email: email.value, name: name.value, phone: phone.value,
-            pass: pass.value, birth: birth.value};
+            pass: pass.value, birth: birth.value, picture: picture.value, language: language.value};
         saveUser(data);
     }
-    // var data = new FormData();
-    // data.append(email, email.value);
-    // data.append(name, name.value);
-    // data.append(phone, phone.value);
-    // data.append(pass, pass.value);
-    // data.append(language, language.value);
-	// // заполняем объект данных файлами в подходящем для отправки формате
-	// $.each(files, function( key, value ){
-	// 	data.append(key, value);
-    // });
-    // let data = {email: email.value, name: name.value, phone: phone.value,
-    //     pass: pass.value, birth: birth.value, picture: files[0], language: language.value};    
-    // saveUser(data);        
 }
 
 form.addEventListener('blur', handler, true);
@@ -279,23 +307,10 @@ function init() {
     confirm.value = localStorage.getItem('confirm') || '';
     birth.value = localStorage.getItem('birth') || '';
     name.value = localStorage.getItem('name') || '';
+    picture.value = localStorage.getItem('picture') || '';
+    language.value = localStorage.getItem('language') || '';
 }
 
 window.onload = function () {
     init();
 };
-
-/* 
-[
-  '{{repeat(20, 20)}}',
-  {
-    email: '{{email()}}',
-    phone: '{{phone()}}',
-    pass: '{{pass()}}',    
-    birth: '{{birth()}}',
-    name: '{{firstName()}} {{surname()}}',
-    picture: 'http://placehold.it/32x32',
-    language: '{{language()}}'
-  }
-]
-*/

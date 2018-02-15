@@ -26,16 +26,14 @@ function dataToForm(data) {
     let birth = document.getElementById('birth');
     birth.innerHTML = data.birth;
 
-    let picture = document.getElementById('picture');
-    picture.innerHTML = data.picture;
-
     let language = document.getElementById('language');
-    language.innerHTML = data.language;    
+    language.innerHTML = data.language;   
+
+    document.getElementsByTagName('img')[0].setAttribute('src', data.picture);  
 }
 
-function error(email) {
-    alert('error');
-    window.location.href = 'autorization.html';    
+function error() {
+    window.location.href = 'autorization.html';
 }
 
 let getUser = (email) => {
@@ -52,27 +50,6 @@ let getUser = (email) => {
 
 window.onload = function () {
     let currentUser = getCookie('user');
-    let currentStorage = localStorage.getItem(currentUser);
+    localStorage.getItem(currentUser);
     getUser(currentUser);
-    /* if (currentStorage) {
-        let objectStorage = JSON.parse(currentStorage);
-
-        let name = document.getElementById('name');
-        let nameStorage = objectStorage.name;
-        name.innerHTML = nameStorage;
-
-        let email = document.getElementById('email');
-        let emailStorage = currentUser;
-        email.innerHTML = emailStorage;
-
-        let phone = document.getElementById('phone');
-        let phoneStorage = objectStorage.phone;
-        phone.innerHTML = phoneStorage;
-
-        let birth = document.getElementById('birth');
-        let birthStorage = objectStorage.birth;
-        birth.innerHTML = birthStorage;
-    } else {
-        window.location.href = 'index.html';
-    } */
 };

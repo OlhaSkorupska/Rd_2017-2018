@@ -41,6 +41,14 @@ function dynamicCreationElements() {
     userNavigation.appendChild(usersLink);
     nav.appendChild(userNavigation);
 
+    let profileNavigation = document.createElement('a');
+    profileNavigation.classList.add('navigation__link');
+    profileNavigation.setAttribute('href', 'profile.html');
+
+    let profileLink = document.createTextNode('My Profile');
+    profileNavigation.appendChild(profileLink);
+    nav.appendChild(profileNavigation);
+
     let divWrapper = createElement('div', 'wrapper', divMainWrapper);
 
     let header = createElement('header', 'header wrapper__header', divWrapper);
@@ -208,7 +216,6 @@ function getWeather(latitude, longitude) {
     };
     const url = `${FORECAST_URL}${FORECAST_API}/${latitude},${longitude}?units=si`;
     xhttp.open('GET', url, true);
-    xhttp.setRequestHeader('Access-Control-Allow-Origin', '*');    
     xhttp.send();
 }
 
@@ -246,9 +253,39 @@ function success(position) {
     getWeather(latitude, longitude);
 }
 
-dynamicCreationElements();
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(success);
-} else {
-    alert('Geolocation not supported');
+function getTime() {
+    return new Date().getTime();
 }
+
+let time = 0;
+let timer;
+
+function showModelWindow() {
+    time = time + 1;
+    if (time > 1) {
+        $('.main-wrapper').modalWindow();
+        // $('.main-wrapper').modalWindow({height: '380', width: '500',
+        //    title: 'ajhsgdjhag', top: '50%', left: '10%'});
+    }
+}
+
+function ready() {
+    dynamicCreationElements();
+    setInterval(showModelWindow, 5000);
+    // 30000
+
+    $(this).mousemove(function (e) {
+        time = 0;
+    });
+    $(this).keypress(function (e) {
+        time = 0;
+    });
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(success);
+    } else {
+        alert('Geolocation not supported');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', ready);

@@ -431,5 +431,8 @@ body {
   .profile__value {
     text-align: left;
     margin: 10px; }
+  .profile__image {
+    width: 200px;
+    height: auto; }
 
 /*# sourceMappingURL=profile.css.map */

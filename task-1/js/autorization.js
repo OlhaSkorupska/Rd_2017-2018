@@ -82,6 +82,34 @@ function handler(event) {
     blurMethod();
 }
 
+function success() {
+    let date = new Date();
+    date.setFullYear(date.getFullYear() + 1);
+    document.cookie = `user=${email.value}; path=/; expires=${date.toUTCString()};`;
+    window.location.href = 'index.html';
+}
+
+function error() {
+    formationErrorMessage(submit, 'There is no such user in the system');
+}
+
+let getUser = (data) => {
+    $.ajax({
+        type: 'GET',
+        data: data,
+        url: 'http://localhost:4010/api/v1/users/',
+        success: success,
+        error: error,
+        dataType: 'json'
+    });
+};
+function login() {
+    let data = {};
+    data.email = email.value;
+    data.pass = pass.value;
+    getUser(data);  
+}
+
 function handlerSubmit() {
     let currentStorage = JSON.parse(localStorage.getItem(email.value));
     if (currentStorage && pass.value === currentStorage.pass) {
@@ -96,4 +124,4 @@ function handlerSubmit() {
 
 form.addEventListener('blur', handler, true);
 form.addEventListener('focus', handlerFocus, true);
-submit.addEventListener('click', handlerSubmit, true);
+submit.addEventListener('click', login, true);
