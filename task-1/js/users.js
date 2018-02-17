@@ -70,8 +70,8 @@ let updateUser = (data, id) => {
         type: 'patch',
         url: 'http://localhost:4010/api/v1/users/' + id,
         data: JSON.stringify(data),
-        contentType: "application/json; charset=utf-8",
-        traditional: true,
+        // contentType: "application/json; charset=utf-8",
+        // traditional: true,
         success: function (data) {
             alert('success');
         },
