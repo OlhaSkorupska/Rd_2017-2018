@@ -4,6 +4,21 @@ function createElement(tag, classOfTag, parent, child) {
     return parent.insertBefore(element, child) || parent.insertBefore(element);
 }
 
+function getCookie(cname) {
+    let name = cname + '=';
+    let ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) === 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return '';
+}
+
 function createTextNode(text, parent) {
     let textElement = document.createTextNode(text);
     parent.appendChild(textElement);
@@ -60,14 +75,16 @@ function dynamicCreationElements() {
     createTextNode('Footer', footer);
 
     let section = createElement('section', 'main__content', main);
-    
+
     // wrapper for mediator
     let wrapperMediator = createElement('div', 'main__wrapper-mediator', section);
     let wrapperListImg = createElement('div', 'main__wrapper-listImg', wrapperMediator);
-    let languagesHorizontal = createElement('ul', 'main__wrapper-mediator languages-horizontal', wrapperListImg);
+    let languagesHorizontal = createElement('ul', 'main__wrapper-mediator languages-horizontal', 
+        wrapperListImg);
     let dashBoard = createElement('img', 'main__mediator', wrapperListImg);
     dashBoard.setAttribute('src', '../images/profile.jpg');
-    let languagesVertical = createElement('ul', 'main__wrapper-mediator languages-vertical', wrapperMediator);   
+    let languagesVertical = createElement('ul', 'main__wrapper-mediator languages-vertical', wrapperMediator);
+
     /* let wrapperSlider = createElement('div', 'main__wrapper-slider', section);
 
     let slides = createElement('ul', 'main__slides slides', wrapperSlider);
@@ -129,10 +146,10 @@ function dynamicCreationElements() {
     fragment.appendChild(headerClock);
     header.insertBefore(fragment, header.firstChild);
 
-    let wetherWrapper = document.createDocumentFragment();   
-    let map = document.getElementsByClassName('search-map'); 
+    let wetherWrapper = document.createDocumentFragment();
+    let map = document.getElementsByClassName('search-map');
     wetherWrapper.appendChild(map[0]);
-    header.insertBefore(wetherWrapper, header.firstChild);    
+    header.insertBefore(wetherWrapper, header.firstChild);
 
     let mainBirthday = document.createElement('div');
     mainBirthday.className = 'main__birthday';
@@ -141,13 +158,14 @@ function dynamicCreationElements() {
 
 let FORECAST_URL = 'https://api.darksky.net/forecast/';
 let FORECAST_API = '51e1643a6cf0eeef3617129ad14d2516';
+var PROXY = 'https://cors-anywhere.herokuapp.com/';
 
 function round(number, points) {
     return number.toFixed(points);
 }
 
 function currentWeather(weatherData) {
-    let skycons = new Skycons({'color': 'white'});
+    let skycons = new Skycons({color: 'white'});
     let icon = document.getElementsByClassName('icon')[0];
     switch (weatherData.currently.icon) {
         case 'clear-night':
@@ -222,7 +240,10 @@ function getWeather(latitude, longitude) {
         }
     };
     const url = `${FORECAST_URL}${FORECAST_API}/${latitude},${longitude}?units=si`;
-    xhttp.open('GET', url, true);
+    xhttp.open('GET', PROXY + url, true);
+    xhttp.setRequestHeader('Access-Control-Allow-Headers', '*');
+    xhttp.setRequestHeader('Content-type', 'application/ecmascript');
+    xhttp.setRequestHeader('Access-Control-Allow-Origin', '*');    
     xhttp.send();
 }
 
@@ -264,9 +285,6 @@ function getTime() {
     return new Date().getTime();
 }
 
-let time = 0;
-let interval;
-
 function error() {
     window.location.href = 'autorization.html';
 }
@@ -293,39 +311,40 @@ let getUser = (email) => {
     });
 };
 
-let showList = function(data, className) {
+let showList = function (data, className) {
     $.each(data, function (index, value) {
-        let elem = $(`<li class="${className}__item ${className}__${value.language}">${value.language}</li>`);
-        $(`.${className}`).append(elem);        
+        let elem = $(`<li class="${className}__item 
+            ${className}__${value.language}">${value.language}</li>`);
+        $(`.${className}`).append(elem);
     });
-}
+};
 
 function generateSecondList(data, language, className) {
     $.each(data, function (index, value) {
         let elem = $(`<li class="names-item">${value.name}</li>`);
-        $(`.${className}__${language}`).append(elem);        
+        $(`.${className}__${language}`).append(elem);
     });
 }
 
-let showSecondaryLists = function(data, language) {
+let showSecondaryLists = function (data, language) {
     generateSecondList(data, language, 'languages-horizontal');
-    generateSecondList(data, language, 'languages-vertical');    
+    generateSecondList(data, language, 'languages-vertical');
 }
 
 function showImage(url) {
-    document.getElementsByTagName('img')[0].setAttribute('src', url);  
+    document.getElementsByTagName('img')[0].setAttribute('src', url);
 }
 
-let generateList = function(data) {
-    showList(data, 'languages-vertical');  
+let generateList = function (data) {
+    showList(data, 'languages-vertical');
     showList(data, 'languages-horizontal');
-}
+};
 
 let getListsOfLanguages = () => {
     $.ajax({
         type: 'GET',
         url: 'http://localhost:4010/api/v1/users/languages',
-        crossDomain: true,        
+        crossDomain: true,
         success: function (data) {
             generateList(data.payload);
         }
@@ -336,9 +355,9 @@ let getListsOfNames = (obj) => {
     $.ajax({
         type: 'GET',
         url: 'http://localhost:4010/api/v1/users/names?language=' + obj.innerHTML,
-        crossDomain: true,        
+        crossDomain: true,
         success: function (data) {
-            showSecondaryLists(data.payload, obj.innerHTML)
+            showSecondaryLists(data.payload, obj.innerHTML);
         }
     });
 };
@@ -347,9 +366,9 @@ let getPicture = (obj) => {
     $.ajax({
         type: 'GET',
         url: `http://localhost:4010/api/v1/users/picture?language=${obj.parent}&name=${obj.elem.innerHTML}`,
-        crossDomain: true,        
+        crossDomain: true,
         success: function (data) {
-            showImage(data.payload[0].picture)
+            showImage(data.payload[0].picture);
         }
     });
 };
@@ -357,9 +376,9 @@ let getPicture = (obj) => {
 function initMediator() {
 
     let mediator = (function () {
-        
+
         let subscribers = {};
-        
+
         return {
             subscribe: function (event, callback) {
                 subscribers[event] = subscribers[event] || [];
@@ -381,32 +400,47 @@ function initMediator() {
     }
 
     let horizont = document.getElementsByClassName('languages-horizontal')[0];
-    let vertical = document.getElementsByClassName('languages-vertical')[0];             
+    let vertical = document.getElementsByClassName('languages-vertical')[0];
 
     mediator.subscribe('getnames', getListsOfNames);
     mediator.subscribe('getpicture', getPicture);
 
+    function setCoursive(collection, element) {
+        $.each(collection, function (index, value) {
+            if (element === $(value).html()) {
+                $(value).addClass('coursive');
+            } else {
+                $(value).removeClass('coursive');
+            }
+        });
+    }
     function handle(e) {
-        let regexp = /^(.*?)\</;
+        let regexp = /^(.*?)</;
         if (e.target.tagName === 'LI') {
             if (e.target.className === 'names-item') {
-                let parent = e.target.parentElement.innerHTML.match(regexp)[1];            
-                mediator.publish('getpicture', {'elem': e.target, 'parent': parent});
+                let parent = e.target.parentElement.innerHTML.match(regexp)[1];
+                mediator.publish('getpicture', {elem: e.target, parent: parent});
+                setCoursive($('.names-item'), e.target.innerHTML);
             } else {
-                deleteSecondaryList();          
+                deleteSecondaryList();
                 mediator.publish('getnames', e.target);
+                setCoursive($('.languages-vertical__item'), e.target.innerHTML);
+                setCoursive($('.languages-horizontal__item'), e.target.innerHTML);
             }
         }
-    };
+    }
 
     $(horizont).click((e) => handle(e));
     $(vertical).click((e) => handle(e));
 }
 
-let showMediator = function() {
+let showMediator = function () {
     getListsOfLanguages();
     initMediator();
-}
+};
+
+let time = 0;
+let interval;
 
 function ready() {
     let currentUser = getCookie('user');
@@ -414,7 +448,7 @@ function ready() {
     getUser(currentUser);
 
     dynamicCreationElements();
-    // interval = setInterval(showModelWindow, 500000);
+    // interval = setInterval(showModelWindow, 5000);
     // 30000
 
     $(this).mousemove(function (e) {
@@ -433,6 +467,7 @@ function ready() {
 }
 
 document.addEventListener('DOMContentLoaded', ready);
+
 /*
     http://localhost:4010/api/v1/users/languages
     http://localhost:4010/api/v1/users/names?language=javascript    

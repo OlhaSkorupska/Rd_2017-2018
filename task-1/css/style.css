@@ -526,7 +526,8 @@ body {
           align-items: flex-start;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
-          justify-content: flex-start; }
+          justify-content: flex-start;
+  position: absolute; }
   .languages-horizontal__item {
     display: inline;
     margin-right: 10px;
@@ -537,6 +538,10 @@ body {
     cursor: pointer; }
     .languages-horizontal__item:active {
       background-color: #427882; }
+
+.coursive {
+  font-style: italic !important;
+  font-weight: bold !important; }
 
 .languages-vertical {
   -webkit-box-orient: vertical;
@@ -559,7 +564,9 @@ body {
   background-color: powderblue;
   color: darkolivegreen;
   padding-left: 10px;
-  font-size: 12px; }
+  font-size: 12px;
+  font-style: normal;
+  font-weight: normal; }
 
 .footer {
   height: 112px;

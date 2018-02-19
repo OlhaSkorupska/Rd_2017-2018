@@ -96,6 +96,7 @@ body {
     align-content: flex-start;
     align-items: flex-start;
     justify-content: flex-start;
+    position: absolute;
 
     &__item {
         display: inline;
@@ -110,6 +111,11 @@ body {
             background-color: #427882;
         }         
     }
+}
+
+.coursive {
+    font-style: italic !important;
+    font-weight: bold !important;
 }
 
 .languages-vertical {
@@ -135,6 +141,8 @@ body {
     color: darkolivegreen;
     padding-left: 10px;
     font-size: 12px;
+    font-style: normal;
+    font-weight: normal;        
 }
 
 .footer {
