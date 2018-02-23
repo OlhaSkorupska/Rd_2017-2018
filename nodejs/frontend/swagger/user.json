@@ -1,0 +1,436 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "",
+        "version": "1.0.0",
+        "title": "Home-work"
+    },
+    "host": "",
+    "basePath": "/api/v1",
+    "tags": [
+        {
+            "name": "user",
+            "description": "All operations with useral info",
+            "externalDocs": {
+                "description": ""
+            }
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/users": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "$ref": "#/definitions/userBody"
+                        },
+                        "name": "body",
+                        "required": false,
+                        "description": "user body",
+                        "in": "body"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful response",
+                        "schema": {
+                            "$ref": "#/definitions/userScheme"
+                        }
+                    },
+                    "400": {
+                        "description": "show field validation error",
+                        "schema": {
+                            "$ref": "#/definitions/BaseException"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{id}": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "type": "string",
+                        "name": "id",
+                        "required": true,
+                        "description": "user Id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful response",
+                        "schema": {
+                            "$ref": "#/definitions/userScheme"
+                        }
+                    },
+                    "400": {
+                        "description": "show field validation error",
+                        "schema": {
+                            "$ref": "#/definitions/BaseException"
+                        }
+                    },
+                    "404": {
+                        "description": "Not found error",
+                        "schema": {
+                            "$ref": "#/definitions/BaseException"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "type": "string",
+                        "name": "id",
+                        "required": true,
+                        "description": "user Id"
+                    },
+                    {
+                        "schema": {
+                            "$ref": "#/definitions/userBody"
+                        },
+                        "name": "body",
+                        "required": false,
+                        "description": "user body",
+                        "in": "body"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful response",
+                        "schema": {
+                            "$ref": "#/definitions/userScheme"
+                        }
+                    },
+                    "400": {
+                        "description": "show field validation error",
+                        "schema": {
+                            "$ref": "#/definitions/BaseException"
+                        }
+                    },
+                    "404": {
+                        "description": "Not found error",
+                        "schema": {
+                            "$ref": "#/definitions/BaseException"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "type": "string",
+                        "name": "id",
+                        "required": true,
+                        "description": "user Id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful response",
+                        "schema": {
+                            "$ref": "#/definitions/Empty"
+                        }
+                    },
+                    "400": {
+                        "description": "show field validation error",
+                        "schema": {
+                            "$ref": "#/definitions/BaseException"
+                        }
+                    },
+                    "404": {
+                        "description": "Not found error",
+                        "schema": {
+                            "$ref": "#/definitions/BaseException"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/search": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "",
+                "description": "Search user by table and email",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "language",
+                        "in": "query",
+                        "required": false,
+                        "description": "Name of table (language)",
+                        "default": "pascal"
+                    },
+                    {
+                        "type": "string",
+                        "name": "email",
+                        "in": "query",
+                        "required": true,
+                        "description": "Email for searching",
+                        "default": "cunninghampaul@codax.com"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful response",
+                        "schema": {
+                            "$ref": "#/definitions/userList"
+                        }
+                    },
+                    "400": {
+                        "description": "show field validation error",
+                        "schema": {
+                            "$ref": "#/definitions/BaseException"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/count": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "",
+                "description": "Search user by table and email",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "language",
+                        "in": "query",
+                        "required": false,
+                        "description": "Name of table (language)",
+                        "default": "pascal"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful response",
+                        "schema": {
+                            "$ref": "#/definitions/CountScheme"
+                        }
+                    },
+                    "400": {
+                        "description": "show field validation error",
+                        "schema": {
+                            "$ref": "#/definitions/BaseException"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "BaseException": {
+            "properties": {
+                "errors": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "key": {
+                                "type": "integer"
+                            },
+                            "value": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "companiesList": {
+            "required": [
+                "payload"
+            ],
+            "properties": {
+                "payload": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/companiesScheme"
+                    }
+                }
+            }
+        },
+        "companiesScheme": {
+            "required": [
+                "language"
+            ],
+            "properties": {
+                "language": {
+                    "type": "string"
+                }
+            }
+        },
+        "userList": {
+            "required": [
+                "payload"
+            ],
+            "properties": {
+                "payload": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/userScheme"
+                    }
+                }
+            }
+        },
+        "userScheme": {
+            "properties": {
+                "_id": {
+                    "type": "string",
+                    "default": "5a80358d58b1cd34d0a8cb34"
+                },
+
+                "email": {
+                    "type": "string",
+                    "default": "cunninghampaul@codax.com"
+                },
+                "phone": {
+                    "type": "string",
+                    "default": "(811) 493-3794"
+                },
+                "pass": {
+                    "type": "string",
+                    "default": "123qwe"
+                },
+                "language": {
+                    "type": "string",
+                    "default": "pascal"
+                },
+                "picture": {
+                    "type": "boolean",
+                    "default": "http://placehold.it/32x32"
+                },
+                "name": {
+                    "type": "boolean",
+                    "default": "Lambert Howe"
+                },
+                "birth": {
+                    "type": "string",
+                    "default": "2018-01-17"
+                }
+            }
+        },
+        "userBody": {
+            "properties": {
+                "_id": {
+                    "type": "string",
+                    "default": "5a80358d58b1cd34d0a8cb34"
+                },
+
+                "email": {
+                    "type": "string",
+                    "default": "cunninghampaul@codax.com"
+                },
+                "phone": {
+                    "type": "string",
+                    "default": "(811) 493-3794"
+                },
+                "pass": {
+                    "type": "string",
+                    "default": "123qwe"
+                },
+                "language": {
+                    "type": "string",
+                    "default": "pascal"
+                },
+                "picture": {
+                    "type": "boolean",
+                    "default": "http://placehold.it/32x32"
+                },
+                "name": {
+                    "type": "boolean",
+                    "default": "Lambert Howe"
+                },
+                "birth": {
+                    "type": "string",
+                    "default": "2018-01-17"
+                }
+            }
+        },
+        "CountScheme": {
+            "required": [
+                "payload"
+            ],
+            "properties": {
+                "payload": {
+                    "type": "object",
+                    "required": [
+                        "count"
+                    ],
+                    "properties": {
+                        "count": {
+                            "type": "integer",
+                            "default": 20
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

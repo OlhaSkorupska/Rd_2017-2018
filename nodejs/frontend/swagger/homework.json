@@ -1,0 +1,527 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "",
+        "version": "1.0.0",
+        "title": "Home-work"
+    },
+    "host": "",
+    "basePath": "/api/v1",
+    "tags": [
+        {
+            "name": "person",
+            "description": "All operations with personal info",
+            "externalDocs": {
+                "description": ""
+            }
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/persons": {
+            "post": {
+                "tags": [
+                    "person"
+                ],
+                "summary": "",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "$ref": "#/definitions/PersonBody"
+                        },
+                        "name": "body",
+                        "required": false,
+                        "description": "Person body",
+                        "in": "body"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful response",
+                        "schema": {
+                            "$ref": "#/definitions/PersonScheme"
+                        }
+                    },
+                    "400": {
+                        "description": "show field validation error",
+                        "schema": {
+                            "$ref": "#/definitions/BaseException"
+                        }
+                    }
+                }
+            }
+        },
+        "/persons/{id}": {
+            "get": {
+                "tags": [
+                    "person"
+                ],
+                "summary": "",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "type": "string",
+                        "name": "id",
+                        "required": true,
+                        "description": "person Id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful response",
+                        "schema": {
+                            "$ref": "#/definitions/PersonScheme"
+                        }
+                    },
+                    "400": {
+                        "description": "show field validation error",
+                        "schema": {
+                            "$ref": "#/definitions/BaseException"
+                        }
+                    },
+                    "404": {
+                        "description": "Not found error",
+                        "schema": {
+                            "$ref": "#/definitions/BaseException"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "person"
+                ],
+                "summary": "",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "type": "string",
+                        "name": "id",
+                        "required": true,
+                        "description": "person Id"
+                    },
+                    {
+                        "schema": {
+                            "$ref": "#/definitions/PersonBody"
+                        },
+                        "name": "body",
+                        "required": false,
+                        "description": "Person body",
+                        "in": "body"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful response",
+                        "schema": {
+                            "$ref": "#/definitions/PersonScheme"
+                        }
+                    },
+                    "400": {
+                        "description": "show field validation error",
+                        "schema": {
+                            "$ref": "#/definitions/BaseException"
+                        }
+                    },
+                    "404": {
+                        "description": "Not found error",
+                        "schema": {
+                            "$ref": "#/definitions/BaseException"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "person"
+                ],
+                "summary": "",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "type": "string",
+                        "name": "id",
+                        "required": true,
+                        "description": "person Id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful response",
+                        "schema": {
+                            "$ref": "#/definitions/Empty"
+                        }
+                    },
+                    "400": {
+                        "description": "show field validation error",
+                        "schema": {
+                            "$ref": "#/definitions/BaseException"
+                        }
+                    },
+                    "404": {
+                        "description": "Not found error",
+                        "schema": {
+                            "$ref": "#/definitions/BaseException"
+                        }
+                    }
+                }
+            }
+        },
+        "/persons/locations": {
+            "get": {
+                "tags": [
+                    "person"
+                ],
+                "summary": "",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful response",
+                        "schema": {
+                            "$ref": "#/definitions/LocationsList"
+                        }
+                    },
+                    "400": {
+                        "description": "show field validation error",
+                        "schema": {
+                            "$ref": "#/definitions/BaseException"
+                        }
+                    }
+                }
+            }
+        },
+        "/persons/search": {
+            "get": {
+                "tags": [
+                    "person"
+                ],
+                "summary": "",
+                "description": "Search person by table and email",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "location",
+                        "in": "query",
+                        "required": false,
+                        "description": "Name of table (location)",
+                        "default": "Zimbabwe"
+                    },
+                    {
+                        "type": "string",
+                        "name": "email",
+                        "in": "query",
+                        "required": true,
+                        "description": "Email for searching",
+                        "default": "nanniereeves@accupharm.com"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful response",
+                        "schema": {
+                            "$ref": "#/definitions/PersonList"
+                        }
+                    },
+                    "400": {
+                        "description": "show field validation error",
+                        "schema": {
+                            "$ref": "#/definitions/BaseException"
+                        }
+                    }
+                }
+            }
+        },
+        "/persons/count": {
+            "get": {
+                "tags": [
+                    "person"
+                ],
+                "summary": "",
+                "description": "Search person by table and email",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "location",
+                        "in": "query",
+                        "required": false,
+                        "description": "Name of table (location)",
+                        "default": "Ashley Madison"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful response",
+                        "schema": {
+                            "$ref": "#/definitions/CountScheme"
+                        }
+                    },
+                    "400": {
+                        "description": "show field validation error",
+                        "schema": {
+                            "$ref": "#/definitions/BaseException"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "BaseException": {
+            "properties": {
+                "errors": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "key": {
+                                "type": "integer"
+                            },
+                            "value": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "LocationsList": {
+            "required": [
+                "payload"
+            ],
+            "properties": {
+                "payload": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/LocationScheme"
+                    }
+                }
+            }
+        },
+        "LocationScheme": {
+            "required": [
+                "location"
+            ],
+            "properties": {
+                "location": {
+                    "type": "string"
+                }
+            }
+        },
+        "PersonList": {
+            "required": [
+                "payload"
+            ],
+            "properties": {
+                "payload": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PersonScheme"
+                    }
+                }
+            }
+        },
+        "PersonScheme": {
+            "properties": {
+                "_id": {
+                    "type": "string",
+                    "default": "586ce0639069475256c8b1db"
+                },
+
+                "gender": {
+                    "type": "string",
+                    "default": "male"
+                },
+                "location": {
+                    "type": "string",
+                    "default": "Zimbabwe"
+                },
+                "email": {
+                    "type": "string",
+                    "default": "nanniereeves@accupharm.com"
+                },
+                "signedupdate": {
+                    "type": "string",
+                    "default": "2017-01-04T11:45:39.157Z"
+                },
+                "signedup": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "mailed": {
+                    "type": "boolean",
+                    "default": true
+                },
+                "dob": {
+                    "type": "string",
+                    "default": "19/4/2016"
+                },
+                "country": {
+                    "type": "string",
+                    "default": "Antarctica"
+                },
+                "zip": {
+                    "type": "string",
+                    "default": "24332"
+                },
+                "state": {
+                    "type": "string",
+                    "default": "Northern Mariana Islands"
+                },
+                "city": {
+                    "type": "string",
+                    "default": "Smock"
+                },
+                "street2": {
+                    "type": "string",
+                    "default": "Doscher Street"
+                },
+                "street1": {
+                    "type": "string",
+                    "default": "Northern Mariana "
+                },
+                "lastName": {
+                    "type": "string",
+                    "default": "Reeves"
+                },
+                "firstName": {
+                    "type": "string",
+                    "default": "Reeves"
+                },
+                "pnum": {
+                    "type": "string",
+                    "default": " +1 (933) 521-3889"
+                }
+            }
+        },
+        "PersonBody": {
+            "properties": {
+                "gender": {
+                    "type": "string",
+                    "default": "male"
+                },
+                "location": {
+                    "type": "string",
+                    "default": "Zimbabwe"
+                },
+                "email": {
+                    "type": "string",
+                    "default": "nanniereeves@accupharm.com"
+                },
+                "mailed": {
+                    "type": "boolean",
+                    "default": true
+                },
+                "dob": {
+                    "type": "string",
+                    "default": "19/4/2016"
+                },
+                "country": {
+                    "type": "string",
+                    "default": "Antarctica"
+                },
+                "zip": {
+                    "type": "string",
+                    "default": "24332"
+                },
+                "state": {
+                    "type": "string",
+                    "default": "Northern Mariana Islands"
+                },
+                "city": {
+                    "type": "string",
+                    "default": "Smock"
+                },
+                "street2": {
+                    "type": "string",
+                    "default": "Doscher Street"
+                },
+                "street1": {
+                    "type": "string",
+                    "default": "Northern Mariana "
+                },
+                "lastName": {
+                    "type": "string",
+                    "default": "Reeves"
+                },
+                "firstName": {
+                    "type": "string",
+                    "default": "Reeves"
+                },
+                "pnum": {
+                    "type": "string",
+                    "default": " +1 (933) 521-3889"
+                }
+            }
+        },
+        "CountScheme": {
+            "required": [
+                "payload"
+            ],
+            "properties": {
+                "payload": {
+                    "type": "object",
+                    "required": [
+                        "count"
+                    ],
+                    "properties": {
+                        "count": {
+                            "type": "integer",
+                            "default": 3200000
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
