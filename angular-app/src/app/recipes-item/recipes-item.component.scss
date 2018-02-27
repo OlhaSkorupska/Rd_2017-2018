@@ -1,0 +1,35 @@
+.recipes-list__item {
+    width: 300px;
+    border: 1px solid #876;
+    height: 580px;
+    margin: 10px;
+}
+.item {
+    padding: 5px;
+    position: relative;
+
+    &__img {
+        width: 290px;
+        height: 290px;
+    }
+
+    &__title {
+        font-size: 22px;
+        color: #876;
+        height: 55px;
+    }
+    
+    &__description {
+        font-size: 14px;
+        color: #876;
+        height: 130px;        
+    }   
+    
+    &:after {
+        display: block;
+        width: 96%;  
+        content: '';
+        position: absolute;
+        border-bottom: 1px solid #876;
+    }        
+}
