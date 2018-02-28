@@ -35,7 +35,7 @@
 }
 
 .group {
-    padding: 0 20px;
+    padding: 0 10px;
     color: #876;
 
     &__likes {
@@ -45,4 +45,7 @@
     &__work {
         float: right;
     }
+    &--heart {
+        color: rgb(207, 24, 33);
+    }    
 }
