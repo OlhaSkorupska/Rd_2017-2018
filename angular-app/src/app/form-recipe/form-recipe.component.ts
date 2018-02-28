@@ -13,5 +13,7 @@ export class FormRecipeComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  onSubmit() {
+    console.log(this.model);
+}
 }

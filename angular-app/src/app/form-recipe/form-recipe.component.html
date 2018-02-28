@@ -1,5 +1,5 @@
 <div class="container">
-    <form>
+    <form (ngSubmit)="onSubmit()" #recipeForm="ngForm">
       <div class="form-group">
         <label for="title">Title</label>
         <input type="text" class="form-control" id="title" name="title" #title="ngModel"
@@ -52,6 +52,6 @@
         </div>            
       </div>
   
-      <button type="submit" class="btn btn-success">Add</button>
+      <button type="submit" class="btn btn-success" [disabled]="!recipeForm.form.valid">Add</button>
     </form>
   </div>
