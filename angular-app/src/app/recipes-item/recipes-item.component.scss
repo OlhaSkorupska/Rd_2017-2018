@@ -31,5 +31,18 @@
         content: '';
         position: absolute;
         border-bottom: 1px solid #876;
-    }        
+    }   
+}
+
+.group {
+    padding: 0 20px;
+    color: #876;
+
+    &__likes {
+        float: left;
+    }
+
+    &__work {
+        float: right;
+    }
 }

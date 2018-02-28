@@ -3,6 +3,19 @@
         <img class="item__img" src="{{ recipeItem.photoUrl }}">
         <h1 class="item__title">{{ recipeItem.title }}</h1>
         <p class="item__description">{{ recipeItem.description }}</p>
-        <i class="fas fa-camera-retro fa-10x"></i><p>{{ recipeItem.likes }}</p>
+        <div class="group">
+            <app-heart-button></app-heart-button><span>{{ recipeItem.likes }}</span>
+        </div>
+    </div>
+    <div class="group">
+        <div class="group__likes">
+            <app-like-button></app-like-button>
+            <app-dislike-button></app-dislike-button>
+        </div>
+        <div class="group__work">
+            <app-view-button></app-view-button>
+            <app-edit-button></app-edit-button>
+            <app-delete-button></app-delete-button>             
+        </div>    
     </div>
 </li>

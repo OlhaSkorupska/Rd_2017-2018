@@ -1,0 +1,12 @@
+.ng-valid[required], .ng-valid.required  {
+
+}
+  
+.ng-invalid:not(form)  {
+
+}
+
+.error {
+    color: rgb(211, 9, 9);
+    padding: 20px;
+}

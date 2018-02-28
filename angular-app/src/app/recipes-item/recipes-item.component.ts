@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Recipe } from '../models/recipe.model';
-import { AngularFontAwesomeService } from 'angular-font-awesome';
 
 @Component({
   selector: 'app-recipes-item',
@@ -13,5 +12,4 @@ export class RecipesItemComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
