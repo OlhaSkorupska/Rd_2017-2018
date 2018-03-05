@@ -1,3 +1,4 @@
+<app-form-recipe (recipeAdded)="addRecipe($event)"></app-form-recipe>
 <ul class="recipes-list">
     <app-recipes-item *ngFor="let item of recipeItems" [recipeItem]="item">
     </app-recipes-item>

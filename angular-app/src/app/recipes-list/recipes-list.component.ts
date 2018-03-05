@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-recipes-list',
@@ -130,4 +130,7 @@ export class RecipesListComponent implements OnInit {
   ngOnInit() {
   }
 
+  addRecipe(value) {
+    this.recipeItems.push(value);
+  }     
 }
