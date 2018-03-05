@@ -1,4 +1,4 @@
 <ul class="header-menu">
-    <app-menu-item *ngFor="let item of menuItems" [menuItem]="item">
+    <app-menu-item *ngFor="let item of menuItems" [menuItem]="item" (click)="chooseMenu(item)">
     </app-menu-item>
 </ul>

@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header-main',
   templateUrl: './header-main.component.html',
   styleUrls: ['./header-main.component.css']
 })
-export class HeaderMainComponent implements OnInit {
+export class HeaderMainComponent {
   title = 'Recipes';
-  constructor() { }
+  choosedMenu: string;
 
-  ngOnInit() {
+  @Output() selectedMenu = new EventEmitter();
+
+  constructor() {
+    this.choosedMenu = 'All Recipes';
   }
 
+  chooseMenu(value: string) {
+    this.selectedMenu.emit(value);    
+  }    
 }

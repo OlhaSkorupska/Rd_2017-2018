@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Output, OnInit, Input, EventEmitter } from '@angular/core';
+import { SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
+  choosedMenu: string;
+
+  constructor() {
+    this.choosedMenu = 'All Recipes';
+  }
+
+  chooseMenu(value) {
+    this.choosedMenu = value;
+    console.log('from app ', this.choosedMenu);
+  }        
 }
