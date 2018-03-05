@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Recipe } from '../models/recipe.model';
 
 @Component({
@@ -6,14 +6,23 @@ import { Recipe } from '../models/recipe.model';
   templateUrl: './form-recipe.component.html',
   styleUrls: ['./form-recipe.component.scss']
 })
-export class FormRecipeComponent implements OnInit {
+export class FormRecipeComponent {
   categories = ['Main course', 'Apperetive', 'Dessert'];
   model: Recipe = new Recipe('', '', '', [''], '', '', 0);  
+
+  @Output() recipeAdded = new EventEmitter();
+    
   constructor() { }
 
-  ngOnInit() {
-  }
   onSubmit() {
-    console.log(this.model);
-}
+    this.addRecipe();
+    // this.recipeAdded.emit(this.model);
+    // console.log(this.model);
+  }
+
+  addRecipe() {
+    console.log('form', this.model);
+    this.recipeAdded.emit(this.model);    
+  }     
+
 }

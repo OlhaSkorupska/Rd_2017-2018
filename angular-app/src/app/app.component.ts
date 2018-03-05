@@ -15,6 +15,5 @@ export class AppComponent {
 
   chooseMenu(value) {
     this.choosedMenu = value;
-    console.log('from app ', this.choosedMenu);
   }        
 }

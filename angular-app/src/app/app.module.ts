@@ -17,6 +17,8 @@ import { EditButtonComponent } from './edit-button/edit-button.component';
 import { DeleteButtonComponent } from './delete-button/delete-button.component';
 import { FormRecipeComponent } from './form-recipe/form-recipe.component';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+import { AllRecipesComponent } from './all-recipes/all-recipes.component';
+import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
     ViewButtonComponent,
     EditButtonComponent,
     DeleteButtonComponent,
-    FormRecipeComponent
+    FormRecipeComponent,
+    AllRecipesComponent,
+    AddRecipeComponent
   ],
   imports: [
     BrowserModule,
