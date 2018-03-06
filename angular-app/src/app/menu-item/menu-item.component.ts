@@ -8,7 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class MenuItemComponent implements OnInit {
 
   @Input() menuItem: string;
-  @Input() choosedMenu: string;
+  @Input() choosedMenu: string;  
+
   constructor() { }
 
   ngOnInit() {

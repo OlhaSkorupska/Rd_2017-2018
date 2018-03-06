@@ -4,18 +4,19 @@
         <h1 class="item__title">{{ recipeItem.title }}</h1>
         <p class="item__description">{{ recipeItem.description }}</p>
         <div class="group--heart">
-            <app-heart-button></app-heart-button><span>{{ recipeItem.likes }}</span>
+            <fa name="fas fa-heart" size="2x"></fa>            
+            <span>{{ recipeItem.likes }}</span>
         </div>
     </div>
     <div class="group">
         <div class="group__likes">
-            <app-like-button></app-like-button>
-            <app-dislike-button></app-dislike-button>
+            <fa name="fas fa-thumbs-up" size="2x"></fa>
+            <fa name="fas fa-thumbs-down" size="2x"></fa>
         </div>
         <div class="group__work">
-            <app-view-button></app-view-button>
-            <app-edit-button></app-edit-button>
-            <app-delete-button></app-delete-button>             
+            <fa name="far fa-eye" size="2x"></fa>            
+            <fa name="fas fa-pencil" size="2x"></fa>
+            <fa name="fas fa-trash" size="2x"></fa>            
         </div>    
     </div>
 </li>

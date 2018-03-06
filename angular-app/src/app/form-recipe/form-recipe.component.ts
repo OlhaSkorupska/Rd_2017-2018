@@ -16,12 +16,9 @@ export class FormRecipeComponent {
 
   onSubmit() {
     this.addRecipe();
-    // this.recipeAdded.emit(this.model);
-    // console.log(this.model);
   }
 
   addRecipe() {
-    console.log('form', this.model);
     this.recipeAdded.emit(this.model);    
   }     
 

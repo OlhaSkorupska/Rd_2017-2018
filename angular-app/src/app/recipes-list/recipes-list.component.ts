@@ -131,7 +131,6 @@ export class RecipesListComponent implements OnInit {
   }
 
   addRecipe(value) {
-    console.log('list', value);
     this.recipeItems.push(value);
   }     
 }
