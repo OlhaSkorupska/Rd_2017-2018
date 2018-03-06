@@ -1,0 +1,11 @@
+<div class="container">
+    <h3 class="purchase__title">Purchases</h3>
+    <app-purchase-input (onAddPurchase)="onPurchasesAdded($event)"></app-purchase-input>
+    <div class="row">
+      <div class="col-xs-12">
+          <app-purchase-item class="purchase__item" *ngFor="let purchase of purchases; let i = index" [ingridient]="purchase">
+              <button class="btn btn-danger purchase__delete" (click)="onDeletePurchase(i)">Delete</button>        
+          </app-purchase-item>
+      </div>
+    </div>
+</div>
