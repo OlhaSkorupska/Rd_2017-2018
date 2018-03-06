@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Recipe } from '../models/recipe.model';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable() 
 export class RecipesService {
@@ -122,10 +123,14 @@ export class RecipesService {
         },
       ];
 
-    public addRecipe(item: Recipe) {
+    public addRecipe(item) {
+      this.recipeItems.push(item);
+      return this.recipeItems;
     }    
 
-    public removeRecipe(item: Recipe) {
+    public removeRecipe(value) {
+      this.recipeItems.splice(value, 1);
+      return this.recipeItems;
     }        
 
 }

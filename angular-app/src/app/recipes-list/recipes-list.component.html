@@ -1,5 +1,6 @@
 <app-form-recipe (recipeAdded)="addRecipe($event)"></app-form-recipe>
 <ul class="recipes-list">
-    <app-recipes-item *ngFor="let item of recipeItems" [recipeItem]="item">
+    <app-recipes-item (deletedRecipe)="deleteRecipe(i)" *ngFor="let item of recipeItems; let i = index" 
+        [recipeItem]="item">
     </app-recipes-item>
 </ul>

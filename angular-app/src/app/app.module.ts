@@ -13,6 +13,7 @@ import { FormRecipeComponent } from './form-recipe/form-recipe.component';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { AllRecipesComponent } from './all-recipes/all-recipes.component';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
+import { RecipesService } from './services/recipes.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { AddRecipeComponent } from './add-recipe/add-recipe.component';
     FormsModule, 
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ RecipesService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

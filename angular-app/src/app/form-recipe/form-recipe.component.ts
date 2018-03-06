@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Recipe } from '../models/recipe.model';
+import { RecipesService } from '../services/recipes.service';
 
 @Component({
   selector: 'app-form-recipe',
@@ -8,18 +9,19 @@ import { Recipe } from '../models/recipe.model';
 })
 export class FormRecipeComponent {
   categories = ['Main course', 'Apperetive', 'Dessert'];
-  model: Recipe = new Recipe('', '', '', [''], '', '', 0);  
+  // model: Recipe = new Recipe('', '', '', [''], '', '', 0);  
+  model = {};
 
   @Output() recipeAdded = new EventEmitter();
     
-  constructor() { }
+  constructor( ) { }
 
   onSubmit() {
     this.addRecipe();
   }
 
   addRecipe() {
-    this.recipeAdded.emit(this.model);    
+    this.recipeAdded.emit(this.model);  
   }     
 
 }
