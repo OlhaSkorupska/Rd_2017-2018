@@ -9,8 +9,7 @@ import { RecipesService } from '../services/recipes.service';
 })
 export class FormRecipeComponent {
   categories = ['Main course', 'Apperetive', 'Dessert'];
-  model: Recipe = new Recipe('', '', '', [''], '', '', 0);  
-  // model = {};
+  model: Recipe = new Recipe();  
 
   @Output() recipeAdded = new EventEmitter();
     

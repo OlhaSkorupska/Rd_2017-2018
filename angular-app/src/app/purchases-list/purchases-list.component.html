@@ -1,10 +1,12 @@
 <div class="container">
     <h3 class="purchase__title">Purchases</h3>
     <app-purchase-input (onAddPurchase)="onPurchasesAdded($event)"></app-purchase-input>
+    <hr>
     <div class="row">
-      <div class="col-xs-12">
-          <app-purchase-item class="purchase__item" *ngFor="let purchase of purchases; let i = index" [ingridient]="purchase">
-              <button class="btn btn-danger purchase__delete" (click)="onDeletePurchase(i)">Delete</button>        
+      <div class="col-md-8">
+          <h3 class="purchase__title">Purchases list</h3>        
+          <app-purchase-item class="purchase__item" *ngFor="let purchase of purchases; let i = index" [ingridient]="purchase">        
+              <a (click)="onDeletePurchase(i)" class="purchase__delete"><i class="fa fa-times"></i></a>              
           </app-purchase-item>
       </div>
     </div>

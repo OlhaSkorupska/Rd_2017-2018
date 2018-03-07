@@ -1,4 +1,5 @@
 <ul class="header-menu">
-    <app-menu-item *ngFor="let item of menuItems" [menuItem]="item" (click)="chooseMenu(item)">
-    </app-menu-item>
+    <li class="header-menu__item" *ngFor="let item of menuItems" (click)="chooseMenu(item)">
+        <a>{{ item }}</a>
+    </li>    
 </ul>

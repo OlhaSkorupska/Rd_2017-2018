@@ -1,0 +1,12 @@
+.wrapper {
+    display: flex;
+    
+    &__input {
+        padding-left: 0;
+    }
+
+    &__btn {
+        align-self: flex-end;
+        margin-bottom: 1rem;        
+    }
+}

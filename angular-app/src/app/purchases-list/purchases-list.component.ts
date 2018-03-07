@@ -8,7 +8,7 @@ import { PurchasesService } from '../services/purchases.service';
 })
 export class PurchasesListComponent implements OnInit {
   purchases: Array<String> = [];
-
+  
   constructor(
     private service: PurchasesService
   ) { }

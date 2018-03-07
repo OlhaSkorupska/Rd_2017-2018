@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Recipe } from '../models/recipe.model';
-import { Observable } from 'rxjs/Observable';
 
 @Injectable() 
 export class RecipesService {
-    recipeItems = [
+    recipeItems: Recipe[] = [
         {
           title: 'Sicilian Roasted Chicken',
           description: 'Chicken pieces seasoned with paprika, garlic powder, and oregano are roasted until juicy and tender in this simple Sicilian-inspired recipe.',

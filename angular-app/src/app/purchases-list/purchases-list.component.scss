@@ -5,17 +5,10 @@
         font-size: 36px;
     }
 
-    &__input {
-        float: left;
-    }
-
-    &__item {
-        position: relative;
-    }
-
     &__delete {
+        font-size: 34px;
+        color: rgb(207, 24, 33) !important;
         position: absolute;
-        left: 198px;
-        top: 0;
+        right: 25px;  
     }
 }

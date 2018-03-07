@@ -5,7 +5,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderMainComponent } from './header-main/header-main.component';
 import { HeaderMenuComponent } from './header-main/header-menu/header-menu.component';
-import { MenuItemComponent } from './header-main/menu-item/menu-item.component';
 import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { RecipesItemComponent } from './recipes-list/recipes-item/recipes-item.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
@@ -25,7 +24,6 @@ import { PurchasesService } from './services/purchases.service';
     AppComponent,
     HeaderMainComponent,
     HeaderMenuComponent,
-    MenuItemComponent,
     RecipesListComponent,
     RecipesItemComponent,
     FormRecipeComponent,

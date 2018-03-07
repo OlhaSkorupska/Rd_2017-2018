@@ -10,13 +10,13 @@
     </div>
     <div class="group">
         <div class="group__likes">
-            <fa name="fas fa-thumbs-up" size="2x"></fa>
-            <fa name="fas fa-thumbs-down" size="2x"></fa>
+            <a class="group__button"><i class="fa fa-thumbs-up"></i></a>   
+            <a class="group__button"><i class="fa fa-thumbs-down"></i></a>                           
         </div>
         <div class="group__work">
-            <fa name="far fa-eye" size="2x"></fa>            
-            <fa name="fas fa-pencil" size="2x"></fa>
-            <a (click)="deleteRecipe(recipeItem)" class="btn button-delete"><i class="fa fa-trash"></i></a>
+            <a class="group__button"><i class="fa fa-eye"></i></a>      
+            <a class="group__button"><i class="fa fa-pencil"></i></a>            
+            <a (click)="deleteRecipe(recipeItem)" class="group__button"><i class="fa fa-trash"></i></a>
         </div>    
     </div>
 </li>

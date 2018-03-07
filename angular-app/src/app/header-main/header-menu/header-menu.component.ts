@@ -7,7 +7,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class HeaderMenuComponent {
   menuItems = ['All Recipes', 'Favorites', 'Purchases'];
-
+  menuItem: string;
+  //@Input() choosedMenu: string; 
   @Output() selectedMenu = new EventEmitter();  
 
   chooseMenu(value: string) {

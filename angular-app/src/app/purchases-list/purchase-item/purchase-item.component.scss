@@ -1,0 +1,10 @@
+.wrapper {
+    display: flex;
+    margin: -2px;    
+
+    &__input {
+        background-color: white;
+        border-radius: 0;   
+        padding: 15px;             
+    }
+}

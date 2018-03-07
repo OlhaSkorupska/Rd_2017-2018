@@ -8,7 +8,7 @@ import { Recipe } from '../models/recipe.model';
   styleUrls: ['./recipes-list.component.scss']
 })
 export class RecipesListComponent implements OnInit {
-  recipeItems: Recipe;
+  recipeItems: Recipe[];
   id: number;
 
   constructor(
