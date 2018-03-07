@@ -1,5 +1,5 @@
 <ul class="header-menu">
-    <li class="header-menu__item" *ngFor="let item of menuItems" (click)="chooseMenu(item)">
-        <a>{{ item }}</a>
+    <li class="header-menu__item" *ngFor="let item of menuItems">
+        <a class="header-menu__ref" routerLinkActive="active" routerLink="/{{ item.title }}">{{ item.description }}</a>
     </li>    
 </ul>

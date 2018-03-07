@@ -18,6 +18,7 @@ import { FavoritesListComponent } from './favorites-list/favorites-list.componen
 import { PurchaseInputComponent } from './purchases-list/purchase-input/purchase-input.component';
 import { PurchaseItemComponent } from './purchases-list/purchase-item/purchase-item.component';
 import { PurchasesService } from './services/purchases.service';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { PurchasesService } from './services/purchases.service';
     BrowserModule,
     AngularFontAwesomeModule,
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   providers: [ RecipesService, PurchasesService ],
   bootstrap: [AppComponent]

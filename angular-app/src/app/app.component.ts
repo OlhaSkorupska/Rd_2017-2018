@@ -8,13 +8,5 @@ import { RecipesService } from './services/recipes.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  choosedMenu: string;
-
-  constructor() {
-    this.choosedMenu = 'All Recipes';
-  }
-
-  chooseMenu(value) {
-    this.choosedMenu = value;
-  }        
+       
 }

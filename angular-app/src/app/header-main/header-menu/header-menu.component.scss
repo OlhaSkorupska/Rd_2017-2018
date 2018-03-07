@@ -4,9 +4,14 @@
 
     &__item {
         margin-left: 10px;
-    
-        &:active, &:hover {
-            border-bottom: solid 3px #ab476f;
-        }
     }
+
+    &__ref {
+        color: black;
+        text-decoration: none;
+    }
+}
+
+.active {
+    border-bottom: solid 3px #ab476f;
 }

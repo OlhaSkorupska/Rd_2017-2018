@@ -11,9 +11,8 @@ export class RecipesItemComponent {
 
   constructor (
     private service: RecipesService
-  ) {
-
-  }
+  ) { }
+  
   @Output() deletedRecipe = new EventEmitter();
   @Input() recipeItem: Recipe;
 

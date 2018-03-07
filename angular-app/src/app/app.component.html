@@ -1,16 +1,2 @@
-<app-header-main (selectedMenu)="chooseMenu($event)"></app-header-main>
-
-<div [ngSwitch]="choosedMenu">
-    <div *ngSwitchCase="'All Recipes'">
-        <app-all-recipes></app-all-recipes>
-    </div>
-    <div *ngSwitchCase="'Favorites'">
-        <app-favorites-list></app-favorites-list>
-    </div>
-    <div *ngSwitchCase="'Purchases'">
-        <app-purchases-list></app-purchases-list>
-    </div>
-    <div *ngSwitchDefault>
-        <app-recipes-list></app-recipes-list>
-    </div>
-</div>
+<app-header-main></app-header-main>
+<router-outlet></router-outlet>

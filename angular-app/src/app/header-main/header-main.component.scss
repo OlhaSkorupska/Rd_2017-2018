@@ -1,0 +1,14 @@
+.header-main {
+    font-size: 36px;
+    padding: 50px;
+    height: 150px;
+    background-color: #e1e1e1;
+    display: flex;
+    justify-content: space-between;   
+    
+    &__ref {
+        text-decoration: none;
+        color: black;
+        cursor: pointer;
+    }
+}

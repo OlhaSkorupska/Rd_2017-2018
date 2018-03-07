@@ -6,9 +6,10 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./header-menu.component.scss']
 })
 export class HeaderMenuComponent {
-  menuItems = ['All Recipes', 'Favorites', 'Purchases'];
+  menuItems = [{title: 'recipes', description: 'All Recipes'}, {title: 'favorites', description: 'Favorites'},
+      {title: 'purchases', description: 'Purchases'}];
   menuItem: string;
-  //@Input() choosedMenu: string; 
+
   @Output() selectedMenu = new EventEmitter();  
 
   chooseMenu(value: string) {
