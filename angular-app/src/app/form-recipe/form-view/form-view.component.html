@@ -1,5 +1,4 @@
 <div class="item">
-    {{ this.recipe.title }}
     <img class="item__img" src="{{ recipe.photoUrl }}">
     <div class="item__group">
         <h3 class="item__title">{{ recipe.title }}</h3>
@@ -21,9 +20,9 @@
         </button> 
     </div>
     <h3 class="item__title">Ingredients</h3>
-    <li class="item__ingredients" *ngFor="let item of item.ingredients">
+    <!-- <li class="item__ingredients" *ngFor="let item of recipe.ingredients">
         {{ recipe }}
-    </li>
+    </li> -->
     <h3 class="item__title">Instructions</h3>
     <p>{{ recipe.instructions }}</p>
 </div>
