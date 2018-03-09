@@ -38,7 +38,7 @@
 .group {
     padding: 0 10px;
     color: #767676;
-
+    
     &__likes {
         float: left;
     }
@@ -50,8 +50,9 @@
     &--heart {
         color: rgb(207, 24, 33);
     }    
-    
+
     &__button {
         font-size: 24px;
+        color: #767676;
     }
 }

@@ -1,6 +1,8 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Recipe } from '../../models/recipe.model';
 import { RecipesService } from '../../services/recipes.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormService } from '../../services/form.service';
 
 @Component({
   selector: 'app-recipes-item',
@@ -10,13 +12,15 @@ import { RecipesService } from '../../services/recipes.service';
 export class RecipesItemComponent {
 
   constructor (
-    private service: RecipesService
+    private service: FormService,
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
-  
-  @Output() deletedRecipe = new EventEmitter();
-  @Input() recipeItem: Recipe;
 
-  deleteRecipe(item) {
-    this.deletedRecipe.emit(item);      
+  @Input() recipeItem: Recipe;
+  
+  editRecipe(item) {
+      this.service.initForm(item);
+      this.router.navigate(['/edit']);
   }
 }

@@ -1,0 +1,33 @@
+.item {
+    padding: 55px;
+    position: relative;
+    color: #767676;    
+
+    &__img {
+        width: 290px;
+        height: 290px;
+        float: left;
+    }
+
+    &__title {
+        font-size: 22px;
+        color: #767676;
+        margin-top: 25px;
+    }
+    
+    &__description {
+        font-size: 14px;
+        color: #767676;
+        height: 130px;        
+    }   
+ 
+    &__group {
+        padding: 25px;
+        display: flex;   
+        flex-direction: column;     
+    }
+
+    &__ingredients {
+        list-style: none;
+    }
+}

@@ -11,7 +11,8 @@ export class RecipesService {
           ingredients: ['1 whole chicken', '1 teaspoon salt', '1 teaspoon ground black pepper', '1 teaspoon ground paprika', '1 teaspoon garlic powder', '1 teaspoon dried oregano'],
           instructions: 'Preheat oven to 425 degrees F (220 degrees C). Grease a 9x13-inch pan with cooking spray. Arrange chicken pieces in the baking pan. Sprinkle salt, pepper, paprika, garlic powder, and oregano over both sides. Roast in the preheated oven until chicken is browned and the juices run clear, about 1 hour. An instant-read thermometer inserted near the bone should read 165 degrees F (74 degrees C).',
           categoryId: '-L4N7j92qDMvS8BbgE5u',
-          likes: 0
+          likes: 0,
+          id: 1
         },
         {
           title: 'Tequila-Lime Pork Tenderloin',
@@ -20,7 +21,8 @@ export class RecipesService {
           ingredients: ['1 cup fresh lime juice', '1/2 cup tequila', '1/2 cup orange juice', '1/4 cup chopped fresh cilantro', '2 tablespoons chopped green chiles', '1 1/2 tablespoons chili powder', '1 teaspoon minced garlic', '1 tablespoon honey', '1 teaspoon salt', '3/4 teaspoon ground black pepper', '2 pork tenderloins'],
           instructions: 'Whisk together the lime juice, tequila, orange juice, cilantro, chiles, chili powder, garlic, honey, salt, and pepper in a large bowl; pour into a gallon-sized resealable bag; add the pork tenderloins; seal and store in refrigerator overnight. Preheat an outdoor grill for high heat and lightly oil grate. Cook the pork on the preheated grill, turning occasionally, until meat has reached an internal temperature of 145 degrees F (63 degrees C), about 20 minutes.',
           categoryId: '-L4N7j92qDMvS8BbgE5u',
-          likes: 0
+          likes: 0,
+          id: 2          
         },
         {
           title: 'Chicken Parmesan',
@@ -37,7 +39,8 @@ export class RecipesService {
           Place chicken in a baking dish and top each breast with about 1/3 cup of tomato sauce. Layer each chicken breast with equal amounts of mozzarella cheese, fresh basil, and provolone cheese. Sprinkle 1 to 2 tablespoons of Parmesan cheese on top and drizzle with 1 tablespoon olive oil. 
           Bake in the preheated oven until cheese is browned and bubbly, and chicken breasts are no longer pink in the center, 15 to 20 minutes. An instant-read thermometer inserted into the center should read at least 165 degrees F (74 degrees C).`,
           categoryId: '-L4N7j92qDMvS8BbgE5u',
-          likes: 0
+          likes: 0,
+          id: 3          
         },
         {
           title: 'Incredibly Delicious Italian Cream Cake',
@@ -49,7 +52,8 @@ export class RecipesService {
           Bake in the preheated oven for 30 to 35 minutes, or until a toothpick inserted into the center of the cake comes out clean. Allow to cool. 
           To Make Frosting: In a medium bowl, combine cream cheese, 1/2 cup butter, 1 teaspoon vanilla and confectioners\' sugar. Beat until light and fluffy. Mix in a small amount of cream to attain the desired consistency. Stir in chopped nuts and remaining flaked coconut. Spread between layers and on top and sides of cooled cake.`,
           categoryId: '-L4N7j93c7MH0bR7rEH5',
-          likes: 0
+          likes: 0,
+          id: 4          
         },
         {
           title: 'Smoky Black Bean Burgers',
@@ -60,7 +64,8 @@ export class RecipesService {
           Mix flax mixture, black beans, panko bread crumbs, garlic, salt, Worcestershire sauce, and liquid smoke together in a bowl until combined. Form batter into 4 patties; arrange on a plate. Chill in refrigerator until set, about 30 minutes. 
           Spray a skillet with cooking spray; place patties in skillet over medium heat. Cook until browned, about 5 minutes per side.`,
           categoryId: '-L4N7j8yE8Thcztca1S_',
-          likes: 0
+          likes: 0,
+          id: 5          
         },
         {
           title: 'Texas Boiled Beer Shrimp',
@@ -69,7 +74,8 @@ export class RecipesService {
           ingredients: ['2 (12 fluid ounce) cans or bottles light beer', '2 tablespoons dry crab boil', '2 pounds large shrimp'],
           instructions: 'Bring beer with dry crab boil to a boil in a large pot. Add shrimp to boiling beer and place a cover on the pot. Bring the beer again to a boil, reduce heat to medium-low, and cook at a simmer for 5 minutes. Remove pot from heat and leave shrimp steeping in the beer another 2 to 3 minutes; drain. Serve immediately.',
           categoryId: '-L4N7j8yE8Thcztca1S_',
-          likes: 0
+          likes: 0,
+          id: 6          
         },
         {
           title: 'Slow Cooker Chicken Taco Soup',
@@ -79,7 +85,8 @@ export class RecipesService {
           instructions: `Place the onion, chili beans, black beans, corn, tomato sauce, beer, and diced tomatoes in a slow cooker. Add taco seasoning, and stir to blend. Lay chicken breasts on top of the mixture, pressing down slightly until just covered by the other ingredients. Set slow cooker for low heat, cover, and cook for 5 hours.
           Remove chicken breasts from the soup, and allow to cool long enough to be handled. Stir the shredded chicken back into the soup, and continue cooking for 2 hours. Serve topped with shredded Cheddar cheese, a dollop of sour cream, and crushed tortilla chips, if desired.`,
           categoryId: '-L4N7j92qDMvS8BbgE5t',
-          likes: 0
+          likes: 0,
+          id: 7          
         },
         {
           title: 'Easy Chocolate Chip Cookie Dough Cheesecake',
@@ -91,7 +98,8 @@ export class RecipesService {
           Spread 1 roll of cookie dough on the bottom of a 9x13-inch baking pan to form the base. Spread cream cheese mixture evenly on top. Pinch off small pieces of the remaining cookie dough and distribute them on the cream cheese mixture. 
           Bake in the preheated oven until cream cheese mixture is set and cookies on top are golden brown, 30 to 45 minutes. Let cool before serving, about 30 minutes.`,
           categoryId: '-L4N7j93c7MH0bR7rEH5',
-          likes: 0
+          likes: 0,
+          id: 8          
         },
         {
           title: 'Sandy Homemade Broccoli and Cheddar Soup',
@@ -102,7 +110,8 @@ export class RecipesService {
           Reduce heat to medium-low and simmer mixture until thickened, about 10 minutes. Add broccoli, carrot, and celery. Simmer until vegetables are tender yet crisp, about 20 minutes. 
           Reduce heat to low. Add Cheddar cheese to soup and cook, stirring occasionally, until cheese melts, about 5 minutes.`,
           categoryId: '-L4N7j92qDMvS8BbgE5t',
-          likes: 0
+          likes: 0,
+          id: 9          
         },
         {
           title: 'Skillet Breakfast Pizza',
@@ -118,7 +127,8 @@ export class RecipesService {
           Transfer skillet to the preheated oven; bake pizza until crust is lightly browned, about 18 minutes. 
           Heat a large skillet over medium-high heat and coat with cooking spray. Add spinach; cook, stirring frequently, until wilted, about 1 minute. Transfer to paper towels to drain excess moisture. Place spinach over pizza; slice into 8 wedges.`,
           categoryId: '-L4N7j92qDMvS8BbgE5u',
-          likes: 0
+          likes: 0,
+          id: 10          
         },
       ];
 
@@ -132,4 +142,25 @@ export class RecipesService {
       return this.recipeItems;
     }        
 
+    getRecipe(id: number) {
+      const recipeItem = this.recipeItems.find(
+        (recipeItem) => {
+          return recipeItem.id === id;
+        }
+      );
+      return recipeItem;
+    }
+  
+    // updateLesson(id: number, lessonInfo: {name: string, status: string}) {
+    //   const lesson = this.recipeItems.find(
+    //     (recipeItem) => {
+    //       return recipeItem.id === id;
+    //     }
+    //   );
+
+    //   if (lesson) {
+    //     lesson.name = lessonInfo.name;
+    //     lesson.status = lessonInfo.status;
+    //   }
+    // }    
 }

@@ -19,6 +19,11 @@ import { PurchaseInputComponent } from './purchases-list/purchase-input/purchase
 import { PurchaseItemComponent } from './purchases-list/purchase-item/purchase-item.component';
 import { PurchasesService } from './services/purchases.service';
 import { AppRoutingModule } from './app-routing.module';
+import { FormService } from './services/form.service';
+import { FormEditComponent } from './form-recipe/form-edit/form-edit.component';
+import { FormViewComponent } from './form-recipe/form-view/form-view.component';
+import { FormNewComponent } from './form-recipe/form-new/form-new.component';
+import { FormResolverService } from './services/form-resolver.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +38,10 @@ import { AppRoutingModule } from './app-routing.module';
     PurchasesListComponent,
     FavoritesListComponent,
     PurchaseInputComponent,
-    PurchaseItemComponent
+    PurchaseItemComponent,
+    FormEditComponent,
+    FormViewComponent,
+    FormNewComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +50,7 @@ import { AppRoutingModule } from './app-routing.module';
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [ RecipesService, PurchasesService ],
+  providers: [ RecipesService, PurchasesService, FormService, FormResolverService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

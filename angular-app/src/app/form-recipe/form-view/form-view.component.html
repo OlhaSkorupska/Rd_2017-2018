@@ -1,0 +1,29 @@
+<div class="item">
+    {{ this.recipe.title }}
+    <img class="item__img" src="{{ recipe.photoUrl }}">
+    <div class="item__group">
+        <h3 class="item__title">{{ recipe.title }}</h3>
+        <p class="item__description">{{ recipe.description }}</p>
+        <p class="item__category">Category: {{ recipe.category }}</p>
+    </div>
+    <div class="item__group-btns">
+        <button class="btn btn-success">
+            <i class="fa fa-pencil"></i>
+              Edit
+        </button>
+        <button class="btn btn-success">
+            <i class="fa fa-star"></i>
+              Add to Favorites
+        </button>    
+        <button class="btn btn-success">
+            <i class="fa fa-shopping-cart"></i>
+              Purchases
+        </button> 
+    </div>
+    <h3 class="item__title">Ingredients</h3>
+    <li class="item__ingredients" *ngFor="let item of item.ingredients">
+        {{ recipe }}
+    </li>
+    <h3 class="item__title">Instructions</h3>
+    <p>{{ recipe.instructions }}</p>
+</div>
