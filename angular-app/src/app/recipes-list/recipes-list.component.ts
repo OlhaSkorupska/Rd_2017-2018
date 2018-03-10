@@ -16,11 +16,11 @@ export class RecipesListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.recipeItems = this.service.recipeItems;
+    this.recipeItems = this.service.getRecipes();
   }
 
   addRecipe(value) {
-    this.recipeItems = this.service.addRecipe(value);
+    this.recipeItems = this.service.addRecipe(value, null);
   }     
   
   deleteRecipe(value) {

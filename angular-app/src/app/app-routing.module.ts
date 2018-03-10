@@ -7,20 +7,17 @@ import { FormRecipeComponent } from './form-recipe/form-recipe.component';
 import { RecipesService } from './services/recipes.service';
 import { FormEditComponent } from './form-recipe/form-edit/form-edit.component';
 import { FormNewComponent } from './form-recipe/form-new/form-new.component';
-import { FormViewComponent } from './form-recipe/form-view/form-view.component';
+import { RecipeViewComponent } from './recipes-list/recipe-view/recipe-view.component';
 import { FormResolverService } from './services/form-resolver.service';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: AllRecipesComponent },
-  { path: 'recipes', component: AllRecipesComponent, },
   { path: 'recipes/new', component: FormNewComponent, },
-  { path: 'recipes/edit', component: FormEditComponent, },  
-  { path: 'view', component: FormViewComponent, 
-    children: [
-      { path: ':id', component: FormViewComponent, resolve: { recipe: FormResolverService } }
-  ]  
-  },    
+  { path: 'edit/:id', component: FormEditComponent, },    
+  { path: 'recipes', component: AllRecipesComponent, },
+  { path: 'recipes/:id', component: RecipeViewComponent, resolve: { recipe: FormResolverService }, },
+  // { path: 'view', component: RecipeViewComponent, },    
   { path: 'purchases', component: PurchasesListComponent },   
   { path: 'favorites', component: FavoritesListComponent }, 
   { path: '**', redirectTo: '/' }  

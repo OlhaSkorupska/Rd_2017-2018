@@ -132,13 +132,34 @@ export class RecipesService {
         },
       ];
 
-    public addRecipe(item) {
+    public addRecipe(item, id: number) {
+      if (!id) {
+        item.id = this.recipeItems.length + 1;
+      }
       this.recipeItems.push(item);
       return this.recipeItems;
     }    
 
+    public updateRecipe(newModel) {
+      const itemRecipe = this.recipeItems.find(
+        (item) => {
+          return item.id === newModel.id;
+        }
+      );
+      if (itemRecipe) {
+        itemRecipe.title = newModel.title;
+        itemRecipe.description = newModel.description;
+        itemRecipe.photoUrl = newModel.photoUrl;
+        itemRecipe.ingredients = newModel.ingredients;
+        itemRecipe.instructions = newModel.instructions;
+        itemRecipe.categoryId = newModel.categoryId;
+        itemRecipe.likes = newModel.likes;                                                
+      }   
+    }      
+
     public removeRecipe(value) {
-      this.recipeItems.splice(value, 1);
+      const index = this.recipeItems.indexOf(value);
+      this.recipeItems.splice(index, 1);
       return this.recipeItems;
     }        
 
@@ -150,17 +171,8 @@ export class RecipesService {
       );
       return recipeItem;
     }
-  
-    // updateLesson(id: number, lessonInfo: {name: string, status: string}) {
-    //   const lesson = this.recipeItems.find(
-    //     (recipeItem) => {
-    //       return recipeItem.id === id;
-    //     }
-    //   );
-
-    //   if (lesson) {
-    //     lesson.name = lessonInfo.name;
-    //     lesson.status = lessonInfo.status;
-    //   }
-    // }    
+    
+    getRecipes() {
+      return this.recipeItems;
+    }    
 }

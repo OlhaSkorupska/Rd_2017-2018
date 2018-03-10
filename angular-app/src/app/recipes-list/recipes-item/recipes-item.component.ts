@@ -12,15 +12,14 @@ import { FormService } from '../../services/form.service';
 export class RecipesItemComponent {
 
   constructor (
-    private service: FormService,
+    private service: RecipesService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
 
   @Input() recipeItem: Recipe;
-  
-  editRecipe(item) {
-      this.service.initForm(item);
-      this.router.navigate(['/edit']);
-  }
+
+  deleteRecipe(item) {
+    this.service.removeRecipe(item);
+  }  
 }

@@ -1,12 +1,13 @@
 <div class="item">
-    <img class="item__img" src="{{ recipe.photoUrl }}">
+    <img class="item__img" src="{{ recipeItem.photoUrl }}">
     <div class="item__group">
-        <h3 class="item__title">{{ recipe.title }}</h3>
-        <p class="item__description">{{ recipe.description }}</p>
-        <p class="item__category">Category: {{ recipe.category }}</p>
+        <h3 class="item__title">{{ recipeItem.title }}</h3>
+        <p class="item__description">{{ recipeItem.description }}</p>
+        <p class="item__category">Category: {{ recipeItem.category }}</p>
     </div>
     <div class="item__group-btns">
-        <button class="btn btn-success">
+        <button class="btn btn-success"
+            [routerLink]="['/edit', recipeItem.id]">
             <i class="fa fa-pencil"></i>
               Edit
         </button>
@@ -20,9 +21,9 @@
         </button> 
     </div>
     <h3 class="item__title">Ingredients</h3>
-    <li class="item__ingredients" *ngFor="let item of recipe.ingredients">
+    <li class="item__ingredients" *ngFor="let item of recipeItem.ingredients">
         {{ item }}
     </li>
     <h3 class="item__title">Instructions</h3>
-    <p>{{ recipe.instructions }}</p>
+    <p>{{ recipeItem.instructions }}</p>
 </div>

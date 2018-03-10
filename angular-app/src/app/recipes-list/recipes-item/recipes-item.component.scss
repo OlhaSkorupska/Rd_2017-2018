@@ -17,6 +17,7 @@
         font-size: 22px;
         color: #767676;
         height: 55px;
+        cursor: pointer;
     }
     
     &__description {
@@ -38,7 +39,7 @@
 .group {
     padding: 0 10px;
     color: #767676;
-    
+
     &__likes {
         float: left;
     }

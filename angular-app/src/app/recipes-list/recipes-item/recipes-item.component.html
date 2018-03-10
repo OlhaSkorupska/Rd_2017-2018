@@ -1,7 +1,8 @@
 <li class="recipes-list__item">
     <div class="item">
         <img class="item__img" src="{{ recipeItem.photoUrl }}">
-        <h1 class="item__title">{{ recipeItem.title }}</h1>
+        <h1 class="item__title"
+            [routerLink]="['/recipes', recipeItem.id]"></h1>
         <p class="item__description">{{ recipeItem.description }}</p>
         <div class="group--heart">
             <fa name="fas fa-heart" size="2x"></fa>            
@@ -14,8 +15,9 @@
             <a class="group__button"><i class="fa fa-thumbs-down"></i></a>                           
         </div>
         <div class="group__work">
-            <a class="group__button" [routerLink]="['/view', recipeItem.id]" [queryParams]="{ id: recipeItem.id }"><i class="fa fa-eye"></i></a>     
-            <a (click)="editRecipe(recipeItem)" routerLink="edit" class="group__button"><i class="fa fa-pencil"></i></a>            
+            <a class="group__button" [routerLink]="['/recipes', recipeItem.id]"><i class="fa fa-eye"></i></a>     
+            <a [routerLink]="['/edit', recipeItem.id]"
+            class="group__button"><i class="fa fa-pencil"></i></a>            
             <a (click)="deleteRecipe(recipeItem)" class="group__button"><i class="fa fa-trash"></i></a>
         </div>    
     </div>

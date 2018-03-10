@@ -21,7 +21,7 @@ import { PurchasesService } from './services/purchases.service';
 import { AppRoutingModule } from './app-routing.module';
 import { FormService } from './services/form.service';
 import { FormEditComponent } from './form-recipe/form-edit/form-edit.component';
-import { FormViewComponent } from './form-recipe/form-view/form-view.component';
+import { RecipeViewComponent } from './recipes-list/recipe-view/recipe-view.component';
 import { FormNewComponent } from './form-recipe/form-new/form-new.component';
 import { FormResolverService } from './services/form-resolver.service';
 
@@ -40,7 +40,7 @@ import { FormResolverService } from './services/form-resolver.service';
     PurchaseInputComponent,
     PurchaseItemComponent,
     FormEditComponent,
-    FormViewComponent,
+    RecipeViewComponent,
     FormNewComponent
   ],
   imports: [

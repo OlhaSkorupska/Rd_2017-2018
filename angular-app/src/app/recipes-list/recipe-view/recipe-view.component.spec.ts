@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormViewComponent } from './form-view.component';
+import { RecipeViewComponent } from './recipe-view.component';
 
 describe('FormViewComponent', () => {
-  let component: FormViewComponent;
-  let fixture: ComponentFixture<FormViewComponent>;
+  let component: RecipeViewComponent;
+  let fixture: ComponentFixture<RecipeViewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormViewComponent ]
+      declarations: [ RecipeViewComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormViewComponent);
+    fixture = TestBed.createComponent(RecipeViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -19,12 +19,4 @@ export class FavoritesListComponent {
   ngOnInit() {
     this.recipeItems = this.service.recipeItems;
   }
-
-  addRecipe(value) {
-    this.recipeItems = this.service.addRecipe(value);
-  }     
-  
-  deleteRecipe(value) {
-    this.recipeItems = this.service.removeRecipe(value);
-  }  
 }
