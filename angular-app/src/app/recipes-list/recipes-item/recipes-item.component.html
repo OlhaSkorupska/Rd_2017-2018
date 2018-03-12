@@ -2,7 +2,7 @@
     <div class="item">
         <img class="item__img" src="{{ recipeItem.photoUrl }}">
         <h1 class="item__title"
-            [routerLink]="['/recipes', recipeItem.id]"></h1>
+            [routerLink]="['/recipes', recipeItem.id]">{{ recipeItem.title }}</h1>
         <p class="item__description">{{ recipeItem.description }}</p>
         <div class="group--heart">
             <fa name="fas fa-heart" size="2x"></fa>            
