@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PurchasesService } from '../services/purchases.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Purchase } from '../models/purchase.model';
 
 @Component({
   selector: 'app-purchases-list',
@@ -8,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./purchases-list.component.scss']
 })
 export class PurchasesListComponent implements OnInit {
-  purchases: Array<String> = [];
+  purchases: Purchase[];
   
   constructor(
     private service: PurchasesService,
@@ -19,16 +20,5 @@ export class PurchasesListComponent implements OnInit {
   ngOnInit() {
     this.purchases = this.service.init();
   }
-
-  onPurchasesAdded(value) {
-    this.service.addIngridient(value);
-  }
-
-  onDeletePurchase(id) {
-    this.service.removeIngridient(id);    
-  }
-
-  reload() {
-    this.router.navigate(['/purchases'], {relativeTo: this.route});
-  }  
+ 
 }

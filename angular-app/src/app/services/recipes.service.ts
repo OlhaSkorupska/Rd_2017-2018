@@ -135,7 +135,7 @@ export class RecipesService {
     
     public addRecipe(item, id: number) {
       if (!id) {
-        item.id = this.recipeItems.length + 1;
+        item.id = Math.floor(Math.random() * 100000000);
       }
       this.recipeItems.push(item);
       return this.recipeItems;

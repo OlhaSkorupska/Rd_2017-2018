@@ -5,7 +5,7 @@
       #purchaseInput="ngModel" [(ngModel)]="purchases">    
   </div>
   <button [disabled]="purchaseInput.pristine || !purchaseInput.valid" class="btn btn-success wrapper__btn" 
-      (click)="addPurchase(purchaseInput)">
+      (click)="addPurchase(purchases)">
       <i class="fa fa-shopping-cart"></i>
       Add purchases</button>
 </div>

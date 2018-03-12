@@ -1,4 +1,5 @@
 <div class="form-group wrapper">
-    <input disabled="disabled" type="text" class="form-control wrapper__input" id="purchases" #purchaseInput value="{{ ingridient }}">
-    <ng-content></ng-content> 
+    <input disabled="disabled" type="text" class="form-control wrapper__input" id="purchases" 
+        #purchaseInput value="{{ purchase.ingridient }}">
+    <a (click)="onDeletePurchase(purchase)" class="wrapper__delete"><i class="fa fa-times"></i></a>
 </div>

@@ -2,17 +2,7 @@ import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/r
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { RecipesService } from '../services/recipes.service';
-
-interface Recipe {
-    title: string;
-    description: string;
-    photoUrl: string;
-    ingredients: Array<string>;
-    instructions: string;
-    categoryId: string;
-    likes: number;
-    id: number
-}
+import { Recipe } from '../models/recipe.model';
 
 @Injectable()
 export class RecipesListResolve implements Resolve<Recipe[]> {

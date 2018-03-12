@@ -2,15 +2,16 @@ import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/r
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { PurchasesService } from '../services/purchases.service';
+import { Purchase } from '../models/purchase.model';
 
 @Injectable()
-export class PurchasesResolve implements Resolve<Array<String>> {
+export class PurchasesResolve implements Resolve<Purchase[]> {
   constructor(
     private purchasesService: PurchasesService
   ) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
-  Observable<Array<String>> | Promise<Array<String>> | Array<String> {
+  Observable<Purchase[]> | Promise<Purchase[]> | Purchase[] {
       return this.purchasesService.init();
   }
 }

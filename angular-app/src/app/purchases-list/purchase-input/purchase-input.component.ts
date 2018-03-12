@@ -1,4 +1,5 @@
-import {Component, EventEmitter, Output } from '@angular/core';
+import {Component } from '@angular/core';
+import { PurchasesService } from '../../services/purchases.service';
 
 @Component({
   selector: 'app-purchase-input',
@@ -6,9 +7,13 @@ import {Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./purchase-input.component.scss']
 })
 export class PurchaseInputComponent {
-  @Output() onAddPurchase = new EventEmitter();
+ 
+  constructor(
+    private service: PurchasesService
+  )
+  {}
 
   addPurchase(value) {
-    this.onAddPurchase.emit(value);
+    this.service.addIngridient(value);
   }
 }
