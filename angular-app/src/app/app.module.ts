@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderMainComponent } from './header-main/header-main.component';
@@ -9,7 +9,6 @@ import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { RecipesItemComponent } from './recipes-list/recipes-item/recipes-item.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FormRecipeComponent } from './form-recipe/form-recipe.component';
-import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { AllRecipesComponent } from './all-recipes/all-recipes.component';
 import { AddRecipeComponent } from './all-recipes/add-recipe/add-recipe.component';
 import { RecipesService } from './services/recipes.service';
@@ -23,7 +22,9 @@ import { FormService } from './services/form.service';
 import { FormEditComponent } from './form-recipe/form-edit/form-edit.component';
 import { RecipeViewComponent } from './recipes-list/recipe-view/recipe-view.component';
 import { FormNewComponent } from './form-recipe/form-new/form-new.component';
-import { FormResolverService } from './services/form-resolver.service';
+import { RecipesListResolve } from './services/recipes-list-resolver.service';
+import { RecipeDetailsResolve } from './services/recipe-details.service';
+import { PurchasesResolve } from './services/purchases-resolve.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,14 @@ import { FormResolverService } from './services/form-resolver.service';
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [ RecipesService, PurchasesService, FormService, FormResolverService ],
+  providers: [ 
+      RecipesService, 
+      PurchasesService, 
+      FormService, 
+      RecipesListResolve, 
+      RecipeDetailsResolve,
+      PurchasesResolve 
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

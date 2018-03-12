@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-header-main',
@@ -7,8 +7,4 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 })
 export class HeaderMainComponent {
   title = 'Recipes';
-
-  constructor(
-  ) { }
-
 }

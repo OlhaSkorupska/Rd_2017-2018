@@ -1,8 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Recipe } from '../../models/recipe.model';
 import { RecipesService } from '../../services/recipes.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormService } from '../../services/form.service';
 
 @Component({
   selector: 'app-recipes-item',
@@ -12,9 +10,7 @@ import { FormService } from '../../services/form.service';
 export class RecipesItemComponent {
 
   constructor (
-    private service: RecipesService,
-    private router: Router,
-    private route: ActivatedRoute
+    private service: RecipesService
   ) { }
 
   @Input() recipeItem: Recipe;

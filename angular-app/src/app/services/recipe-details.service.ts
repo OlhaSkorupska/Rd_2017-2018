@@ -15,7 +15,7 @@ interface Recipe {
 }
 
 @Injectable()
-export class FormResolverService implements Resolve<Recipe> {
+export class RecipeDetailsResolve implements Resolve<Recipe> {
   constructor(
     private recipeService: RecipesService
   ) {}

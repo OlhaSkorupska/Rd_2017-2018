@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../models/recipe.model';
 import { RecipesService } from '../services/recipes.service';
 import { FormService } from '../services/form.service';
-import { ActivatedRoute, Data, Params, Router } from '@angular/router'; 
+import { ActivatedRoute, Params, Router } from '@angular/router'; 
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
@@ -11,7 +11,9 @@ import { Subscription } from 'rxjs/Subscription';
   styleUrls: ['./form-recipe.component.scss']
 })
 export class FormRecipeComponent implements OnInit {
+
   categories = ['Main course', 'Apperetive', 'Dessert'];
+  
   model: Recipe = new Recipe();
   paramsSubscription: Subscription;
     

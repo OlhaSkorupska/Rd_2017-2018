@@ -1,15 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  OnChanges,
-  SimpleChanges,
-  DoCheck,
-  AfterViewInit,
-  ViewChild,
-  ElementRef,
-  OnDestroy
-} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 
 @Component({

@@ -1,6 +1,4 @@
-import { Component, Output, OnInit, Input, EventEmitter } from '@angular/core';
-import { SimpleChanges } from '@angular/core';
-import { RecipesService } from './services/recipes.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',

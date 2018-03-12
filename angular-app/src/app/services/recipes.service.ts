@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Recipe } from '../models/recipe.model';
+import { RecipesItemComponent } from '../recipes-list/recipes-item/recipes-item.component';
 
 @Injectable() 
 export class RecipesService {
@@ -131,7 +132,7 @@ export class RecipesService {
           id: 10          
         },
       ];
-
+    
     public addRecipe(item, id: number) {
       if (!id) {
         item.id = this.recipeItems.length + 1;
