@@ -13,9 +13,10 @@ import { Subscription } from 'rxjs/Subscription';
 export class FormRecipeComponent implements OnInit {
 
   categories = ['Main course', 'Apperetive', 'Dessert'];
-  
+
   model: Recipe = new Recipe();
   paramsSubscription: Subscription;
+  path: String;
     
   constructor(
     private service: RecipesService,
@@ -25,31 +26,29 @@ export class FormRecipeComponent implements OnInit {
    ) { }
 
   ngOnInit() {
-    this.model.id = this.route.params.value['id'];
-    if (this.model.id) {
-      this.paramsSubscription = this.route.params
-      .subscribe(
-        (params: Params) => {
-          this.model = this.service.getRecipe(+params['id']);
-        }
-      );
+    this.path = this.route.routeConfig.path;  
+    if (this.path !== 'create') {
+      this.createRecipe();
     }
+  }
+
+  createRecipe() {
+    this.paramsSubscription = this.route.params
+    .subscribe(
+      (params: Params) => {
+        this.model = this.service.getRecipe(+params['id']);
+      }
+    );
   }
 
   onSubmit() {
-    this.formService.model = this.model; 
-    if (this.model.id) {
-      this.service.updateRecipe(this.model);      
-      this.router.navigate(['recipes', this.model.id]);          
-    } else {
+    if (this.path === 'create') {
       this.service.addRecipe(this.model, null);      
-      this.router.navigate(['recipes', this.model.id]);          
+      this.router.navigate(['/recipes', this.model.id]);          
+    } else {
+      this.service.updateRecipe(this.model);      
+      this.router.navigate(['/recipes', this.model.id]);          
     }
   }
-
-  // ngOnDestroy() {
-  //   this.paramsSubscription.unsubscribe();
-  // }
-
 
 }
