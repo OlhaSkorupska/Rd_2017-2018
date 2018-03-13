@@ -1,57 +1,87 @@
 <div class="container">
-    <form (ngSubmit)="onSubmit()" #recipeForm="ngForm">
-      <div class="form-group">
-        <label for="title">Title</label>
-        <input type="text" class="form-control" id="title" name="title" #title="ngModel"
-        required="required" [(ngModel)]="model.title">
-        <div [hidden]="title.valid || title.pristine" class="error">
-            * Title is required
-        </div>        
-      </div>
-  
-      <div class="form-group">
-        <label for="description">Description</label>
-        <textarea class="form-control" id="description" name="description" cols="40" rows="5"
-        #description="ngModel" required="required" [(ngModel)]="model.description"></textarea>        
-        <div [hidden]="description.valid || description.pristine" class="error">
-            * Description is required
-        </div>         
-      </div>
-  
-      <div class="form-group">
-          <label for="photoUrl">Photo URL</label>
-          <input type="text" class="form-control" id="photoUrl" name="photoUrl" minlength="4"
-          #photoUrl="ngModel" required="required" [(ngModel)]="model.photoUrl">
-          <div *ngIf="photoUrl.errors && (photoUrl.dirty || photoUrl.touched)" class="error">
-              <div [hidden]="!photoUrl.errors.required">
-                  * Photo URL is required
-              </div>
-              <div [hidden]="!photoUrl.errors.minlength">
-                * Photo URL must be valid url
-              </div>
-          </div>          
-      </div>
+    <form [formGroup]="formRecipe" (ngSubmit)="onSubmit()" #recipeForm="ngForm">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input formControlName="title" type="text" class="form-control" id="title" name="title" required="required" 
+                maxlength="50"
+                [ngClass]="{
+                'is-invalid': title.invalid && title.dirty,
+                'is-valid': title.valid && title.dirty
+            }">
+            <div [hidden]="title.valid || title.pristine" class="invalid-feedback">
+                * Title is required
+            </div>
+        </div>
 
-      <div class="form-group">
-          <label for="instructions">Instructions</label>
-          <textarea class="form-control" id="instruction" name="instructions" cols="40" rows="5"
-          #instructions="ngModel" required="required" [(ngModel)]="model.instructions"></textarea>        
-          <div [hidden]="instructions.valid || instructions.pristine" class="error">
-              * Instructions is required
-          </div>            
-      </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea formControlName="description" class="form-control" id="description" name="description" 
+                cols="40" rows="5" required="required"
+                [ngClass]="{
+                'is-invalid': description.invalid && description.dirty,
+                'is-valid': description.valid && description.dirty
+            }"></textarea>
+            <div [hidden]="description.valid || description.pristine" class="invalid-feedback">
+                * Description is required
+            </div>
+        </div>
 
-      <div class="form-group">
-        <label for="category">Category</label>
-        <select class="form-control" id="category" name="category" 
-        #category="ngModel" required="required" [(ngModel)]="model.category">
-            <option *ngFor="let category of categories" [value]="category">{{category}}</option>
-        </select>
-        <div [hidden]="category.valid || category.pristine" class="error">
-            * Category is required
-        </div>            
-      </div>
-  
-      <button type="submit" class="btn btn-success" [disabled]="!recipeForm.form.valid">Add</button>
+        <div class="form-group">
+            <label for="photoUrl">Photo URL</label>
+            <input formControlName="photoUrl" type="text" class="form-control" id="photoUrl" name="photoUrl" 
+                minlength="4" required="required"
+                [ngClass]="{
+                'is-invalid': photoUrl.invalid && photoUrl.dirty,
+                'is-valid': photoUrl.valid && photoUrl.dirty
+            }">
+            <div *ngIf="photoUrl.errors && (photoUrl.dirty || photoUrl.touched)" class="invalid-feedback">
+                <div [hidden]="!photoUrl.errors.required">
+                    * Photo URL is required
+                </div>
+                <div [hidden]="!photoUrl.errors.isUrlInvalid">
+                    * Photo URL must be valid url
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="instructions">Instructions</label>
+            <textarea formControlName="instructions" class="form-control" id="instruction" name="instructions" 
+                cols="40" rows="5" required="required"
+                [ngClass]="{
+                'is-invalid': instructions.invalid && instructions.dirty,
+                'is-valid': instructions.valid && instructions.dirty
+            }"></textarea>
+            <div [hidden]="instructions.valid || instructions.pristine" class="invalid-feedback">
+                * Instructions is required
+            </div>
+        </div>
+        <div class="form-group" formArrayName="ingredients">
+            <label>Ingredients</label>
+            <button type="button" class="btn btn-success" (click)="addIngredient()">
+                <i class="fa fa-plus"></i>
+            </button>
+            <div class="wrapper" *ngFor="let ingredientControl of ingredients.controls; let i = index">
+                <input type="text" class="form-control wrapper__input" [formControlName]="i">
+                <a (click)="deleteIngredient(i)" class="wrapper__delete">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="category">Category</label>
+            <select formControlName="category" class="form-control" id="category" name="category" required="required" [ngClass]="{
+                'is-invalid': category.invalid && category.dirty,
+                'is-valid': category.valid && category.dirty
+            }">
+                <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+            </select>
+            <div [hidden]="category.valid || category.pristine" class="invalid-feedback">
+                * Category is required
+            </div>
+        </div>
+
+        <input type="submit" class="btn btn-outline-success" [disabled]="!recipeForm.form.valid" value="Add">
     </form>
-  </div>
+</div>

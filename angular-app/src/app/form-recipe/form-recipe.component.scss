@@ -1,12 +1,40 @@
-.ng-valid[required], .ng-valid.required  {
+.wrapper {
+    display: flex;
+    margin: 20px; 
+    position: relative;      
 
+    &__input {
+        background-color: white;
+        border-radius: 0;   
+        padding: 15px;             
+    }
+    
+    &__delete {
+        position: absolute;              
+        font-size: 34px;
+        color: rgb(207, 24, 33) !important;
+        position: absolute;
+        right: 25px;  
+    }    
 }
-  
-.ng-invalid:not(form)  {
 
-}
+.custom-btn {
+    position: relative;
+    &:after {
+        display: block;
+        width: 96%;  
+        content: '';
+        position: absolute;
+        height: 3px;        
+        border-bottom: 1px solid #767676;
+    }
 
-.error {
-    color: rgb(211, 9, 9);
-    padding: 20px;
+    &:before {
+        display: block;
+        width: 96%;  
+        content: '';
+        position: absolute;
+        height: 3px;        
+        border-bottom: 1px solid #767676;       
+    }
 }
