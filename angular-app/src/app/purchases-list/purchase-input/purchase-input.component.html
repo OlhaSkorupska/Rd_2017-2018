@@ -1,10 +1,10 @@
 <div class="wrapper">
   <div class="form-group col-md-10 wrapper__input">
       <label for="purchases">Ingridients</label>
-      <input minlength="3" type="text" class="form-control" name="purchases" id="purchases" 
-      #purchaseInput="ngModel" [(ngModel)]="purchases">    
+      <input minlength="1" type="text" class="form-control" name="purchases" id="purchases" 
+      #purchaseInput="ngModel" [(ngModel)]="purchases" required="required">    
   </div>
-  <button [disabled]="purchaseInput.pristine || !purchaseInput.valid" class="btn btn-success wrapper__btn" 
+  <button [disabled]="!purchaseInput.valid || purchaseInput.pristine" class="btn btn-success wrapper__btn" 
       (click)="addPurchase(purchases)">
       <i class="fa fa-shopping-cart"></i>
       Add purchases</button>
