@@ -63,7 +63,7 @@ export class FormRecipeComponent implements OnInit {
     this.createFormControls();
     this.createForm();
     this.path = this.route.routeConfig.path;
-    if (this.path !== 'create') {
+    if (this.path !== 'recipes/create') {
       this.createRecipe();
     }
   }
@@ -88,7 +88,7 @@ export class FormRecipeComponent implements OnInit {
 
   onSubmit() {
     console.log(this.formRecipe.value);
-    if (this.path === 'create') {
+    if (this.path === 'recipes/create') {
       this.service.addRecipe(this.formRecipe.value, null);
       this.router.navigate(['/recipes', this.formRecipe.value.id]);
     } else {

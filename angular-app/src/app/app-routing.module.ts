@@ -11,12 +11,11 @@ import { RecipeDetailsResolve } from './services/recipe-details.service';
 import { PurchasesResolve } from './services/purchases-resolve.service';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: AllRecipesComponent },
+  { path: '', redirectTo: '/recipes', pathMatch: 'full' },
   { path: 'recipes', component: AllRecipesComponent, resolve: { recipe: RecipesListResolve }, },
+  { path: 'recipes/create', component: FormNewComponent, }, 
   { path: 'recipes/:id', component: RecipeViewComponent, resolve: { recipe: RecipeDetailsResolve }, },    
-  { path: 'create', component: FormNewComponent, },  
-  { path: 'edit/:id', component: FormEditComponent, resolve: { recipe: RecipeDetailsResolve }, },    
+  { path: 'recipes/edit/:id', component: FormEditComponent, resolve: { recipe: RecipeDetailsResolve }, },    
   { path: 'purchases', component: PurchasesListComponent, resolve: { recipe: PurchasesResolve }, },   
   { path: 'favorites', component: FavoritesListComponent }, 
   { path: '**', redirectTo: '/' }  
