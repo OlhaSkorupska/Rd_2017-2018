@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { FormGroup, FormControl, Validators, AbstractControl, AsyncValidatorFn, FormArray } from '@angular/forms';
 
 import { urlValidator } from './url-validator';
+import { FormService } from '../services/form.service';
 
 @Component({
   selector: 'app-form-recipe',
@@ -31,6 +32,7 @@ export class FormRecipeComponent implements OnInit {
 
   constructor(
     private service: RecipesService,
+    private formService: FormService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
@@ -60,12 +62,14 @@ export class FormRecipeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.createFormControls();
-    this.createForm();
     this.path = this.route.routeConfig.path;
     if (this.path !== 'recipes/create') {
       this.createRecipe();
+      this.initForm(this.model);      
+    } else {
+      this.createFormControls();
     }
+    this.createForm();
   }
 
   addIngredient() {
@@ -82,20 +86,37 @@ export class FormRecipeComponent implements OnInit {
       .subscribe(
         (params: Params) => {
           this.model = this.service.getRecipe(+params['id']);
+          this.initForm(this.model);
         }
       );
   }
 
+  initForm(model: Recipe) {
+    this.title = new FormControl(model.title, Validators.required);
+    this.description = new FormControl(model.description, Validators.required);
+    this.photoUrl = new FormControl(model.photoUrl,
+      [
+        Validators.required,
+        urlValidator()
+      ]);
+    this.instructions = new FormControl(model.instructions, Validators.required);
+    this.ingredients = new FormArray([]);
+    this.category = new FormControl(model.category, Validators.required);    
+  }
+
   onSubmit() {
-    console.log(this.formRecipe.value);
     if (this.path === 'recipes/create') {
       this.service.addRecipe(this.formRecipe.value, null);
       this.router.navigate(['/recipes', this.formRecipe.value.id]);
     } else {
+      this.formRecipe.value.id = this.model.id;
       this.service.updateRecipe(this.formRecipe.value);
       this.router.navigate(['/recipes', this.formRecipe.value.id]);
     }
   }
 
+  next() {
+    return this.model.category;
+  }
 
 }
