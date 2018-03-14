@@ -2,8 +2,8 @@
     <form [formGroup]="formRecipe" (ngSubmit)="onSubmit()" #recipeForm="ngForm">
         <div class="form-group">
             <label for="title">Title</label>
-            <input formControlName="title" type="text" class="form-control" id="title" name="title" required="required" 
-                maxlength="50"
+            <input maxLength="50" formControlName="title" type="text" class="form-control" id="title" name="title" 
+            required="required"
                 [ngClass]="{
                 'is-invalid': title.invalid && title.dirty,
                 'is-valid': title.valid && title.dirty
@@ -16,7 +16,7 @@
         <div class="form-group">
             <label for="description">Description</label>
             <textarea formControlName="description" class="form-control" id="description" name="description" 
-                cols="40" rows="5" required="required"
+            cols="40" rows="5" required="required"
                 [ngClass]="{
                 'is-invalid': description.invalid && description.dirty,
                 'is-valid': description.valid && description.dirty
@@ -29,8 +29,7 @@
         <div class="form-group">
             <label for="photoUrl">Photo URL</label>
             <input formControlName="photoUrl" type="text" class="form-control" id="photoUrl" name="photoUrl" 
-                minlength="4" required="required"
-                [ngClass]="{
+            required="required" [ngClass]="{
                 'is-invalid': photoUrl.invalid && photoUrl.dirty,
                 'is-valid': photoUrl.valid && photoUrl.dirty
             }">
@@ -38,7 +37,7 @@
                 <div [hidden]="!photoUrl.errors.required">
                     * Photo URL is required
                 </div>
-                <div [hidden]="!photoUrl.errors.isUrlInvalid">
+                <div [hidden]="!photoUrl.errors.isUrlInvalid || photoUrl.errors.required">
                     * Photo URL must be valid url
                 </div>
             </div>
@@ -47,7 +46,7 @@
         <div class="form-group">
             <label for="instructions">Instructions</label>
             <textarea formControlName="instructions" class="form-control" id="instruction" name="instructions" 
-                cols="40" rows="5" required="required"
+            cols="40" rows="5" required="required"
                 [ngClass]="{
                 'is-invalid': instructions.invalid && instructions.dirty,
                 'is-valid': instructions.valid && instructions.dirty
@@ -71,7 +70,8 @@
 
         <div class="form-group">
             <label for="category">Category</label>
-            <select formControlName="category" class="form-control" id="category" name="category" required="required" [ngClass]="{
+            <select formControlName="category" class="form-control" id="category" name="category" 
+            required="required" [ngClass]="{
                 'is-invalid': category.invalid && category.dirty,
                 'is-valid': category.valid && category.dirty
             }">
