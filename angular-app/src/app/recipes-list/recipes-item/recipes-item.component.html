@@ -11,8 +11,8 @@
     </div>
     <div class="group">
         <div class="group__likes">
-            <a class="group__button"><i class="fa fa-thumbs-up"></i></a>   
-            <a class="group__button"><i class="fa fa-thumbs-down"></i></a>                           
+            <a (click)="like(recipeItem.id)" class="group__button"><i class="fa fa-thumbs-up"></i></a>   
+            <a (click)="dislike(recipeItem.id)" class="group__button"><i class="fa fa-thumbs-down"></i></a>                         
         </div>
         <div class="group__work">
             <a class="group__button" [routerLink]="['/recipes', recipeItem.id]"><i class="fa fa-eye"></i></a>     

@@ -54,6 +54,7 @@
 
     &__button {
         font-size: 24px;
-        color: #767676;
+        color: #767676;     
     }
+    &:focus, &:active {outline:0;}
 }

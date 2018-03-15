@@ -75,9 +75,7 @@
                 'is-invalid': category.invalid && category.dirty,
                 'is-valid': category.valid && category.dirty
             }">
-                <option selected="{{ category.value }}">{{ category.value }}</option>            
-                <option *ngFor="let item of categories" [value]="item">{{ item }}</option>
-                <!-- [selected]="model.category" -->
+                <option selected="" *ngFor="let item of categories" [value]="item">{{ item }}</option>
             </select>
             <div [hidden]="category.valid || category.pristine" class="invalid-feedback">
                 * Category is required

@@ -37,17 +37,21 @@ export class FormRecipeComponent implements OnInit {
     private router: Router
   ) { }
 
-  createFormControls() {
-    this.title = new FormControl(null, Validators.required);
-    this.description = new FormControl(null, Validators.required);
-    this.photoUrl = new FormControl(null,
+  createFormControls(model: Recipe) {
+    this.title = new FormControl(model.title || null, Validators.required);
+    this.description = new FormControl(model.description || null, Validators.required);
+    this.photoUrl = new FormControl(model.photoUrl || null,
       [
         Validators.required,
         urlValidator()
       ]);
-    this.instructions = new FormControl(null, Validators.required);
-    this.ingredients = new FormArray([]);
-    this.category = new FormControl(null, Validators.required);
+    this.instructions = new FormControl(model.instructions || null, Validators.required);
+    if (model.ingredients) {
+      this.ingredients = this.toFormArray(model.ingredients);
+    } else {
+      this.ingredients = new FormArray([]);
+    }
+    this.category = new FormControl(model.category || null, Validators.required);
   }
 
   createForm() {
@@ -65,10 +69,8 @@ export class FormRecipeComponent implements OnInit {
     this.path = this.route.routeConfig.path;
     if (this.path !== 'recipes/create') {
       this.createRecipe();
-      this.initForm(this.model);      
-    } else {
-      this.createFormControls();
     }
+    this.createFormControls(this.model);      
     this.createForm();
   }
 
@@ -86,24 +88,19 @@ export class FormRecipeComponent implements OnInit {
       .subscribe(
         (params: Params) => {
           this.model = this.service.getRecipe(+params['id']);
-          this.initForm(this.model);
         }
       );
   }
 
-  initForm(model: Recipe) {
-    this.title = new FormControl(model.title, Validators.required);
-    this.description = new FormControl(model.description, Validators.required);
-    this.photoUrl = new FormControl(model.photoUrl,
-      [
-        Validators.required,
-        urlValidator()
-      ]);
-    this.instructions = new FormControl(model.instructions, Validators.required);
-    this.ingredients = new FormArray([]);
-    this.category = new FormControl(model.category, Validators.required);    
-  }
+  toFormArray(elements: Array<String>) {
+    let group: FormControl[] = []; 
 
+    elements.forEach(element => {
+        group.push(new FormControl(element));
+    });
+
+    return new FormArray(group);
+}
   onSubmit() {
     if (this.path === 'recipes/create') {
       this.service.addRecipe(this.formRecipe.value, null);

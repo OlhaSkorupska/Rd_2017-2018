@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs/Subscription';
 @Component({
   selector: 'app-form-edit',
   templateUrl: './form-edit.component.html',
-  styleUrls: ['./form-edit.component.sass']
+  styleUrls: ['./form-edit.component.scss']
 })
 export class FormEditComponent implements OnInit, OnDestroy {
     @Output() model: Recipe = new Recipe();

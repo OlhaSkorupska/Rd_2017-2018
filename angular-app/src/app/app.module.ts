@@ -49,7 +49,7 @@ import { PurchasesResolve } from './services/purchases-resolve.service';
     AngularFontAwesomeModule,
     FormsModule, 
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [ 
       RecipesService, 
