@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Recipe } from '../models/recipe.model';
 import { RecipesService } from '../services/recipes.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
@@ -21,6 +21,7 @@ export class FormRecipeComponent implements OnInit {
   paramsSubscription: Subscription;
   path: String;
   formRecipe: FormGroup;
+  @Input() operation: String;
 
   title: FormControl;
   description: FormControl;
@@ -69,6 +70,9 @@ export class FormRecipeComponent implements OnInit {
     this.path = this.route.routeConfig.path;
     if (this.path !== 'recipes/create') {
       this.createRecipe();
+      this.operation = 'Edit';
+    } else {
+      this.operation = 'Add';
     }
     this.createFormControls(this.model);      
     this.createForm();
