@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Recipe } from '../models/recipe.model';
 import { RecipesItemComponent } from '../recipes-list/recipes-item/recipes-item.component';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable() 
 export class RecipesService {
@@ -185,6 +186,14 @@ export class RecipesService {
     }
     
     getRecipes() {
-      return this.recipeItems;
+      return [...this.recipeItems];
+    } 
+    
+    updateLikes(model: Recipe) {
+      console.log(model);
+      this.updateRecipe(model);
+      this.likesChanged.next(model.likes);
     }    
+
+    likesChanged = new Subject<Number>();    
 }

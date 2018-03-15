@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Recipe } from '../../models/recipe.model';
 import { RecipesService } from '../../services/recipes.service';
 
@@ -7,7 +7,7 @@ import { RecipesService } from '../../services/recipes.service';
   templateUrl: './recipes-item.component.html',
   styleUrls: ['./recipes-item.component.scss']
 })
-export class RecipesItemComponent {
+export class RecipesItemComponent implements OnInit {
   model: Recipe;
   constructor (
     private service: RecipesService
@@ -15,21 +15,22 @@ export class RecipesItemComponent {
 
   @Input() recipeItem: Recipe;
 
+  ngOnInit() {
+    this.service.likesChanged.subscribe(
+      (likes: number) => {
+        this.model.likes = this.recipeItem.likes;
+      }
+    );
+  }
+
   deleteRecipe(item) {
     this.service.removeRecipe(item);
   }  
 
-  like(id: number) {
+  likes(id: number, likes: number) {
     this.model = new Recipe();
     this.model.id = id;
-    this.model.likes = 1;
-    this.service.updateRecipe(this.model);
-  }
-
-  dislike(id: number) {
-    this.model = new Recipe();
-    this.model.id = id;
-    this.model.likes = -1;
-    this.service.updateRecipe(this.model);
+    this.model.likes = likes;
+    this.service.updateLikes(this.model);
   }
 }
