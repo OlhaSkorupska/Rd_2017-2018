@@ -173,7 +173,7 @@ export class RecipesService {
     public removeRecipe(value) {
       const index = this.recipeItems.indexOf(value);
       this.recipeItems.splice(index, 1);
-      return this.recipeItems;
+      this.recipesChanged.next(this.recipeItems);      
     }        
 
     getRecipe(id: number) {
@@ -189,10 +189,10 @@ export class RecipesService {
       return [...this.recipeItems];
     } 
     
-    updateLikes(model: Recipe) {
-      this.updateRecipe(model);
-      this.likesChanged.next(model.likes);
+    updateLikes(item: Recipe) {
+      this.updateRecipe(item);
+      this.recipesChanged.next(this.recipeItems);
     }    
 
-    likesChanged = new Subject<Number>();    
+    recipesChanged = new Subject<Recipe[]>();    
 }

@@ -9,6 +9,8 @@ import { RecipesService } from '../../services/recipes.service';
 })
 export class RecipesItemComponent implements OnInit {
   model: Recipe;
+  recipeItems: Recipe[];
+
   constructor (
     private service: RecipesService
   ) { }
@@ -16,9 +18,9 @@ export class RecipesItemComponent implements OnInit {
   @Input() recipeItem: Recipe;
 
   ngOnInit() {
-    this.service.likesChanged.subscribe(
-      (likes: number) => {
-        this.model.likes = this.recipeItem.likes;
+    this.service.recipesChanged.subscribe(
+      (recipeItems: Recipe[]) => {
+        this.recipeItems = this.recipeItems;
       }
     );
   }
