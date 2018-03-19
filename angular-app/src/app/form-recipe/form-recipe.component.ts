@@ -7,6 +7,8 @@ import { FormGroup, FormControl, Validators, AbstractControl, AsyncValidatorFn, 
 
 import { urlValidator } from './url-validator';
 import { FormService } from '../services/form.service';
+import { Category } from '../models/category.model';
+import { CategoriesService } from '../services/categories.service';
 
 @Component({
   selector: 'app-form-recipe',
@@ -14,7 +16,7 @@ import { FormService } from '../services/form.service';
   styleUrls: ['./form-recipe.component.scss']
 })
 export class FormRecipeComponent implements OnInit {
-  categories = ['Appetizer', 'Main course', 'Soup', 'Desert'];
+  categories: Category[];
 
   model: Recipe = new Recipe();
   paramsSubscription: Subscription;
@@ -34,6 +36,7 @@ export class FormRecipeComponent implements OnInit {
     private service: RecipesService,
     private formService: FormService,
     private route: ActivatedRoute,
+    private serviceCategories: CategoriesService,
     private router: Router
   ) { }
 
@@ -66,6 +69,7 @@ export class FormRecipeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.categories = this.serviceCategories.init();
     if (this.operation !== 'Add') {
       this.createRecipe();
     }

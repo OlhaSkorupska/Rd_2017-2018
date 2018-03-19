@@ -25,6 +25,7 @@ import { FormNewComponent } from './form-recipe/form-new/form-new.component';
 import { RecipesListResolve } from './services/recipes-list-resolver.service';
 import { RecipeDetailsResolve } from './services/recipe-details.service';
 import { PurchasesResolve } from './services/purchases-resolve.service';
+import { CategoriesService } from './services/categories.service';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { PurchasesResolve } from './services/purchases-resolve.service';
       FormService, 
       RecipesListResolve, 
       RecipeDetailsResolve,
-      PurchasesResolve 
+      PurchasesResolve,
+      CategoriesService
   ],
   bootstrap: [AppComponent]
 })
