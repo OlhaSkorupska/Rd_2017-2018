@@ -27,10 +27,10 @@ export class RecipesItemComponent implements OnInit {
     this.service.removeRecipe(item);
   }  
 
-  likes(id: number, likes: number) {
+  likes(id: number, likes: boolean) {
     this.model = new Recipe();
     this.model.id = id;
-    this.model.likes = likes;
+    this.model.likes = (likes) ? 1 : -1;
     this.service.updateLikes(this.model);
   }
 }

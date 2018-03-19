@@ -165,7 +165,7 @@ export class RecipesService {
         itemRecipe.ingredients = newModel.ingredients || itemRecipe.ingredients;
         itemRecipe.instructions = newModel.instructions || itemRecipe.instructions;
         itemRecipe.categoryId = newModel.categoryId || itemRecipe.categoryId;
-        itemRecipe.likes = itemRecipe.likes + newModel.likes; 
+        itemRecipe.likes = (newModel.likes) ? (itemRecipe.likes + newModel.likes) : itemRecipe.likes; 
         itemRecipe.category = newModel.category || itemRecipe.category;                                                       
       }   
     }      
@@ -190,7 +190,6 @@ export class RecipesService {
     } 
     
     updateLikes(model: Recipe) {
-      console.log(model);
       this.updateRecipe(model);
       this.likesChanged.next(model.likes);
     }    
