@@ -1,8 +1,9 @@
-import { Component, OnInit, OnDestroy, Output } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, ViewChild } from '@angular/core';
 import { Recipe } from '../../models/recipe.model';
 import { ActivatedRoute, Params, Router } from '@angular/router'; 
 import { RecipesService } from '../../services/recipes.service';
 import { Subscription } from 'rxjs/Subscription';
+import { FormRecipeComponent } from '../form-recipe.component';
 
 
 @Component({
@@ -12,8 +13,11 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class FormEditComponent implements OnInit, OnDestroy {
     @Output() model: Recipe = new Recipe();
-    paramsSubscription: Subscription; 
-  
+    paramsSubscription: Subscription;
+
+    @ViewChild('operation')
+    private operation: FormRecipeComponent;
+
     constructor(
       private recipeService: RecipesService,
       private route: ActivatedRoute,
@@ -21,6 +25,8 @@ export class FormEditComponent implements OnInit, OnDestroy {
     ) { }
   
     ngOnInit() {
+      this.operation.notifyMe('Edit');    
+
       this.paramsSubscription = this.route.params
         .subscribe(
           (params: Params) => {

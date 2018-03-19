@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../models/recipe.model';
 import { RecipesService } from '../services/recipes.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
@@ -14,14 +14,13 @@ import { FormService } from '../services/form.service';
   styleUrls: ['./form-recipe.component.scss']
 })
 export class FormRecipeComponent implements OnInit {
-
   categories = ['Appetizer', 'Main course', 'Soup', 'Desert'];
 
   model: Recipe = new Recipe();
   paramsSubscription: Subscription;
   path: String;
   formRecipe: FormGroup;
-  @Input() operation: String;
+  operation: String;
 
   title: FormControl;
   description: FormControl;
@@ -67,12 +66,8 @@ export class FormRecipeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.path = this.route.routeConfig.path;
-    if (this.path !== 'recipes/create') {
+    if (this.operation !== 'Add') {
       this.createRecipe();
-      this.operation = 'Edit';
-    } else {
-      this.operation = 'Add';
     }
     this.createFormControls(this.model);      
     this.createForm();
@@ -106,7 +101,7 @@ export class FormRecipeComponent implements OnInit {
     return new FormArray(group);
 }
   onSubmit() {
-    if (this.path === 'recipes/create') {
+    if (this.operation === 'Add') {
       this.service.addRecipe(this.formRecipe.value, null);
       this.router.navigate(['/recipes', this.formRecipe.value.id]);
     } else {
@@ -116,8 +111,7 @@ export class FormRecipeComponent implements OnInit {
     }
   }
 
-  next() {
-    return this.model.category;
+  notifyMe(value) {
+    this.operation = value;
   }
-
 }

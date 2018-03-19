@@ -1,4 +1,5 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormRecipeComponent } from '../form-recipe.component';
 
 @Component({
   selector: 'app-form-new',
@@ -6,9 +7,10 @@ import { Component, Output, EventEmitter, OnInit } from '@angular/core';
   styleUrls: ['./form-new.component.sass']
 })
 export class FormNewComponent implements OnInit{
-  @Output() operation = new EventEmitter();
-
+  @ViewChild('operation')
+  private operation: FormRecipeComponent;
+   
   ngOnInit() {
-    this.operation.emit('Add');    
+    this.operation.notifyMe('Add');
   }
 }
