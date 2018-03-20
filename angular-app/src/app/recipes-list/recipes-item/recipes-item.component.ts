@@ -26,7 +26,11 @@ export class RecipesItemComponent implements OnInit {
   }
 
   deleteRecipe(item) {
-    this.service.removeRecipe(item);
+    this.service.removeRecipe(item.id)
+    .subscribe(
+      result => result,
+      error => console.log(error.statusText)
+    );
   }  
 
   likes(id: number, likes: boolean) {

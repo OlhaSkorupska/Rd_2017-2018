@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="formRecipe">
     <form [formGroup]="formRecipe" (ngSubmit)="onSubmit()" #recipeForm="ngForm">
         <div class="form-group">
             <label for="title">Title</label>
@@ -69,15 +69,15 @@
         </div>
 
         <div class="form-group">
-            <label for="category">Category</label>
-            <select formControlName="category" class="form-control" id="category" name="category" 
+            <label for="categoryId">Category</label>
+            <select formControlName="categoryId" class="form-control" id="categoryId" name="categoryId" 
             required="required" [ngClass]="{
-                'is-invalid': category.invalid && category.dirty,
-                'is-valid': category.valid && category.dirty
+                'is-invalid': categoryId.invalid && categoryId.dirty,
+                'is-valid': categoryId.valid && categoryId.dirty
             }">
-                <option *ngFor="let item of categories" [value]="item.name">{{ item.name }}</option>
+                <option *ngFor="let item of categories" [value]="item.id">{{ item.name }}</option>
             </select>
-            <div [hidden]="category.valid || category.pristine" class="invalid-feedback">
+            <div [hidden]="categoryId.valid || categoryId.pristine" class="invalid-feedback">
                 * Category is required
             </div>
         </div>

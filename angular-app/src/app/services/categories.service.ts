@@ -1,16 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Category } from '../models/category.model';
+import { Observable } from "rxjs/Observable";
+import 'rxjs/add/operator/map';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable() 
 export class CategoriesService {
-    categories: Category[] = [
-        { name: 'Appetizer', id: 1 },
-        { name: 'Main course', id: 2 },
-        { name: 'Soup', id: 3 },
-        { name: 'Desert', id: 4 }         
-    ];
+    categories: Category[];
   
-    public init() {
-        return this.categories;     
-    }  
+    constructor(
+        private http: HttpClient
+    ) {}
+
+    public getCategories():Observable<Category[]> {
+      return this.http.get<Category[]>('/categories', { observe: 'body' })
+        .map(data => this.categories = data);
+    }   
+ 
 }

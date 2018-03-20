@@ -17,6 +17,6 @@ export class FavoritesListComponent {
   ) { }
 
   ngOnInit() {
-    this.recipeItems = this.service.recipeItems;
+    this.recipeItems = this.service.recipesItems;
   }
 }

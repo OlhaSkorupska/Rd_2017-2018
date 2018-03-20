@@ -28,7 +28,7 @@ export class FormRecipeComponent implements OnInit {
   description: FormControl;
   photoUrl: FormControl;
   instructions: FormControl;
-  category: FormControl;
+  categoryId: FormControl;
   ingredients: FormArray;
 
 
@@ -54,7 +54,7 @@ export class FormRecipeComponent implements OnInit {
     } else {
       this.ingredients = new FormArray([]);
     }
-    this.category = new FormControl(model.category || null, Validators.required);
+    this.categoryId = new FormControl(model.categoryId || null, Validators.required);
   }
 
   createForm() {
@@ -64,17 +64,22 @@ export class FormRecipeComponent implements OnInit {
       'photoUrl': this.photoUrl,
       'instructions': this.instructions,
       'ingredients': this.ingredients,
-      'category': this.category
+      'categoryId': this.categoryId
     });
   }
 
   ngOnInit() {
-    this.categories = this.serviceCategories.init();
+    this.serviceCategories.getCategories()
+    .subscribe(
+      result => this.categories = result,
+      error => console.log(error.statusText)
+    );
     if (this.operation !== 'Add') {
       this.createRecipe();
+    } else {
+      this.createFormControls(this.model);      
+      this.createForm();
     }
-    this.createFormControls(this.model);      
-    this.createForm();
   }
 
   addIngredient() {
@@ -88,14 +93,18 @@ export class FormRecipeComponent implements OnInit {
 
   createRecipe() {
     this.paramsSubscription = this.route.params
-    .subscribe(
-      (params: Params) => {
-        this.service.getRecipe(params['id'])
-        .subscribe(
-          result => this.model = result,
-          error => console.log(error.statusText)
-        );
-      });        
+      .subscribe(
+        (params: Params) => {
+          this.service.getRecipe(params['id'])
+          .subscribe(
+            result => {
+              this.model = result;
+              this.createFormControls(this.model);
+              this.createForm();              
+            },
+            error => console.log(error.statusText)
+          );
+    });           
   }
 
   toFormArray(elements: Array<String>) {
@@ -109,12 +118,19 @@ export class FormRecipeComponent implements OnInit {
 }
   onSubmit() {
     if (this.operation === 'Add') {
-      this.service.addRecipe(this.formRecipe.value, null);
-      this.router.navigate(['/recipes', this.formRecipe.value.id]);
+      this.service.addRecipe(this.formRecipe.value)
+      .subscribe(
+        result => {
+          this.router.navigate(['/recipes', result]);          
+        },
+        error => error
+      );
+      
     } else {
-      this.formRecipe.value.id = this.model.id;
-      this.service.updateRecipe(this.formRecipe.value);
-      this.router.navigate(['/recipes', this.formRecipe.value.id]);
+      this.formRecipe.value['id'] = this.model.id;
+      this.service.updateRecipe(this.formRecipe.value).subscribe(() => {
+        this.router.navigate(['/recipes', this.formRecipe.value.id]);
+      });
     }
   }
 
