@@ -22,6 +22,6 @@ export class RecipeDetailsResolve implements Resolve<Recipe> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
   Observable<Recipe> | Promise<Recipe> | Recipe {
-      return this.recipeService.getRecipe(+route.params['id']);
+      return this.recipeService.getRecipe(route.params['id']);
   }
 }

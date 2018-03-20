@@ -46,26 +46,15 @@ export class RecipesService {
       this.recipesChanged.next(this.recipeItems);      
     }        
 
-    getRecipe(id: number) {
-      const recipeItem = this.recipeItems.find(
-        (recipeItem) => {
-          return recipeItem.id === id;
-        }
-      );
-      return recipeItem;
-    }
-    
+    public getRecipe(id: string): Observable<Recipe> {
+      return this.http.get<Recipe>(`/recipes/${id}`, { observe: 'body' })
+      .map(data => data);
+    }      
+
+   
     public getRecipes():Observable<Recipe[]> {
-      return this.http.get<Recipe[]>(
-        '/recipes',
-        {
-          observe: 'body'
-        }
-      ).map(
-        (data) => {
-          return this.recipeItems = data;
-        }
-      );
+      return this.http.get<Recipe[]>('/recipes', { observe: 'body' })
+        .map(data => this.recipeItems = data);
     }
 
     

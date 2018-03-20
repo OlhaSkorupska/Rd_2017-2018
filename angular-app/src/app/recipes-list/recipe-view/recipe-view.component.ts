@@ -23,13 +23,17 @@ export class RecipeViewComponent implements OnInit, OnDestroy {
     this.paramsSubscription = this.route.params
       .subscribe(
         (params: Params) => {
-          this.recipeItem = this.recipeService.getRecipe(+params['id']);
-        }
-      );
-    }
+          this.recipeService.getRecipe(params['id'])
+          .subscribe(
+            result => this.recipeItem = result,
+            error => console.log(error.statusText)
+          );
+    });      
+  }
 
-    ngOnDestroy() {
-      this.paramsSubscription.unsubscribe();
-    }
+
+  ngOnDestroy() {
+    this.paramsSubscription.unsubscribe();
+  }
 
 }

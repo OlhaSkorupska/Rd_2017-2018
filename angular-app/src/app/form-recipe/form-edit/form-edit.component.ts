@@ -28,11 +28,14 @@ export class FormEditComponent implements OnInit, OnDestroy {
       this.operation.notifyMe('Edit');    
 
       this.paramsSubscription = this.route.params
-        .subscribe(
-          (params: Params) => {
-            this.model = this.recipeService.getRecipe(+params['id']);
-          }
-        );
+      .subscribe(
+        (params: Params) => {
+          this.recipeService.getRecipe(params['id'])
+          .subscribe(
+            result => this.model = result,
+            error => console.log(error.statusText)
+          );
+        });         
     }
 
     ngOnDestroy() {

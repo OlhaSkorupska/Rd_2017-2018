@@ -88,11 +88,14 @@ export class FormRecipeComponent implements OnInit {
 
   createRecipe() {
     this.paramsSubscription = this.route.params
-      .subscribe(
-        (params: Params) => {
-          this.model = this.service.getRecipe(+params['id']);
-        }
-      );
+    .subscribe(
+      (params: Params) => {
+        this.service.getRecipe(params['id'])
+        .subscribe(
+          result => this.model = result,
+          error => console.log(error.statusText)
+        );
+      });        
   }
 
   toFormArray(elements: Array<String>) {
