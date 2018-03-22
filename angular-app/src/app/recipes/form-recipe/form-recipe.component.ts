@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Recipe } from '../models/recipe.model';
-import { RecipesService } from '../services/recipes.service';
+import { Recipe } from '../../models/recipe.model';
+import { RecipesService } from '../../services/recipes.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { FormGroup, FormControl, Validators, AbstractControl, AsyncValidatorFn, FormArray } from '@angular/forms';
 
 import { urlValidator } from './url-validator';
-import { FormService } from '../services/form.service';
-import { Category } from '../models/category.model';
-import { CategoriesService } from '../services/categories.service';
+import { FormService } from '../../services/form.service';
+import { Category } from '../../models/category.model';
+import { CategoriesService } from '../../services/categories.service';
 
 @Component({
   selector: 'app-form-recipe',
