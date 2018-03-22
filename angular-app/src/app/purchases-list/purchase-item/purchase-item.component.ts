@@ -9,13 +9,26 @@ import { Purchase } from '../../models/purchase.model';
 })
 export class PurchaseItemComponent {
   @Input() purchase: Purchase;
+  purchases: Purchase[];  
 
   constructor(
     private service: PurchasesService
-  )
-  {}
+  ) {}
 
-  onDeletePurchase(purchase: Purchase) {
-    this.service.removeIngridient(purchase);    
+  ngOnInit() {
+    this.purchases = this.service.purchases;
+    this.service.purchasesChanged.subscribe(
+      (items: Purchase[]) => {
+        this.purchases = items;
+      }
+    );
+  } 
+  
+  onDeletePurchase(id) {
+    this.service.removeIngredient(id)
+      .subscribe(
+        result => result,
+        error => error
+    );    
   }  
 }

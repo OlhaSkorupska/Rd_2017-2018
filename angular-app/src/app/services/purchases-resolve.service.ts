@@ -11,7 +11,7 @@ export class PurchasesResolve implements Resolve<Purchase[]> {
   ) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
-  Observable<Purchase[]> | Promise<Purchase[]> | Purchase[] {
-      return this.purchasesService.init();
+  Observable<Purchase[]> | Promise<Purchase[]> | Purchase[]  {
+      return this.purchasesService.getPurchases();
   }
 }

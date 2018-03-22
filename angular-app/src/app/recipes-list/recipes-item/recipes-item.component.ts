@@ -7,23 +7,14 @@ import { RecipesService } from '../../services/recipes.service';
   templateUrl: './recipes-item.component.html',
   styleUrls: ['./recipes-item.component.scss']
 })
-export class RecipesItemComponent implements OnInit {
+export class RecipesItemComponent implements OnInit{
   model: Recipe;
-  recipeItems: Recipe[];
 
   constructor (
     private service: RecipesService
   ) { }
 
   @Input() recipeItem: Recipe;
-
-  ngOnInit() {
-    this.service.recipesChanged.subscribe(
-      (recipeItems: Recipe[]) => {
-        this.recipeItems = this.recipeItems;
-      }
-    );
-  }
 
   deleteRecipe(item) {
     this.service.removeRecipe(item.id)
@@ -33,10 +24,34 @@ export class RecipesItemComponent implements OnInit {
     );
   }  
 
-  likes(id: number, likes: boolean) {
-    this.model = new Recipe();
-    this.model.id = id;
-    this.model.likes = (likes) ? 1 : -1;
-    this.service.updateLikes(this.model);
+  ngOnInit() {
+    this.service.recipeChanged.subscribe(
+      (recipe: Recipe) => {
+        if (recipe.id === this.recipeItem.id) {
+          this.recipeItem = recipe;  
+        }
+      }
+    );
   }
+
+  like(id: string) {
+    console.log(id);
+    this.service.updateLike(id).subscribe(
+      result => {
+        this.service.recipeChanged.next(result);        
+        return result;        
+      },
+      error => console.log(error.statusText)
+    );
+  }
+
+  dislike(id: string) {
+    this.service.updateDislike(id).subscribe(
+      result => {
+        this.service.recipeChanged.next(result);        
+        return result;        
+      },
+      error => console.log(error.statusText)
+    );
+  }  
 }

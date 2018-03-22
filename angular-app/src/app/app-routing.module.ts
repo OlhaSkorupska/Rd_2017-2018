@@ -9,6 +9,7 @@ import { RecipeViewComponent } from './recipes-list/recipe-view/recipe-view.comp
 import { RecipesListResolve } from './services/recipes-list-resolver.service';
 import { RecipeDetailsResolve } from './services/recipe-details.service';
 import { PurchasesResolve } from './services/purchases-resolve.service';
+import { FavoritesListResolve } from './services/favorites-list-resolver.service';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
@@ -17,7 +18,7 @@ const appRoutes: Routes = [
   { path: 'recipes/:id', component: RecipeViewComponent, resolve: { recipe: RecipeDetailsResolve }, },    
   { path: 'recipes/edit/:id', component: FormEditComponent, resolve: { recipe: RecipeDetailsResolve }, },    
   { path: 'purchases', component: PurchasesListComponent, resolve: { recipe: PurchasesResolve }, },   
-  { path: 'favorites', component: FavoritesListComponent }, 
+  { path: 'favorites', component: FavoritesListComponent, resolve: { recipe: FavoritesListResolve }, }, 
   { path: '**', redirectTo: '/' }  
 ];
 

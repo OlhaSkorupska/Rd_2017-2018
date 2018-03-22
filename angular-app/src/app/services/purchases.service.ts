@@ -1,32 +1,50 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Purchase } from '../models/purchase.model';
+import { Subject } from 'rxjs/Subject';
+import { HttpClient } from '@angular/common/http';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import { RecipesService } from './recipes.service';
 
 @Injectable() 
 export class PurchasesService {
-    purchases: Purchase[] = [
-        { ingridient: 'bread', id: 1 },
-        { ingridient: 'oil', id: 2 },
-        { ingridient: 'sugar', id: 3 } 
-    ];
+    purchases: Purchase[];
+    purchasesChanged = new Subject<Purchase[]>();     
 
-    public init() {
-        return this.purchases;     
-    }  
+    constructor(
+        private http: HttpClient,
+        private recipeService: RecipesService
+      ) {}
 
-    public addIngridient(item) {
-        let object = new Purchase;
-        object.id = Math.floor(Math.random() * 100000000);
-        object.ingridient = item;
-        this.purchases.push(object);
-        console.log(this.purchases);
-        return this.purchases;        
+    public getPurchases():Observable<Purchase[]> {
+        return this.http.get<Purchase[]>('/purchases')
+          .map(
+            (data) => {
+                this.purchases = data;
+                return data;
+              }              
+          );
+    }
+
+    public addIngredient(item: String):Observable<Purchase[]> {
+        return this.http.post<Purchase[]>('/purchases', { 'purchases': item })
+            .map(response => {
+                this.purchases = response;
+                this.purchasesChanged.next(this.purchases);
+                return this.purchases;
+            })
+            .catch(this.recipeService.handleError); 
     }    
 
-    public removeIngridient(purchase: Purchase) {
-        const index = this.purchases.indexOf(purchase);
-        this.purchases.splice(index, 1);
-        return this.purchases;               
+    public removeIngredient(id: string) {
+        return this.http.delete<Purchase[]>(`/purchases/${id}`)
+            .map(response => {
+                this.purchases = response;
+                this.purchasesChanged.next(this.purchases);
+                return this.purchases;
+            })
+            .catch(this.recipeService.handleError);             
     }        
 
 }

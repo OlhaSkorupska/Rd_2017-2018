@@ -1,4 +1,4 @@
 export class Purchase {
-    ingridient: string;
-    id: number
+    ingredient: string;
+    id: string;
 }

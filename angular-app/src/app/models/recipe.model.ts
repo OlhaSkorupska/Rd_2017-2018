@@ -6,6 +6,7 @@ export class Recipe {
     instructions: string;
     categoryId: string;
     likes: number;
-    id: number;
+    id: string;
     category: string;
+    isFavorite: boolean;
 }

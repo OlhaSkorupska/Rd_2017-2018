@@ -11,11 +11,12 @@
             <i class="fa fa-pencil"></i>
               Edit
         </button>
-        <button class="btn btn-success">
+        <button (click)="addToFavorites(recipeItem.id)" class="btn btn-success">
             <i class="fa fa-star"></i>
-              Add to Favorites
+              {{ title }}
         </button>    
-        <button class="btn btn-success">
+        <button (click)="addToPurchases(recipeItem.ingredients)" class="btn btn-success"
+            [routerLink]="['/purchases']">
             <i class="fa fa-shopping-cart"></i>
               Purchases
         </button> 

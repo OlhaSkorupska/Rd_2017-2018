@@ -11,7 +11,7 @@ interface Recipe {
     instructions: string;
     categoryId: string;
     likes: number;
-    id: number
+    id: string
 }
 
 @Injectable()

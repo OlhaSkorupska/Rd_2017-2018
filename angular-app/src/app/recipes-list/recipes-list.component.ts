@@ -9,7 +9,6 @@ import { Recipe } from '../models/recipe.model';
 })
 export class RecipesListComponent implements OnInit {
   recipeItems: Recipe[];
-  id: number;
 
   constructor(
     private service: RecipesService
@@ -19,7 +18,7 @@ export class RecipesListComponent implements OnInit {
     this.recipeItems = this.service.recipesItems;
     this.service.recipesChanged.subscribe(
       (recipeItems: Recipe[]) => {
-        this.recipeItems = this.recipeItems;
+        this.recipeItems = recipeItems;
       }
     );
   }

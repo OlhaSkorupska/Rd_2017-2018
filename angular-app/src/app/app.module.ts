@@ -28,6 +28,7 @@ import { RecipeDetailsResolve } from './services/recipe-details.service';
 import { PurchasesResolve } from './services/purchases-resolve.service';
 import { CategoriesService } from './services/categories.service';
 import { HttpInterceptorService } from './services/http-interceptor.service';
+import { FavoritesListResolve } from './services/favorites-list-resolver.service';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { HttpInterceptorService } from './services/http-interceptor.service';
       RecipesListResolve, 
       RecipeDetailsResolve,
       PurchasesResolve,
+      FavoritesListResolve,            
       CategoriesService,
       { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }      
   ],

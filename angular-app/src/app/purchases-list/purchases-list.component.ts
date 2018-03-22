@@ -18,7 +18,21 @@ export class PurchasesListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.purchases = this.service.init();
+    this.purchases = this.service.purchases;
+    this.service.purchasesChanged.subscribe(
+      (items: Purchase[]) => {
+        this.purchases = items;
+      }
+    );
+
+    this.service.getPurchases()
+    .subscribe(
+      result => {
+        this.purchases = result;
+        return result;
+      },
+      error => console.log(error.statusText)
+    );
   }
  
 }
