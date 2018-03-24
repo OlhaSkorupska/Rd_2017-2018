@@ -18,6 +18,10 @@ export class RecipesService {
       private http: HttpClient
     ) {}
 
+    public getRecipeItems() {
+      return this.recipesItems;
+    }
+
     public addRecipe(data: Recipe): Observable<Recipe> {
       return this.http.post(`/recipes`, data)
         .catch(this.handleError);
@@ -36,10 +40,14 @@ export class RecipesService {
             return item.id !== id;
           }
         );
-        this.recipesChanged.next(this.recipesItems);
+        this.callChangedSubject(this.recipesItems);
       })      
       .catch(this.handleError);  
     }        
+
+    public callChangedSubject(recipes) {
+      this.recipesChanged.next(this.recipesItems);
+    }
 
     public getRecipe(id: string): Observable<Recipe> {
       return this.http.get(`/recipes/${id}`)
@@ -57,7 +65,7 @@ export class RecipesService {
       return this.http.get<Recipe[]>('/favorites')
         .map(response => {
           this.favoriteItems = response;
-          this.recipesChanged.next(response);
+          this.callChangedSubject(response);          
           return this.favoriteItems;
         })
         .catch(this.handleError);         

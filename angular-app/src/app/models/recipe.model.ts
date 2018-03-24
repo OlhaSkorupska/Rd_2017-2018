@@ -7,6 +7,5 @@ export class Recipe {
     categoryId: string;
     likes: number;
     id: string;
-    category: string;
     isFavorite: boolean;
 }

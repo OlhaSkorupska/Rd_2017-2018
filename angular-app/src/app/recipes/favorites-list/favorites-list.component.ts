@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class FavoritesListComponent {
   @Output() recipeItems: Recipe[];
+  subscription: Subscription;
 
   constructor(
     private service: RecipesService
@@ -18,10 +19,9 @@ export class FavoritesListComponent {
 
   ngOnInit() {
     this.recipeItems = this.service.favoriteItems;
-    this.service.recipesChanged.subscribe(
+    this.subscription = this.service.recipesChanged.subscribe(
       (recipeItems: Recipe[]) => {
         this.recipeItems = recipeItems.filter(element => {
-          console.log('dslkjlkasjd');
           if (element.isFavorite) {
             return element;
           }
@@ -31,5 +31,6 @@ export class FavoritesListComponent {
   }
 
   ngOnDestroy() {
+    this.subscription.unsubscribe();    
   }
 }
