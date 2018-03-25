@@ -20,9 +20,8 @@ describe('RecipesListComponent', () => {
     likes: 0,
     id: '1',
     isFavorite: true
-  }];  
- 
-
+  }];
+  
   beforeEach(() => {
     service = new RecipesService(null);
     component = new RecipesListComponent(service);
@@ -34,16 +33,13 @@ describe('RecipesListComponent', () => {
       component.ngOnInit();
       expect(component.recipeItems).toBe(recipes);
     });
-    
+
     it('should set recipe to data returned from subject', () => {
-      // console.log('service.recipesChanged', service.recipesChanged);
-      // component.constructor();  
-      // spyOn(service.recipesChanged, 'next').and.callFake(function(param) {
-      //   return recipes;
-      // });
-   
-      // console.log(component.recipeItems);
-      // expect(component.recipeItems).toBe(recipes);
-    }); 
+      component.ngOnInit();
+      spyOn(service.recipesChanged, 'next').and.callFake(function(param) {
+         return recipes;
+      });
+      expect(component.recipeItems).toEqual(service.recipesItems);
+    });
   });
-}); 
+});
